@@ -8,7 +8,9 @@
     "build": "webpack --env.environment=production --config webpack.config.js",
     "dev": "webpack --env.environment=development --config webpack.config.js",
     "devserver": "webpack-dev-server --open --hot --env.environment=development --config webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass --include-path scss src/styles/sass/*.scss src/styles/sass/*.css",
+    "watch-sass": "nodemon -e scss -x \"npm run sass\""
   },
   "repository": {
     "type": "git",
@@ -33,28 +35,30 @@
   "dependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
-    "babel-eslint": "^10.0.3",
-    "babel-loader": "^8.0.6",
     "@babel/helper-plugin-utils": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
-    "css-loader": "^3.2.0",
-    "copy-webpack-plugin": "^5.0.4",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.4",
     "core-js": "^3.2.1",
     "cors": "^2.8.5",
+    "css-loader": "^3.2.0",
     "dotenv": "^8.1.0",
-    "file-loader": "^4.2.0",
     "express": "^4.17.1",
+    "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.2",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
+    "style-loader": "^1.0.0",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.1",
-    "style-loader": "^1.0.0"
+    "webpack-dev-server": "^3.8.1"
   }
 }
