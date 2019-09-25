@@ -1,7 +1,7 @@
-const dotenv = require('dotenv');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+import dotenv from 'dotenv';
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
 const sourcePath = path.join(__dirname, './src');
 const distPath = path.join(__dirname, './dist');
@@ -44,6 +44,18 @@ module.exports = (env) => ({
             plugins: [['@babel/plugin-proposal-class-properties', { loose: true }]],
           },
         },
+      },
+      {
+        test: /\.css$/,
+        loader: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       },
     ],
   },
