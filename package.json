@@ -1,0 +1,46 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "codepirates frontend",
+  "main": "index.js",
+  "dependencies": {
+    "core-js": "^3.2.1",
+    "css-loader": "^3.2.0",
+    "cypress": "^3.4.1",
+    "dotenv": "^8.1.0",
+    "file-loader": "^4.2.0",
+    "style-loader": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "path": "^0.12.7",
+    "start-server-and-test": "^1.10.2",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.1"
+  },
+  "scripts": {
+    "start": "npm run build && babel-node server/app.js",
+    "build": "babel-node ./node_modules/webpack/bin/webpack --env.environment=production --config webpack.config.js",
+    "dev": "babel-node ./node_modules/webpack/bin/webpack --env.environment=development --config webpack.config.js",
+    "devserver": "babel-node ./node_modules/webpack-dev-server/bin/webpack-dev-server --open --hot --env.environment=development --config webpack.config.js",
+    "test:cypress": "start-server-and-test start http://localhost:8080 cypress",
+    "cypress": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andela/codepirates-ah-frontend.git"
+  },
+  "author": "codepirates",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andela/codepirates-ah-frontend/issues"
+  },
+  "homepage": "https://github.com/andela/codepirates-ah-frontend#readme"
+}
