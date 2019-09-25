@@ -3,10 +3,10 @@ describe('App E2E', () => {
       expect(true).to.equal(true);
     });
   });
-// describe('App E2E', () => {
-//     it('should have a header', () => {
-//       cy.visit('http://localhost:8080');
-//       cy.get('h1')
-//         .should('have.text', 'My Counter');
-//     });
-//   });
+describe('App E2E', () => {
+    it('should have a header', () => {
+      cy.visit('/');
+      cy.get('h3')
+        .should('have.text', 'Welcome to Authors Haven');
+    });
+  });

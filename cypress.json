@@ -1,4 +1,4 @@
 {
     "video": false,
-    "baseUrl": "http://localhost:8080"
+    "baseUrl": "http://codepirates-ah-staging.herokuapp.com/"
 }

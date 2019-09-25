@@ -1,0 +1,21 @@
+language: node_js
+​
+node_js:
+  - "stable"
+​
+cache:
+  directories:
+    - "node_modules"
+​
+install:
+  - npm install
+​
+env:
+  global:
+    - NODE_ENV=test
+​
+script:
+  - npm test:cypress
+​
+after_success:
+  - npm run coveralls

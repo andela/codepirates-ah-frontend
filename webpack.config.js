@@ -1,7 +1,7 @@
-const dotenv = require('dotenv');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+import dotenv from 'dotenv';
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
 const sourcePath = path.join(__dirname, './src');
 const distPath = path.join(__dirname, './dist');
@@ -32,24 +32,26 @@ module.exports = (env) => ({
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', {
-                debug: true,
-                useBuiltIns: 'usage',
-                corejs: 3,
-              }],
-              '@babel/preset-react',
-            ],
-            plugins: [['@babel/plugin-proposal-class-properties', { loose: true }]],
-          },
+          options: {},
         },
+      },
+      {
+        test: /\.css$/,
+        loader: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(sourcePath, 'index.html'),
+      template: path.join(sourcePath, './index.html'),
     }),
     new CleanWebpackPlugin(),
   ],
