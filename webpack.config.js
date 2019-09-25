@@ -12,8 +12,6 @@ module.exports = (env) => ({
   mode: env.environment,
   devServer: {
     contentBase: distPath,
-    host: process.env.host,
-    port: process.env.port,
     historyApiFallback: true,
     overlay:
         env.environment === 'development'
@@ -32,18 +30,20 @@ module.exports = (env) => ({
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', {
-                debug: true,
-                useBuiltIns: 'usage',
-                corejs: 3,
-              }],
-              '@babel/preset-react',
-            ],
-            plugins: [['@babel/plugin-proposal-class-properties', { loose: true }]],
-          },
+          options: {},
         },
+      },
+      {
+        test: /\.css$/,
+        loader: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       },
     ],
   },
