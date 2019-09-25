@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import dotenv from 'dotenv';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+=======
+const dotenv = require('dotenv');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+>>>>>>> a2d1621455e657b96361083c050a66061d943b82
 
 const sourcePath = path.join(__dirname, './src');
 const distPath = path.join(__dirname, './dist');
@@ -12,8 +19,11 @@ module.exports = (env) => ({
   mode: env.environment,
   devServer: {
     contentBase: distPath,
+<<<<<<< HEAD
     host: process.env.host,
     port: process.env.port,
+=======
+>>>>>>> a2d1621455e657b96361083c050a66061d943b82
     historyApiFallback: true,
     overlay:
         env.environment === 'development'
