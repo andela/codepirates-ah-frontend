@@ -15,7 +15,7 @@ env:
     - NODE_ENV=test
 ​
 script:
-  - npm test:cypress
+  - npm test
 ​
 after_success:
   - npm run coveralls

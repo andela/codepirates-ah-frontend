@@ -3,13 +3,19 @@
   "version": "1.0.0",
   "description": "A blogging platform",
   "main": "index.js",
+  "jest": {
+    "setupFiles": [
+      "./src/setupTests.js"
+    ]
+  },
   "scripts": {
     "start": "npm run build && node server/app.js",
     "build": "webpack --env.environment=production --config webpack.config.js",
     "dev": "webpack --env.environment=development --config webpack.config.js",
     "devserver": "webpack-dev-server --open --hot --env.environment=development --config webpack.config.js",
-    "test:cypress": "start-server-and-test start http://localhost:8080 cypress",
-    "cypress": "cypress run"
+    "test:cypress": "start-server-and-test start http://codepirates-ah-staging.herokuapp.com cypress",
+    "cypress": "cypress run",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -31,6 +37,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "jest": "^24.9.0",
+    "react-test-renderer": "^16.9.0",
     "start-server-and-test": "^1.10.2"
   },
   "dependencies": {
@@ -58,6 +66,8 @@
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1",
-    "style-loader": "^1.0.0"
+    "style-loader": "^1.0.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0"
   }
 }
