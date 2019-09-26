@@ -15,7 +15,7 @@
     "devserver": "webpack-dev-server --open --hot --env.environment=development --config webpack.config.js",
     "test:cypress": "start-server-and-test start http://codepirates-ah-staging.herokuapp.com cypress",
     "cypress": "cypress run",
-    "test": "jest"
+    "test": "jest .test.js"
   },
   "repository": {
     "type": "git",
