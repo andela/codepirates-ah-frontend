@@ -1,10 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import App from './app';
-import TestPage from './components/testpage';
+import App from './components/app';
 import store from './redux/store';
+import 'bootstrap/dist/css/bootstrap.css';
 
-const out = App.prototype ? <App /> : <TestPage />;
 
-render(<Provider store={store}>{out}</Provider>, document.getElementById('root'));
+render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

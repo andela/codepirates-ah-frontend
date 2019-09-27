@@ -11,8 +11,8 @@ const htmlIndex = path.join(distPath, 'index.html');
 const port = process.env.PORT || 8080;
 app.use(express.static(distPath));
 app.use(cors());
-app.get('/', (req, res) => {
-  res.send(htmlIndex);
+app.get('*', (req, res) => {
+  res.sendFile(htmlIndex);
 });
 app.listen(port, () => {
   // eslint-disable-next-line no-console
