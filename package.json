@@ -11,8 +11,9 @@
     "test:cypress": "start-server-and-test start http://codepirates-ah-staging.herokuapp.com cypress",
     "cypress": "cypress run",
     "test": "jest .test.js",
-    "test:watch":"jest --watchAll",
-    "coveralls":"jest \"-- --coverage\""
+    "test:watch": "jest --watchAll",
+    "coveralls": "jest \"-- --coverage\"",
+    "linting":"eslint --ext js,jsx ./src"
   },
   "repository": {
     "type": "git",
@@ -27,17 +28,17 @@
   "homepage": "https://github.com/andela/codepirates-ah-frontend#readme",
   "devDependencies": {
     "cypress": "^3.4.1",
-    "eslint": "^6.4.0",
+    "eslint": "^6.5.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-flowtype": "^3.13.0",
     "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-json": "^1.4.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-markdown": "^1.0.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.9.0",
-    "node-sass": "^4.12.0",
     "react-test-renderer": "^16.9.0",
-    "sass-loader": "^8.0.0",
     "start-server-and-test": "^1.10.2"
   },
   "dependencies": {
@@ -76,6 +77,7 @@
     "redux-immutable-state-invariant": "^2.1.0",
     "redux-mock-store": "^1.5.3",
     "redux-thunk": "^2.3.0",
+    "node-sass": "^4.12.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.40.2",
