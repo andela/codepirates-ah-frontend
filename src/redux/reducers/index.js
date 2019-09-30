@@ -1,5 +1,6 @@
-// import all reducers in this file
+import login from './login';
+
 
 export default {
-  // this will include all imported reducers
+  login,
 };

@@ -2,12 +2,12 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import NotFound from './notfound/notFound';
 import Welcome from './welcome/welcome';
-import Privacy from './privacy/privacy';
+import Login from './login';
 
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={Welcome} />
-    <Route exact path="/privacy" component={Privacy} />
+    <Route exact path="/login" component={Login} />
     <Route component={NotFound} />
   </Switch>
 );
