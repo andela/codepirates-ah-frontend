@@ -1,6 +1,6 @@
 {
   "extends": ["airbnb"],
-  "plugins": ["react"],
+  "plugins": ["react", "json", "markdown"],
   "parser": "babel-eslint",
   "env": {
     "browser": true,

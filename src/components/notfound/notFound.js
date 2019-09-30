@@ -11,7 +11,7 @@ const NotFound = () => (
         <div className="col-12 col-sm-6">
           <h3 style={{ color: 'navy' }}>Did you just freeze? Like an antelope in headlights </h3>
           <Link to="/" className="hide-lg">
-            <a className=" hero-button event-btn err">Return to Home</a>
+            <span className=" hero-button event-btn err">Return to Home</span>
           </Link>
         </div>
       </div>

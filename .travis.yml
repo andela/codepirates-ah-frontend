@@ -13,9 +13,17 @@ install:
 env:
   global:
     - NODE_ENV=test
+    - CC_TEST_REPORTER_ID=bbd1a19a7f097f3069dd097ad650b73154e51ef7a91a68e1c5c14314f683b44f
+
+before_script:
+ - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+ - chmod +x ./cc-test-reporter
+ - ./cc-test-reporter before-build
 
 script:
+  - npm run linting
   - npm test
+  - npm run coveralls
 
 after_success:
-  - npm run coveralls
+  - ./cc-test-reporter after-build --debug --exit-code $TRAVIS_TEST_RESULT
