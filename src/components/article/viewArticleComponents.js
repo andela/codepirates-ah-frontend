@@ -11,6 +11,7 @@ import ArticleCard from '../common/articleCard';
 import coverImage from '../../../public/assets/images/nature.jpeg';
 import RatingArticleCardComponent from '../common/ratingComponent/index';
 import RateComponent from '../rateButton/rate';
+import MoreOnArticle from '../moreAction/index';
 
 export const paginate = (lists, pageNumber, pageSize) => {
   const startIndex = (pageNumber - 1) * pageSize;
@@ -95,7 +96,7 @@ export const ArticleContent = ({
         <i className="fab fa-linkedin-in" />
         <i className="fab fa-google" />
         <i className="far fa-bookmark" />
-        <i className="fas fa-ellipsis-v" />
+        <MoreOnArticle slug={slug} author={author} />
       </div>
     </div>
   </div>

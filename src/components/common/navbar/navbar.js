@@ -40,9 +40,6 @@ export class NavBar extends Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse className="justify-content-end">
             <div style={{ width: '20rem' }}><Search /></div>
-            <Nav.Link href="/articles">
-              Articles
-            </Nav.Link>
             {isLoggedIn
               ? (
                 <>
@@ -60,8 +57,8 @@ export class NavBar extends Component {
                     <NavDropdown.Item href="/profile">
                         profile
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="/create-article">
-                        new article
+                    <NavDropdown.Item href="bookmarks">
+                        my Bookmarks
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item

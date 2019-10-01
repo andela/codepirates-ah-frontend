@@ -42,5 +42,7 @@ export default {
     dislikePending: false,
     dislikes: 0,
     dislikeError: null,
+    article: {
+    },
   },
 };
