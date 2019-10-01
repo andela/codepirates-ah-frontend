@@ -7,3 +7,16 @@ export default {
   login,
   profileReducer,
 };
+
+import { combineReducers } from 'redux';
+// import all reducers in this file
+import socialAuthReducer from './socialAuth/socilaAuth';
+import login from './login';
+
+
+const rootReducer = combineReducers({
+  socialAuthReducer,
+  login,
+  // this will include all imported reducers
+});
+export default rootReducer;

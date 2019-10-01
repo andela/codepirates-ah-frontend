@@ -7,6 +7,7 @@ import EmailVerification from './emailVerification/emailVerification';
 import Welcome from './welcome/welcome';
 import Login from './login';
 import Profile from './profile/profile';
+import socialButtons from './auth/socialAuth/socialButtons';
 
 const user = localStorage.getItem('token');
 const Routes = () => (
@@ -24,6 +25,7 @@ const Routes = () => (
     <Route exact path="/privacy" component={Privacy} />
     <Route exact path="/signup" component={Signup} />
     <Route path="/verify" component={EmailVerification} />
+    <Route exact path="/social" component={socialButtons} />
     <Route component={NotFound} />
   </Switch>
 );
