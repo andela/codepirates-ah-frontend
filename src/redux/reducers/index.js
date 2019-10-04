@@ -1,5 +1,5 @@
-// import all reducers in this file
+import signupReducer from './signupReducer';
 
 export default {
-  // this will include all imported reducers
+  userRegistrationData: signupReducer,
 };
