@@ -9,6 +9,7 @@ import Login from './login';
 import Profile from './profile/profile';
 import verifyAuth from './socialAuth/verifyAuth';
 
+import CreateArticles from './articles/createArticles/createArticles';
 
 const user = localStorage.getItem('token');
 const Routes = () => (
@@ -23,6 +24,7 @@ const Routes = () => (
     />
     <Route exact path="/" component={Welcome} />
     <Route exact path="/login" component={Login} />
+    <Route exact path="/articles/create" component={CreateArticles} />
     <Route exact path="/privacy" component={Privacy} />
     <Route exact path="/signup" component={Signup} />
     <Route path="/verify" component={EmailVerification} />

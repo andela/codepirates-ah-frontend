@@ -23,6 +23,7 @@ module.exports = (env) => ({
   },
   entry: [path.join(sourcePath, './index.js')],
   output: {
+    publicPath: '/',
     path: distPath,
     publicPath: '/',
     filename: 'js/[name].[hash].js',
