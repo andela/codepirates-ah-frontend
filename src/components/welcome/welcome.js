@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import logo from '../../../public/assets/images/logo.png';
 import displayWelcomeMessage from '../../helpers/displayWelcomeMessage';
+import NavBar from '../common/navbar/navbar';
 
 class Welcome extends Component {
   componentDidMount() {
@@ -11,6 +12,7 @@ class Welcome extends Component {
   render() {
     return (
       <div>
+        <NavBar />
         <ToastContainer position={toast.POSITION.TOP_RIGHT} />
         <div style={{ textAlign: 'center' }}>
           <img src={logo} alt="logo" />

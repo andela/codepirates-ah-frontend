@@ -13,6 +13,11 @@ import Login from './login';
 import socialButtons from './presentation/SocialButtons/SocialButton';
 import verifyAuth from './containeer /auth/socialAuth/verifyAuth';
 
+import Profile from './profile/profile';
+import socialButtons from './SocialButtons/SocialButton';
+import verifyAuth from './socialAuth/verifyAuth';
+
+
 const user = localStorage.getItem('token');
 const Routes = () => (
   <Switch>

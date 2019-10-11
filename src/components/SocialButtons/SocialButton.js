@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from '../button/Button';
+import Button from '../common/button/Button';
 // import Footer from '../footer/Footer';
 // import NavBar from '../navbar/navbar';
 
@@ -27,7 +27,7 @@ const SocialButtons = () => {
     url: `${BACKEND_URL}/login/twitter`,
   },
   ].map((socialIcon) => (
-    <div className="mb-4">
+    <div className="mb-4 social-btn">
       <a href={`${BACKEND_URL}/login/${socialIcon.icon}`} key={socialIcon.key} className="social-btn mb-4" target="blank">
         <Button
           classes={socialIcon.className}

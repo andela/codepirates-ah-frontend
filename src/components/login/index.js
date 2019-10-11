@@ -13,6 +13,8 @@ import RegistrationHeader from '../common/registrationHeader';
 import loginAction from '../../redux/actions/login';
 import loginValidation from './loginValidation';
 import signupSvgPath from '../../../public/assets/images/signupSvg.svg';
+import NavBar from '../common/navbar/navbar';
+import SocialButtons from '../SocialButtons/SocialButton';
 
 export class Login extends Component {
   state={
@@ -45,6 +47,7 @@ export class Login extends Component {
       });
       const errorValue = Object.values(errors);
       this.setState((prevState) => ({ ...prevState, error: errorValue[0] }));
+
       return false;
     }
     this.setState((prevState) => ({ ...prevState, loading: true }));
@@ -73,6 +76,8 @@ export class Login extends Component {
       username, password, error, loading,
     } = this.state;
     const { props } = this;
+    console.log('ERROR', error);
+
     if (props.status === 200) {
       return (
         <Redirect to={{
@@ -84,41 +89,40 @@ export class Login extends Component {
     }
     return (
       <>
-      <NavBar isLogedin="true" />
-      <div className="container registration" style={commonStyle}>
-        
-        <ToastContainer position={toast.POSITION.TOP_RIGHT} />
-        <RegistrationHeader title="Login" />
-        <div className="row registration--middle-row">
-          <div className="col-md-7 registration--middle-row__left-part">
-            <div className="registration__form-div">
-              <form id="login-form" className={classnames('ui', 'form', { loading })} onSubmit={this.onSubmit}>
-                <TextInput
-                  type="text"
-                  label="Username"
-                  name="username"
-                  value={username}
-                  onChange={this.onChange}
-                  error={error}
-                />
-                <TextInput type="password" label="Password" name="password" value={password} onChange={this.onChange} error={error} />
-                <SubmitButton value="Login" />
-              </form>
-              <a href="/resetrequest">Forgot password ?</a>
+        <NavBar />
+        <div className="container registration" style={commonStyle}>
+
+          <ToastContainer position={toast.POSITION.TOP_RIGHT} />
+          <div className="row registration--middle-row">
+            <div className="col-md-7 registration--middle-row__left-part">
+              <div className="registration__form-div">
+                <form id="login-form" className={classnames('ui', 'form', { loading })} onSubmit={this.onSubmit}>
+                  <TextInput
+                    type="text"
+                    label="Username"
+                    name="username"
+                    value={username}
+                    onChange={this.onChange}
+                    error={error}
+                  />
+                  <TextInput type="password" label="Password" name="password" value={password} onChange={this.onChange} error={error} />
+                  <SubmitButton value="Login" />
+                </form>
+                <a href="/resetrequest">Forgot password ?</a>
+              </div>
+              <OrLine />
             </div>
-            <OrLine />
+            <div className="col-md-5 registration--middle-row__right-part">
+              <div>
+                <SocialButtons />
+              </div>
+              <SwitchToSignupOrLogin url="/signup" filePath={signupSvgPath} message="if you don't have an account!" />
+            </div>
           </div>
-          <div className="col-md-5 registration--middle-row__right-part">
-            <div>
-                social login buttons
-            </div>
-            <SwitchToSignupOrLogin url="/signup" filePath={signupSvgPath} message="if you don't have an account!" />
+          <div className="row registration-footer-row">
+            <div className="col-md-12 registration--footer" />
           </div>
         </div>
-        <div className="row registration-footer-row">
-          <div className="col-md-12 registration--footer" />
-        </div>
-      </div>
       </>
     );
   }
@@ -135,7 +139,7 @@ Login.defaultProps = {
   message: '',
   loginAction: () => {},
 };
-export const mapStateToProps = ({ login: { message, status, token } }) => ({
+export const mapStateToProps = ({ user: { message, status, token } }) => ({
   message, status, token,
 });
 export default connect(mapStateToProps, { loginAction })(Login);

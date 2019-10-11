@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
-import socialAuth from '../../../../redux/actions/socialAuth';
+import socialAuth from '../../redux/actions/socialAuth/socialAuth';
 
 /**
  * @class Home
@@ -14,26 +14,27 @@ export class VerifyAuth extends Component {
    * @method componentDidMount
    * @returns {boolean} changed state
    */
-  componentDidMount() {
+  async componentDidMount() {
     const { props } = this;
     const { location: { search, pathname } } = props;
     const { socialToken } = queryString.parse(search);
     if (socialToken) {
-      localStorage.setItem('token', socialToken);
+      await localStorage.setItem('token', socialToken);
     }
     if (this.checkAuthType(pathname) === 'twitter') {
-      props.socialAuth(socialToken, 'twitter');
+      await props.socialAuth(socialToken, 'twitter');
     }
 
     if (this.checkAuthType(pathname) === 'facebook') {
-      props
+      await props
         .socialAuth(socialToken, 'facebook');
     }
 
     if (this.checkAuthType(pathname) === 'google') {
-      props.socialAuth(socialToken, 'google');
+      await props.socialAuth(socialToken, 'google');
     }
   }
+
 
   /**
    *  @description checks for type of social auth
@@ -53,13 +54,11 @@ export class VerifyAuth extends Component {
    * @memberof Home
    */
   render() {
-    const { isAuthenticated } = this.props;
+    const { isLoggedIn } = this.props;
+    if (!isLoggedIn) return (<p>welcome back we are social authenticating</p>);
     return (
       <>
-        <p>welcome back we are social authenticating</p>
-        {isAuthenticated === true ? <Redirect to="/" /> : null }
-        {isAuthenticated === false
-          ? <Redirect to="/login" /> : null }
+        {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/login" /> }
       </>
     );
   }
@@ -68,11 +67,11 @@ export class VerifyAuth extends Component {
 VerifyAuth.propTypes = {
   socialAuth: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
-  isAuthenticated: PropTypes.bool,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
-const mapStateToProps = (state) => (
+export const mapStateToProps = (state) => (
   {
-    ...state.socialAuthReducer,
+    ...state.user,
   }
 );
 export default connect(mapStateToProps, { socialAuth })(VerifyAuth);

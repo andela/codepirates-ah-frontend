@@ -16,13 +16,21 @@ describe('Button Component', () => {
     const fragment = wrapper.find('footer');
     expect(fragment.length).toEqual(1);
   });
+  it('should find a hr', () => {
+    const hr = wrapper.find('hr');
+    expect(hr.length).toEqual(1);
+  });
 
   it('should find div', () => {
-    const button = wrapper.find('div');
-    expect(button.length).toEqual(1);
+    const div = wrapper.find('div');
+    expect(div.length).toEqual(1);
+  });
+  it('should find font awesome icon', () => {
+    const FontAwesomeIcon = wrapper.find('FontAwesomeIcon');
+    expect(FontAwesomeIcon.length).toEqual(3);
   });
   it('should find a span', () => {
-    const button = wrapper.find('span');
-    expect(button.length).toEqual(1);
+    const span = wrapper.find('span');
+    expect(span.length).toEqual(1);
   });
 });
