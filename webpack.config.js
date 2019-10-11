@@ -6,8 +6,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const sourcePath = path.join(__dirname, './src');
 const distPath = path.join(__dirname, './dist');
 
-dotenv.config();
-
 module.exports = (env) => ({
   mode: env.environment,
   devServer: {

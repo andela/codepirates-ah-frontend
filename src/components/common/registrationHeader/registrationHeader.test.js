@@ -7,7 +7,6 @@ const renderComponent = (args) => {
     title: '',
   };
   const props = { ...defaultProps, ...args };
-  // eslint-disable-next-line react/jsx-props-no-spreading
   return shallow(<RegistrationHeader {...props} />);
 };
 describe('RegistrationHeader', () => {

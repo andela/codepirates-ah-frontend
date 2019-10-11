@@ -21,5 +21,8 @@
     "import/no-named-as-default":0,
     "jsx-a11y/click-events-have-key-events":0,
     "react/jsx-props-no-spreading":0,
+    "react/prefer-stateless-function": 0,
+    "react/forbid-prop-types": 0,
+    "camelcase": 0
   }
 }

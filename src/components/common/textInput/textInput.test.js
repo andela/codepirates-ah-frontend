@@ -1,9 +1,25 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TextInput from './index';
+import TextInput from '.';
 
-describe('First React component test with Enzyme', () => {
-  it('renders without crashing', () => {
-    shallow(<TextInput />);
+const renderComponent = (args) => {
+  const defaultProps = {
+    type: '',
+    onChange: jest.fn(),
+    name: '',
+    label: '',
+    value: '',
+
+  };
+  const props = { ...defaultProps, ...args };
+  return shallow(<TextInput {...props} />);
+};
+
+describe('TextInput', () => {
+  it('should test or and TextInput component', () => {
+    const component = renderComponent({
+      title: 'hello world', name: 'you', label: 'here', value: 'submit',
+    });
+    expect(component).toHaveLength(1);
   });
 });

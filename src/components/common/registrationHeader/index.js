@@ -4,8 +4,7 @@ import Logo from '../logo';
 import commonStyle from '../common.scss';
 
 
-export default function RegistrationHeader(props) {
-  const { title } = props;
+export default function RegistrationHeader({ title }) {
   return (
     <div className="row registration--header-row" style={commonStyle}>
       <div className="col-md-12 registration--header">
@@ -19,6 +18,10 @@ export default function RegistrationHeader(props) {
     </div>
   );
 }
+
 RegistrationHeader.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
+};
+RegistrationHeader.defaultProps = {
+  title: '',
 };

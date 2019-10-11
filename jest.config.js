@@ -1,4 +1,5 @@
 module.exports = {
+  automock: false,
   setupFilesAfterEnv: [
     './src/setupTests.js',
   ],

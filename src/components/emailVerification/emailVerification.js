@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
+import queryString from 'query-string';
 import PropTypes from 'prop-types';
+import { verifyAccount } from '../../redux/actions/signup/verification';
 
-class EmailVerification extends Component {
+export class EmailVerification extends Component {
     state = { }
 
     style = {
@@ -10,6 +13,15 @@ class EmailVerification extends Component {
 
 
       margin: '0 auto',
+    }
+
+    componentDidMount() {
+      const { location } = this.props;
+      const { token } = queryString.parse(location.search);
+      if (token) {
+        const { verifyAccount: verify } = this.props;
+        verify(token);
+      }
     }
 
     visitHome = () => {
@@ -40,7 +52,13 @@ class EmailVerification extends Component {
 }
 
 EmailVerification.propTypes = {
+  location: PropTypes.object.isRequired,
+  search: PropTypes.string.isRequired,
   history: PropTypes.func.isRequired,
+  verifyAccount: PropTypes.func.isRequired,
 };
+const mapStateToProps = () => ({
 
-export default EmailVerification;
+});
+
+export default connect(mapStateToProps, { verifyAccount })(EmailVerification);

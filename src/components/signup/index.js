@@ -10,7 +10,7 @@ import OrLine from '../common/orLine';
 import RegistrationHeader from '../common/registrationHeader';
 import { signupAction } from '../../redux/actions/signup/signupAction';
 import SwitchToSignupOrLogin from '../common/switchToSignupOrLogin';
-import signupSvgPath from '../../../public/assets/images/signupSvg.svg';
+import loginSvgPath from '../../../public/assets/images/loginSvg.svg';
 
 export class Signup extends Component {
     state={
@@ -128,7 +128,7 @@ export class Signup extends Component {
             <div>
                         social signup buttons
             </div>
-            <SwitchToSignupOrLogin url="/login" filePath={signupSvgPath} message="If you already have an account!" />
+            <SwitchToSignupOrLogin url="/login" filePath={loginSvgPath} message="If you already have an account!" />
           </div>
         </div>
         <div className="row registration-footer-row">
@@ -141,7 +141,7 @@ export class Signup extends Component {
 
 Signup.propTypes = {
   signupAction: PropTypes.func.isRequired,
-  history: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
   message: PropTypes.string.isRequired,
 };
 const mapStateToProps = ({ userRegistrationData: { message, status } }) => ({

@@ -1,3 +1,9 @@
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 export const BASE_URL = 'https://codepirates-ah-backend.herokuapp.com';
+export const VERIFICATION_URL = 'https://codepirates-ah-backend-staging.herokuapp.com';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const VERIFICATION_SUCCESS = 'VERIFICATION_SUCCESS';
+export const VERIFICATION_FAILURE = 'VERIFICATION_FAILURE';
+export const VERSION = 'v1';
