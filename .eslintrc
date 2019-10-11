@@ -1,20 +1,25 @@
 {
-  "extends": ["airbnb"],
-  "plugins": ["react", "json", "markdown"],
-  "parser": "babel-eslint",
-  "env": {
-    "browser": true,
-    "node": true,
-    "jest": true,
-    "commonjs": true
-  },
-  "rules": {
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".js", ".jsx"]
-      }
-    ],
-    "curly": "off"
-  }
+	"extends": ["airbnb"],
+	"plugins": ["react", "json", "markdown"],
+	"parser": "babel-eslint",
+	"env": {
+		"browser": true,
+		"node": true,
+		"jest": true,
+		"commonjs": true
+	},
+	"rules": {
+		"react/jsx-filename-extension": [
+			1,
+			{
+				"extensions": [".js", ".jsx"]
+			}
+		],
+		"curly": "off",
+		"react/prefer-stateless-function": 0,
+		"react/state-in-constructor": 0,
+		"react/jsx-props-no-spreading": 0,
+		"import/no-named-as-default": 0,
+		"camelcase": 0
+	}
 }
