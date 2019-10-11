@@ -83,7 +83,10 @@ export class Login extends Component {
       );
     }
     return (
+      <>
+      <NavBar isLogedin="true" />
       <div className="container registration" style={commonStyle}>
+        
         <ToastContainer position={toast.POSITION.TOP_RIGHT} />
         <RegistrationHeader title="Login" />
         <div className="row registration--middle-row">
@@ -116,6 +119,7 @@ export class Login extends Component {
           <div className="col-md-12 registration--footer" />
         </div>
       </div>
+      </>
     );
   }
 }

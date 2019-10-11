@@ -9,9 +9,18 @@ const distPath = path.join(__dirname, './dist');
 module.exports = (env) => ({
   mode: env.environment,
   devServer: {
+    historyApiFallback: {
+      disableDotRule: true,
+    },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      https: true,
+      // 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      // 'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
     contentBase: distPath,
     publicPath: '/',
-    historyApiFallback: true,
+    // historyApiFallback: true,
     overlay:
       env.environment === 'development' ? { errors: true, warnings: true } : {},
   },

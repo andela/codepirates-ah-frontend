@@ -8,6 +8,10 @@ import Welcome from './welcome/welcome';
 import Login from './login';
 import Profile from './profile/profile';
 import socialButtons from './auth/socialAuth/socialButtons';
+import Welcome from './welcome/welcome';
+import Login from './login';
+import socialButtons from './presentation/SocialButtons/SocialButton';
+import verifyAuth from './containeer /auth/socialAuth/verifyAuth';
 
 const user = localStorage.getItem('token');
 const Routes = () => (
@@ -26,6 +30,9 @@ const Routes = () => (
     <Route exact path="/signup" component={Signup} />
     <Route path="/verify" component={EmailVerification} />
     <Route exact path="/social" component={socialButtons} />
+    <Route exact path="/google/social-login" component={verifyAuth} />
+    <Route exact path="/twitter/social-login" component={verifyAuth} />
+    <Route exact path="/facebook/social-login" component={verifyAuth} />
     <Route component={NotFound} />
   </Switch>
 );

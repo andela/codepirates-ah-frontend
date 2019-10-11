@@ -1,12 +1,6 @@
 import * as actionsTypes from '../../actions/actionTypes';
 import updateObject from '../../../components/helpers/store/util';
-
-const initialState = {
-  isAuthenticated: null,
-  error: null,
-  newUser: null,
-  isLoading: null,
-};
+import initialState from '../initialState';
 
 /**
  * @description - Dispatches when social authentication fail
@@ -45,6 +39,22 @@ const socialAuthLoading = (state) => (
     isLoading: true,
   })
 );
+export default function socialReducer(state = initialState, { type, payload }) {
+  switch (type) {
+    case types.SOCIAL_LOGIN_SUCCESS:
+      return {
+        ...state,
+        ...payload
+      };
+    case types.SOCIAL_LOGIN_ERROR:
+      return {
+        ...state,
+        error: "Sorry, login again"
+      };
+    default:
+      return state;
+  }
+}
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
