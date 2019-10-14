@@ -20,10 +20,7 @@ export const verifyAccount = (token) => (dispatch) => fetch(`${actions.BASE_URL}
   body: JSON.stringify(token),
 })
   .then((res) => res.json())
-  .then((response) => {
-    if (response.status === 200) {
-      return dispatch(verifySuccess(response));
-    }
-    return dispatch(verifyFailed(response));
-  })
+  .then((response) => (response.status === 200
+    ? dispatch(verifySuccess(response))
+    : dispatch(verifyFailed(response))))
   .catch((error) => dispatch(verifyFailed(error)));

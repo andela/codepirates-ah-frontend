@@ -119,7 +119,6 @@ export class Signup extends Component {
                 <div className="field">
                   <SubmitButton value="Sign Up" />
                 </div>
-
               </form>
             </div>
             <OrLine />
@@ -142,7 +141,10 @@ export class Signup extends Component {
 Signup.propTypes = {
   signupAction: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
-  message: PropTypes.string.isRequired,
+  message: PropTypes.string,
+};
+Signup.defaultProps = {
+  message: '',
 };
 const mapStateToProps = ({ userRegistrationData: { message, status } }) => ({
   message, status,

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import classnames from 'classnames';
 import queryString from 'query-string';
 import PropTypes from 'prop-types';
 import { verifyAccount } from '../../redux/actions/signup/verification';
@@ -30,22 +29,18 @@ export class EmailVerification extends Component {
     };
 
     render() {
+      const style = {
+        boxShadow: '1px 1px 9px 1px rgba(0, 0, 0, 0.2)',
+        backgroundColor: 'white',
+        margin: '4em auto',
+      };
       return (
-        <div className={classnames('ui', 'container', 'fullscreen', 'modal', 'transition', 'visible active', { detachable: false })} style={this.style}>
-          <div className="header">
-          Account Verified
-          </div>
-          <div className="image content">
-            <div className="image">
-              <i className="right arrow icon" />
-            </div>
-            <div className="description">
-              <p>Thank you for verification. You are successfully registered</p>
-            </div>
-          </div>
-          <div className="actions">
-            <div className="ui primary button" role="presentation" onClick={this.visitHome}>Proceed</div>
-          </div>
+        <div className="container jumbotron" style={style}>
+          <h1 className="display-4">Account Verified!</h1>
+          <p className="lead">Thank you for verification. You are successfully registered</p>
+          <hr className="my-4" />
+          <p>You may now log-in with the username you have chosen.</p>
+          <button type="button" className="btn btn-primary btn-lg" href="#" id="visit-home-btn" onClick={this.visitHome}>Proceed</button>
         </div>
       );
     }
@@ -57,7 +52,7 @@ EmailVerification.propTypes = {
   history: PropTypes.func.isRequired,
   verifyAccount: PropTypes.func.isRequired,
 };
-const mapStateToProps = () => ({
+export const mapStateToProps = () => ({
 
 });
 

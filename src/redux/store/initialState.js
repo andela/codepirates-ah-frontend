@@ -1,6 +1,14 @@
 export default {
-  isRegistered: false,
+  userRegistrationData: { isRegistered: false },
   login: {
     isLoggedIn: false,
+  },
+  profileReducer: {
+    profilePending: false,
+    profile: {},
+    profileError: null,
+    updateProfilePending: false,
+    updateProfileSuccess: {},
+    updateProfileError: null,
   },
 };

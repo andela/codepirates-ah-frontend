@@ -2,7 +2,7 @@ import * as actions from '../../actions/actionTypes';
 import initialState from '../../store/initialState';
 
 
-const signupReducer = (state = initialState, action) => {
+const signupReducer = (state = initialState.userRegistrationData, action) => {
   switch (action.type) {
     case actions.SIGNUP_SUCCESS:
       return {

@@ -1,5 +1,5 @@
 import userdata from '../../../__mocks__/registeredUser';
-import { fetchSucces } from '../../../__mocks__/window';
+import { fetchSucces, fetchSignUpAccountError, fetchSignupAccountNotContent } from '../../../__mocks__/window';
 import { signupAction, failedSignUpAction, succesfulSignUpAction } from './signupAction';
 import * as actionType from '../actionTypes';
 
@@ -26,6 +26,35 @@ describe('Signup action', () => {
 describe('Signup fetch', () => {
   it('Should test async signup action success', async () => {
     window.fetch = fetchSucces;
+    const input = {
+      email: 'aaaa@gmail.com',
+      password: 'Admin123445',
+      firstname: 'Noah',
+      lastname: 'Kalyesubula',
+      username: 'Noahka',
+    };
+    const response = await signupAction(input)(dispatch);
+    expect(response).toHaveProperty('data');
+  });
+});
+describe('Signup fetch', () => {
+  it('Should test async signup action success', async () => {
+    window.fetch = fetchSignUpAccountError;
+    const input = {
+      email: 'aaaa@gmail.com',
+      password: 'Admin123445',
+      firstname: 'Noah',
+      lastname: 'Kalyesubula',
+      username: 'Noahka',
+    };
+    const response = await signupAction(input)(dispatch);
+    expect(response).toHaveProperty('data');
+  });
+});
+
+describe('Signup fetch', () => {
+  it('Should test async signup action success', async () => {
+    window.fetch = fetchSignupAccountNotContent;
     const input = {
       email: 'aaaa@gmail.com',
       password: 'Admin123445',

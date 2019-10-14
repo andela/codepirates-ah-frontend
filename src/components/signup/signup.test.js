@@ -20,7 +20,6 @@ describe('Signup Component', () => {
     // pass the mock function as the signup prop
     wrapper = shallow(<Signup signup={mockSignUpfn} />);
   });
-  // ...tests here...
   describe('When the form is submitted', () => {
     it('should call the mock signup function', () => {
       wrapper.find('#signupForm').simulate(
