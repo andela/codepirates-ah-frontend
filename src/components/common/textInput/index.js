@@ -11,8 +11,6 @@ export default function TextInput({
     color: '#9f3a38',
   };
   const inputError = error.toLowerCase().search(name.toLowerCase()) >= 0;
-  console.log('INPUTERROR', inputError);
-  
   return (
     <div className="field" style={{ commonStyle }}>
       <label htmlFor={name}>{label}</label>

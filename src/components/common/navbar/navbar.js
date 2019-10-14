@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import {
   Nav, NavDropdown, Navbar, Image,
 } from 'react-bootstrap';
-import Logo from '../Logo';
+import Logo from '../logo';
 
 
 /**
@@ -18,7 +18,8 @@ import Logo from '../Logo';
 
 export class NavBar extends Component {
   render() {
-    const { isLoggedIn, profile } = this.props.user;
+    const { user } = this.props;
+    const { isLoggedIn, profile } = user;
     return (
       <>
         <Navbar collapseOnSelect expand="lg" bg="transparent" variant="light" sticky="top">
@@ -48,24 +49,19 @@ export class NavBar extends Component {
                     {' '}
                     <NavDropdown.Item>
                       <Link to="/profile">
-                        <i className="fa fa-sign-out" />
                     profile
                       </Link>
                     </NavDropdown.Item>
                     <NavDropdown.Item>
                       <Link to="/create-article">
-                        <i className="fa fa-sign-out" />
                      new article
                       </Link>
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item onClick={() => {
-                      localStorage.removeItem('token');
-                      window.location.replace('/');
                     }}
                     >
                       <Link to="/">
-                        <i className="fa fa-sign-out" />
                        logout
                       </Link>
                     </NavDropdown.Item>
@@ -88,10 +84,11 @@ export class NavBar extends Component {
     );
   }
 }
-
+NavBar.defaultProps = {
+  user: PropTypes.object,
+};
 NavBar.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
-  profile: PropTypes.object.isRequired,
+  user: PropTypes.object,
 };
 export const mapStateToProps = ({ user }) => (
   {

@@ -23,7 +23,7 @@ export const authSuccess = (authType, profile) => {
   }
 };
 
-const getSocialAuthAction = (authType) => {
+export const getSocialAuthAction = (authType) => {
   switch (authType.toUpperCase()) {
     case 'GOOGLE':
       return actionTypes.GOOGLE_AUTH_FAIL;
@@ -40,11 +40,11 @@ export const authFail = (error, authType) => ({
   payload: error,
 });
 
-const socialAuth = (token, authType) => async (dispatch) => {
+export const socialAuth = (token, authType) => async (dispatch) => {
   const data = await getApi('GET', 'profile');
   if (data.status === 'success') {
     return dispatch(authSuccess(authType, data.data));
   }
   return dispatch(authFail(data.data, authType));
 };
-export default socialAuth;
+// export default socialAuth;

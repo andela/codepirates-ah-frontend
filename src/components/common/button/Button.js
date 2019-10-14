@@ -5,19 +5,22 @@ import PropTypes from 'prop-types';
  * @param {object} props
  * @returns {JSX} - Social Button JSX template
  */
-const Button = (props) => (
+const Button = ({ classes, children }) => (
   <>
     <div
-      className={`${props.classes}`}
+      className={`${classes}`}
     >
-      {props.children}
+      {children}
     </div>
   </>
 );
-
+Button.defaultProps = {
+  classes: PropTypes.string,
+  children: PropTypes.array,
+};
 Button.propTypes = {
   classes: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.array,
 };
 
 export default Button;

@@ -7,7 +7,7 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const VERIFICATION_SUCCESS = 'VERIFICATION_SUCCESS';
 export const VERIFICATION_FAILURE = 'VERIFICATION_FAILURE';
 
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'https://codepirates-ah-backend.herokuapp.com';
 export const VERSION = 'v1';
 export const FETCH_PROFILE_PENDING = 'FETCH_PROFILE_PENDING';
 export const FETCH_PROFILE_SUCCESS = 'FETCH_PROFILE_SUCCESS';

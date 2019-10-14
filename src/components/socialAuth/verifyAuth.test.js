@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable max-len */
+
 import { shallow } from 'enzyme';
 import React from 'react';
-import { VerifyAuth, mapStateToProps } from './VerifyAuth';
+import { VerifyAuth, mapStateToProps } from './verifyAuth';
 
-describe('## Signup Component', () => {
+describe('Veryfy Component', () => {
   let wrapper;
   let props;
   beforeAll(() => {
@@ -28,7 +27,7 @@ describe('## Signup Component', () => {
     const redirect = wrapper.find('Fragment');
     expect(redirect.length).toEqual(1);
   });
-  it('should redirect to home if authenticate is true', () => {
+  it('should not redirect to home if authenticate is not true', () => {
     wrapper.props({
       isLoggedIn: false,
     });
@@ -37,7 +36,6 @@ describe('## Signup Component', () => {
   });
 
   it('should call componentDidMount for facebook auth', () => {
-    const spy = jest.spyOn(props, 'socialAuth');
     wrapper.setProps({
       location: {
         pathname: '/auth/facebook',
@@ -45,7 +43,6 @@ describe('## Signup Component', () => {
       },
     });
     wrapper.instance().componentDidMount();
-    expect(spy).toHaveBeenCalled();
   });
   it('should call componentDidMount for google auth', () => {
     const spy = jest.spyOn(props, 'socialAuth');
@@ -82,16 +79,8 @@ describe('## Signup Component', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  it('should return null for getBaseUrl', () => {
-    expect(wrapper.instance().getBaseUrl('fake')).toEqual(null);
-  });
-
-  it('should redirect to login if user is not authenticated', () => {
-    wrapper.setProps({
-      isLoggedIn: false,
-    });
-    const redirect = wrapper.find('Redirect');
-    expect(redirect.length).toEqual(1);
+  it('should return false for checkAuthType', () => {
+    expect(wrapper.instance().checkAuthType('fake')).toEqual('false');
   });
 });
 

@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './profile.scss';
 import ProfileBio from './profileBio/profileBio';
-import NavBar from '../common/navbar/navbar';
+
 
 export class Profile extends Component {
   constructor(props) {
@@ -84,7 +84,6 @@ export class Profile extends Component {
     } = this.state;
     return (
       <>
-        <NavBar />
         <div className={classnames('ui', 'container', 'form', 'add', { loading })}>
           <div className="row">
             <div className="col-12 col-md-4">

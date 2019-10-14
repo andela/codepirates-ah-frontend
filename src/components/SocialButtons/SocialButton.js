@@ -1,12 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../common/button/Button';
-// import Footer from '../footer/Footer';
-// import NavBar from '../navbar/navbar';
+import * as actionsTypes from '../../redux/actions/actionTypes';
 
 
 const SocialButtons = () => {
-  const { BACKEND_URL } = process.env;
+  const BACKEND_URL = actionsTypes.BASE_URL;
   const socialMediaLogin = [{
     className: 'btn btn-danger btn-block',
     key: 'google',
@@ -27,8 +26,8 @@ const SocialButtons = () => {
     url: `${BACKEND_URL}/login/twitter`,
   },
   ].map((socialIcon) => (
-    <div className="mb-4 social-btn">
-      <a href={`${BACKEND_URL}/login/${socialIcon.icon}`} key={socialIcon.key} className="social-btn mb-4" target="blank">
+    <div className="mb-4 social-btn" key={socialIcon.key}>
+      <a href={`${BACKEND_URL}/login/${socialIcon.icon}`} className="social-btn mb-4" target="blank">
         <Button
           classes={socialIcon.className}
         >
@@ -46,12 +45,9 @@ Sign in with
 
   return (
     <>
-
-      {/* <NavBar isLogedin="true" /> */}
       <div className="text-center social-btn">
         {socialMediaLogin}
       </div>
-      {/* <Footer /> */}
 
     </>
   );

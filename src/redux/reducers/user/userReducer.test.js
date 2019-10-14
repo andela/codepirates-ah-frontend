@@ -81,18 +81,6 @@ describe('Profile reducer', () => {
 
   const errorMock = { message: 'Please provide a valid username' };
 
-  it('should return initial state if no action type provided', () => {
-    const res = userReducer(initialState, {});
-    expect(res).toEqual({
-      profilePending: false,
-      profile: {},
-      profileError: null,
-      updateProfilePending: false,
-      updateProfileSuccess: {},
-      updateProfileError: null,
-    });
-  });
-
   it('should update pending state to true', () => {
     const fetchProfileAction = {
       type: actionTypes.FETCH_PROFILE_PENDING,
