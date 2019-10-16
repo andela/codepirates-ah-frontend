@@ -5,5 +5,6 @@ import App from './components/app';
 import store from './redux/store';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
+import 'semantic-ui-css/semantic.min.css';
 
 render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
