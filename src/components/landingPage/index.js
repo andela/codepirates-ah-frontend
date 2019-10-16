@@ -7,13 +7,12 @@ import Footer from '../common/footer/Footer';
 import LandingPageLinks from './landingPageLinks';
 import InterestArticlesAreaUpperGreenLine from './interestArticleAreaUpperLine';
 import PopularArticleAreaUpperLine from './interestArticleAreaUpperLine/popularArticleAreaUpperHeader';
-import LandingPageSearchArea from './landingPageSearchArea';
 import LandingPageViewMoreArticles from './landingPageViewMoreArticles';
 import LandingPageArrowArea from './landingPageArrowArea';
 import displayArticles from '../../redux/actions/landingPage';
 import displayPopularArticles from '../../redux/actions/landingPage/popularArticles';
-import NavBar from '../common/navbar/navbar';
 import ListOfArticles from '../common/listOfArticles';
+import { Search } from '../common/search/search';
 
 export class LandingPage extends Component {
   state = {
@@ -64,9 +63,6 @@ export class LandingPage extends Component {
 
   imagePart = () => (
     <div className="row landingPage--imagePart">
-      <div className="col-md-12 landingPage--header">
-        <NavBar />
-      </div>
       <div className="col-md-12 landingPage--belowHeaderPart">
         <LandingPageArrowArea />
       </div>
@@ -75,9 +71,9 @@ export class LandingPage extends Component {
 
   searchArea = () => (
     <div className="row landingPage--searchPart">
-      <div className="col-md-12 landingPage__searchArea">
+      <div className="col-md-6 landingPage__searchArea offset-md-3">
         <div className="searchArea-card">
-          <LandingPageSearchArea />
+          <Search />
         </div>
       </div>
     </div>

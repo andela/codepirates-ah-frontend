@@ -9,14 +9,13 @@ import TextInput from '../common/textInput';
 import SubmitButton from '../common/submitButton';
 import OrLine from '../common/orLine';
 import SwitchToSignupOrLogin from '../common/switchToSignupOrLogin';
-import RegistrationHeader from '../common/registrationHeader';
 import loginAction from '../../redux/actions/login';
 import loginValidation from './loginValidation';
 import signupSvgPath from '../../../public/assets/images/signupSvg.svg';
 import SocialButtons from '../SocialButtons/SocialButton';
 
 export class Login extends Component {
-  state={
+  state = {
     username: '',
     password: '',
     error: '',
@@ -86,7 +85,6 @@ export class Login extends Component {
     return (
       <div className="container registration" style={commonStyle}>
         <ToastContainer position={toast.POSITION.TOP_RIGHT} />
-        <RegistrationHeader title="Login" />
         <div className="row registration--middle-row">
           <div className="col-md-7 registration--middle-row__left-part">
             <div className="registration__form-div">
@@ -130,7 +128,7 @@ Login.propTypes = {
 Login.defaultProps = {
   status: 0,
   message: '',
-  loginAction: () => {},
+  loginAction: () => { },
 };
 export const mapStateToProps = ({ user: { message, status, token } }) => ({
   message, status, token,

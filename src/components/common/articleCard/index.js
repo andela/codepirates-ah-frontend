@@ -8,14 +8,7 @@ import ArticleCardTextComponent from './articleCardTextComponent';
 const optionImg = 'https://images.pexels.com/photos/1193743/pexels-photo-1193743.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
 
 const ArticleCard = ({
-  coverImage,
-  description,
-  title,
-  views,
-  readTime,
-  userIcon,
-  username,
-  createdTime,
+  coverImage, description, title, views, readTime, userIcon, username, createdTime,
 }) => (
   <div className="landingArticlecard" style={style}>
     <div className="landingArticleCard--image">
