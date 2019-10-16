@@ -1,4 +1,5 @@
 export default {
+  userRegistrationData: { isRegistered: false },
   login: {
     isLoggedIn: false,
   },
@@ -9,5 +10,11 @@ export default {
     updateProfilePending: false,
     updateProfileSuccess: {},
     updateProfileError: null,
+  },
+  viewArticle: {
+    isArticleViewed: false,
+  },
+  articles: {
+    popular: {},
   },
 };

@@ -1,12 +1,6 @@
 {
-  "extends": [
-    "airbnb"
-  ],
-  "plugins": [
-    "react",
-    "json",
-    "markdown"
-  ],
+  "extends": ["airbnb"],
+  "plugins": ["react", "json", "markdown"],
   "parser": "babel-eslint",
   "env": {
     "browser": true,
@@ -18,18 +12,17 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx"]
       }
     ],
     "curly": "off",
-    "import/no-named-as-default": 0,
-    "react/jsx-props-no-spreading": 0,
-    "react/forbid-prop-types": 0,
-    "react/prefer-stateless-function": 0,
     "react/state-in-constructor": 0,
+    "react/no-access-state-in-setstate":0,
+    "import/no-named-as-default":0,
+    "jsx-a11y/click-events-have-key-events":0,
+    "react/jsx-props-no-spreading":0,
+    "react/prefer-stateless-function": 0,
+    "react/forbid-prop-types": 0,
     "react/no-deprecated":0,
     "camelcase": 0
   }

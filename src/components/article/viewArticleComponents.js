@@ -1,11 +1,17 @@
 import React from 'react';
+import Pagination from 'rc-pagination';
+import Pages from 'lodash';
 import './viewArticle.scss';
 import star from '../../../public/assets/images/images/yellowStar.png';
 import blankStar from '../../../public/assets/images/images/blankRateStar.png';
 import userImage from '../../../public/assets/images/images/userIcon.png';
-import testImage from '../../../public/assets/images/images/tests.png';
-import programmingImage from '../../../public/assets/images/images/programming.jpg';
+import ArticleCard from './articleCard';
+import coverImage from '../../../public/assets/images/nature.jpeg';
 
+export const paginate = (lists, pageNumber, pageSize) => {
+  const startIndex = (pageNumber - 1) * pageSize;
+  return Pages(lists).slice(startIndex).take(pageSize).value();
+};
 export const TopComponent = () => (
   <div className="top">
     <div className="top-p"><p>Authors haven</p></div>
@@ -36,70 +42,19 @@ export const LeftSideBar = () => (
   </div>
 );
 
-export const ArticleContent = () => (
+export const ArticleContent = ({ title, description, body }) => (
   <div className="middle-up">
     <div className="article-part">
       <div className="article-title">
-        <h1>Testing Arrays and Objects with Chai.js</h1>
+        <h1>{title}</h1>
       </div>
       <div className="article-description">
         <h4>
-              When it comes to testing arrays and objects with Chai.js sometimes
-              the selection of flagging properties and assertions becomes
-              confusing. nested? deep? own? include?
+          {description}
         </h4>
       </div>
-      <div className="article-image">
-        <img
-          src={testImage}
-          alt=""
-          width="100%"
-          height="200px"
-        />
-      </div>
       <div className="article-paragraph">
-        <p>
-              If you missed part 1, the differences between a flagging property
-              and chainable method, it’s worth skimming through that article to
-              catch up before proceeding.
-
-          <br />
-          <br />
-          <strong>Equality</strong>
-          <br />
-          <br />
-
-              At the heart of much of the confusion around making assertions on
-              arrays and object is Javascript’s notion of equality. expect([1,
-              2, 3]).to.equal([1, 2, 3]); // fails This can be surprising, and
-              downright frustrating at times, especially for programmers coming
-              to Javascript from other languages. The equality being expressed
-              in the example above is actually a core mechanic of Javascript,
-              not of Chai.js. Open up a node session and try the following: $
-              node &gt; [1,2,3] === [1,2,3] false
-        </p>
-      </div>
-      <div className="article-paragraph">
-        <p>
-                  If you missed part 1, the differences between a flagging property
-                  and chainable method, it’s worth skimming through that article to
-                  catch up before proceeding.
-
-          <br />
-          <br />
-          <strong>Equality</strong>
-          <br />
-          <br />
-
-                  At the heart of much of the confusion around making assertions on
-                  arrays and object is Javascript’s notion of equality. expect([1,
-                  2, 3]).to.equal([1, 2, 3]); // fails This can be surprising, and
-                  downright frustrating at times, especially for programmers coming
-                  to Javascript from other languages. The equality being expressed
-                  in the example above is actually a core mechanic of Javascript,
-                  not of Chai.js. Open up a node session and try the following: $
-                  node &gt; [1,2,3] === [1,2,3] false
-        </p>
+        {body}
       </div>
     </div>
     <div className="middle-line" />
@@ -120,7 +75,6 @@ export const ArticleContent = () => (
       <div className="M">
         <p>
           <span>154</span>
-          {' '}
 comments
         </p>
         <div className="plus-circle">
@@ -139,185 +93,34 @@ comments
   </div>
 );
 
-export const RecentArticles = () => (
+export const RecentArticles = ({
+  onChange, current, total, articles,
+}) => (
   <div className="middle-down">
     <h1>Most recent on Author’s Haven</h1>
     <div className="popular-div">
-      <div className="article-box">
-        <div className="image-div">
-          <img src={programmingImage} alt="kjkj" />
-        </div>
-        <div className="below-image-part">
-          <div className="profile-div">
-            <div className="side-with-icon">
-              <div className="icon-img">
-                <img src={userImage} alt="user icon" width="15px" height="15px" />
-              </div>
-              <div className="name-time">
-                <p>Code pirates</p>
-                <p className="p-2">
-                  <span>2</span>
-                  {' '}
-                  <span>hours</span>
-                  {' '}
-ago
-                </p>
-              </div>
-              <div className="read-time">
-                <p>
-                  <span>3</span>
-                  {' '}
-min read
-                </p>
-              </div>
-
-            </div>
-            <div className="side-with-rating">
-              <div className="rate-p"><p>Rating:</p></div>
-              <div className="stars">
-                <i className="far fa-star" />
-                <i className="far fa-star" />
-                <i className="far fa-star" />
-                <i className="far fa-star" />
-                <i className="far fa-star" />
-              </div>
-              <div className="elipse-dots">
-                <i className="fas fa-ellipsis-v" />
-              </div>
-            </div>
-          </div>
-          <div className="summary-div">
-            <h1>Is computer programming hard?</h1>
-            <p>
-Programming is the process of creating a set of instructions that tell
-a computer how to perform a task. Programming can be done
-a computer how to perform a task. Programming can be
-done When true, class properties are compiled to
-use an assignment expression instead of Object.defineProperty.
-For an explanation of the consequences of using either,
-see Definition vs. Assignment (TL;DR in Part 5) ...
-            </p>
-          </div>
-          <div className="middle-line" />
-          <div className="lower-part-div">
-            <div className="veiw-and-comment-div">
-              <div className="view">
-                <p>
-                  <span>543</span>
-                  {' '}
-views
-                </p>
-              </div>
-              <div className="write-comment">
-                <p>Write comment</p>
-              </div>
-            </div>
-            <div className="clap-div">
-              <p>100</p>
-              <i className="fas fa-sign-language" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="article-box">
-        <div className="image-div">
-          <img src={programmingImage} alt="" />
-        </div>
-        <div className="below-image-part">
-          <div className="profile-div">
-            <div className="side-with-icon">
-              <div className="icon-img">
-                <img src={userImage} alt="user icon" width="15px" height="15px" />
-              </div>
-              <div className="name-time">
-                <p>Code pirates</p>
-                <p className="p-2">
-                  <span>2</span>
-                  {' '}
-                  <span>hours</span>
-                  {' '}
-ago
-                </p>
-              </div>
-              <div className="read-time">
-                <p>
-                  <span>3</span>
-                  {' '}
-min read
-                </p>
-              </div>
-
-            </div>
-            <div className="side-with-rating">
-              <div className="rate-p"><p>Rating:</p></div>
-              <div className="stars">
-                <i className="far fa-star" />
-                <i className="far fa-star" />
-                <i className="far fa-star" />
-                <i className="far fa-star" />
-                <i className="far fa-star" />
-              </div>
-              <div className="elipse-dots">
-                <i className="fas fa-ellipsis-v" />
-              </div>
-            </div>
-          </div>
-          <div className="summary-div">
-            <h1>Is computer programming hard?</h1>
-            <p>
-Programming is the process of creating a set of instructions that tell
-a computer how to perform a task. Programming ca
-nment expression instead of Object.definePropertyFor an explanation
-of the consequences of using either, see Definition vs. Assignment (TL;DR in Part 5) ...
-            </p>
-          </div>
-          <div className="middle-line" />
-          <div className="lower-part-div">
-            <div className="veiw-and-comment-div">
-              <div className="view">
-                <p>
-                  <span>543</span>
-                  {' '}
-views
-                </p>
-              </div>
-              <div className="write-comment">
-                <p>Write comment</p>
-              </div>
-            </div>
-            <div className="clap-div">
-              <p>100</p>
-              <i className="fas fa-sign-language" />
-            </div>
-          </div>
-        </div>
-      </div>
+      {articles.map((article) => (
+        <ArticleCard coverImage={coverImage} />
+      ))}
     </div>
     <div className="pagination-div">
-      <div className="pag-circles">
-        <div className="pag-circle active" />
-        <div className="pag-circle" />
-        <div className="pag-circle" />
-        <div className="pag-circle" />
-      </div>
+      <Pagination onChange={onChange} current={current} total={total} pageSize={2} />
     </div>
   </div>
 );
 
-export const RightSideBar = () => (
+export const RightSideBar = ({ readtime, createdAt }) => (
   <div className="right-side">
     <div className="rating-pub-read-time">
       <p>
-Published:
-        <span>10th July, 2019</span>
+Published: &nbsp;
+        <span>{createdAt}</span>
       </p>
-      <p>4 read min</p>
+      <p>{readtime}</p>
     </div>
     <div className="article-rates">
-      {/* <div className="rate-p"><p>Rating:</p></div> */}
       <div className="rate-stars">
       Rating:
-        {' '}
         <img
           src={star}
           alt="yellow rating start"
@@ -358,9 +161,21 @@ export const Footer = () => (
     <div className="middle-line" />
     <div className="footer">
       <div className="footer-icons">
+        &nbsp;
+        &nbsp;
+        &nbsp;
         <i className="fab fa-twitter" />
+        &nbsp;
+        &nbsp;
+        &nbsp;
         <i className="fab fa-facebook-f" />
+        &nbsp;
+        &nbsp;
+        &nbsp;
         <i className="fab fa-linkedin-in" />
+        &nbsp;
+        &nbsp;
+        &nbsp;
         <i className="fab fa-google" />
       </div>
       <div className="at-authors-haven">
