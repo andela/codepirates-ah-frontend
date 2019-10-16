@@ -1,0 +1,29 @@
+.landingUserIconPartComponent {
+  display: flex;
+  .landingUserIconPartComponent--icon {
+    padding-right: 5px;
+    img{
+    border-radius: 100%;      
+    }
+  }
+  .landingUserIconPartComponent--usernameAndreadtime {
+    .landingUserIconPartComponent--pubAndReadTime {
+      display: flex;
+      font-size: 12px;
+      .landingUserIconPartComponent--pubAndReadTime-and-dot {
+        padding-left: 3px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .landingUserIconPartComponent {
+    display: flex;
+    .landingUserIconPartComponent--usernameAndreadtime {
+      .landingUserIconPartComponent--pubAndReadTime {
+        font-size: 9px;
+      }
+    }
+  }
+}

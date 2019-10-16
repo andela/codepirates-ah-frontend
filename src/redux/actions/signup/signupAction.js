@@ -12,7 +12,7 @@ export const failedSignUpAction = (error) => ({
   payload: error,
 });
 
-export const signupAction = (input) => (dispatch) => fetch(`${actions.BASE_URL}/api/v1/users/signup`, {
+export const signupAction = (input) => (dispatch) => fetch(`${actions.BACKEND_URL}/api/v1/users/signup`, {
   method: 'POST',
   headers: {
     'content-type': 'application/json',

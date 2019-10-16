@@ -1,5 +1,5 @@
 import userdata from '../../../__mocks__/loggedInUser';
-import { fetchError, fetchSucces } from '../../../__mocks__/window';
+import { fetchError, fetchSuccessfully, fetchClientError } from '../../../__mocks__/window';
 import loginAction, { succesfulLoginAction, failedLoginAction } from '.';
 import * as actionType from '../actionTypes';
 
@@ -25,7 +25,7 @@ describe('Login action', () => {
 
 describe('Login fetch', () => {
   it('Should test async login action success', async () => {
-    window.fetch = fetchSucces;
+    window.fetch = fetchSuccessfully;
     const input = {
       email: 'aaaa@gmail.com',
       password: 'ASqw12435',
@@ -33,7 +33,16 @@ describe('Login fetch', () => {
     const response = await loginAction(input)(dispatch);
     expect(response).toHaveProperty('data');
   });
-  it('Should test async login action error', async () => {
+  it('Should test async login client action error', async () => {
+    window.fetch = fetchClientError;
+    const input = {
+      email: 'aaaa@gmail.com',
+      password: 'ASqw123dff',
+    };
+    const response = await loginAction(input)(dispatch);
+    expect(response).toHaveProperty('data');
+  });
+  it('Should test async login server action error', async () => {
     window.fetch = fetchError;
     const input = {
       email: 'aaaa@gmail.com',

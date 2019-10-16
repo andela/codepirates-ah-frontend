@@ -10,6 +10,9 @@ export default {
     updateProfileSuccess: {},
     updateProfileError: null,
   },
+  articles: {
+    popular: {},
+  },
   // this will contain our initial state object
   createdArticleData: {
     isArticleCreated: false,

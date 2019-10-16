@@ -1,0 +1,27 @@
+.landingArticleCardText {
+  margin: 0 auto;
+  height: 12em;
+  .landingArticleCardText--title {
+    padding-bottom: 10px;
+  }
+  .landingArticleCardText--description {
+    color: rgba(0, 0, 0, 0.774);
+  }
+  .landingArticleCardText--viewsAndClaps {
+    display: flex;
+    height: 2em;
+    .landingArticleCardText__views {
+      flex-basis: 70%;
+    }
+    .landingArticleCardText__claps {
+      flex-basis: 30%;
+      margin-bottom: 20px;
+      justify-content: flex-end;
+      display: flex;
+      i {
+        margin-left: 10px;
+        font-size: 20px;
+      }
+    }
+  }
+}

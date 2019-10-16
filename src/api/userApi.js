@@ -5,7 +5,7 @@ import {
 } from './apiUtil';
 
 const token = localStorage.getItem('token');
-export const getApi = async (method, url) => fetch(`${actionsTypes.BASE_URL}/api/${actionsTypes.VERSION}/${url}`, {
+export const getApi = async (method, url) => fetch(`${actionsTypes.BACKEND_URL}/api/${actionsTypes.VERSION}/${url}`, {
   method,
   headers: {
     'Content-Type': 'application/json',
@@ -15,7 +15,7 @@ export const getApi = async (method, url) => fetch(`${actionsTypes.BASE_URL}/api
   .then(handleResponse)
   .catch(handleError);
 
-export const postApi = async (method, url, data) => fetch(`${actionsTypes.BASE_URL}/api/${actionsTypes.VERSION}/${url}`, {
+export const postApi = async (method, url, data) => fetch(`${actionsTypes.BACKEND_URL}/api/${actionsTypes.VERSION}/${url}`, {
   method,
   mode: 'cors',
   cache: 'reload',

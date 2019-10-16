@@ -10,7 +10,7 @@ export const verifyFailed = (error) => ({
   payload: error,
 });
 
-export const verifyAccount = (token) => (dispatch) => fetch(`${actions.BASE_URL}/verifyemail?token=${token}`, {
+export const verifyAccount = (token) => (dispatch) => fetch(`${actions.BACKEND_URL}/verifyemail?token=${token}`, {
   method: 'PUT',
   mode: 'cors',
   headers: {
