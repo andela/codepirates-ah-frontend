@@ -126,7 +126,7 @@ export class Signup extends Component {
           </div>
           <div className="col-md-6 registration--middle-row__right-part">
             <div>
-              <SocialButtons />
+              <SocialButtons status="Sign up with" />
             </div>
             <SwitchToSignupOrLogin url="/login" filePath={loginSvgPath} message="If you already have an account!" />
           </div>

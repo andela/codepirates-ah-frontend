@@ -1,39 +1,44 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 import Button from '../common/button/Button';
 import * as actionsTypes from '../../redux/actions/actionTypes';
+import commonStyle from '../common/common.scss';
 
 
-const SocialButtons = () => {
-  const BACKEND_URL = actionsTypes.BASE_URL;
-  const socialMediaLogin = [{
-    className: 'btn btn-danger btn-block',
-    key: 'google',
-    icon: 'google',
-    url: `${BACKEND_URL}/login/google`,
-  },
-  {
-    className: 'btn btn-primary btn-block',
-    key: 'facebook',
-    icon: 'facebook',
-    url: `${BACKEND_URL}/login/facebook`,
+const SocialButtons = ({ status }) => {
+  const { BACKEND_URL } = actionsTypes;
+  const socialMediaLogin = [
+    {
+      className: 'btn button--facebook ',
+      key: 'facebook',
+      icon: 'facebook-square',
+      url: `${BACKEND_URL}/login/facebook`,
 
-  },
-  {
-    className: 'btn btn-info btn-block',
-    key: 'twitter',
-    icon: 'twitter',
-    url: `${BACKEND_URL}/login/twitter`,
-  },
+    },
+    {
+      className: 'btn button--twitter',
+      key: 'twitter',
+      icon: 'twitter-square',
+      url: `${BACKEND_URL}/login/twitter`,
+    },
+
+    {
+      className: 'btn button--google',
+      key: 'google',
+      icon: 'google',
+      url: `${BACKEND_URL}/login/google`,
+    },
   ].map((socialIcon) => (
-    <div className="mb-4 social-btn" key={socialIcon.key}>
-      <a href={`${BACKEND_URL}/login/${socialIcon.icon}`} className="social-btn mb-6" target="blank">
+    <div className=" social-btn text-center  " key={socialIcon.key}>
+      <a href={`${BACKEND_URL}/login/${socialIcon.key}`} className="button " target="blank">
         <Button
+          style={commonStyle}
           classes={socialIcon.className}
         >
-          <FontAwesomeIcon icon={['fab', `${socialIcon.icon}`]} />
+          <FontAwesomeIcon style={{ color: 'white' }} icon={['fab', `${socialIcon.icon}`]} className="icon" />
           {' '}
-Continue with
+          {status}
           {' '}
           <b>{socialIcon.key}</b>
 
@@ -45,12 +50,16 @@ Continue with
 
   return (
     <>
-      <div className="text-center social-btn">
-        {socialMediaLogin}
-      </div>
+      {socialMediaLogin}
 
     </>
   );
+};
+SocialButtons.defaultProps = {
+  status: PropTypes.string,
+};
+SocialButtons.propTypes = {
+  status: PropTypes.string,
 };
 
 export default SocialButtons;
