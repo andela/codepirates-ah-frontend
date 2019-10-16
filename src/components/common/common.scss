@@ -26,6 +26,7 @@
 .container {
 	.registration--header-row {
 		.registration--header {
+      margin-bottom: 20px;
 			min-height: 150px;
 			display: flex;
 			font-size: 25px;
@@ -102,7 +103,7 @@
 				.line {
 					background: rgba(0, 0, 0, 0.5);
 					width: 1px;
-					height: 380px;
+					height: 450px;
 				}
 				.line-one {
 					display: none;

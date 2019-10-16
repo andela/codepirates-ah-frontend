@@ -1,4 +1,5 @@
 export default {
+  userRegistrationData: { isRegistered: false },
   login: {
     isLoggedIn: false,
   },
