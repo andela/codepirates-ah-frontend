@@ -11,4 +11,7 @@ export default {
     updateProfileSuccess: {},
     updateProfileError: null,
   },
+  getAllArticle: {
+    isGetAllArticle: false,
+  },
 };
