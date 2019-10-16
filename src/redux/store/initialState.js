@@ -1,6 +1,5 @@
 export default {
   userRegistrationData: { isRegistered: false },
-  login: {
   user: {
     isLoggedIn: false,
     profile: {},

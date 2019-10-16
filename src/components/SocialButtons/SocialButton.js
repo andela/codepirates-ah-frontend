@@ -27,13 +27,13 @@ const SocialButtons = () => {
   },
   ].map((socialIcon) => (
     <div className="mb-4 social-btn" key={socialIcon.key}>
-      <a href={`${BACKEND_URL}/login/${socialIcon.icon}`} className="social-btn mb-4" target="blank">
+      <a href={`${BACKEND_URL}/login/${socialIcon.icon}`} className="social-btn mb-6" target="blank">
         <Button
           classes={socialIcon.className}
         >
           <FontAwesomeIcon icon={['fab', `${socialIcon.icon}`]} />
           {' '}
-Sign in with
+Continue with
           {' '}
           <b>{socialIcon.key}</b>
 
