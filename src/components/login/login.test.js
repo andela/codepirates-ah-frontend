@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import { Login, mapStateToProps } from '.';
 
 const state = {
-  login: { message: '', status: 200, token: 'mckndjvjdsfv' },
+  user: { message: '', status: 200, token: 'mckndjvjdsfv' },
 };
 
 const renderComponent = (args) => {

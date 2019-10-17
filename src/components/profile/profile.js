@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './profile.scss';
 import ProfileBio from './profileBio/profileBio';
 
+
 export class Profile extends Component {
   constructor(props) {
     super(props);
@@ -82,31 +83,33 @@ export class Profile extends Component {
       loading, image, username, bio, bioEditMode, profileCardEditMode,
     } = this.state;
     return (
-      <div className={classnames('ui', 'container', 'form', 'add', { loading })}>
-        <div className="row">
-          <div className="col-12 col-md-4">
-            <ProfileCard
-              onFormSubmit={this.handleSubmit}
-              image={image || ''}
-              previewImage={this.previewImage}
-              onInputChange={this.handleChange}
-              profileCardEditMode={profileCardEditMode}
-              onEditModeChange={this.handleProfileCardUpdate}
-              username={username || ''}
-            />
-            <ProfileSideBar />
-          </div>
-          <div className="col-md-7 userProfileBio">
-            <ProfileBio
-              onFormSubmit={this.handleSubmit}
-              onInputChange={this.handleChange}
-              bioData={bio || ''}
-              bioEditMode={bioEditMode}
-              onUpdatingBio={this.handleUpdateBio}
-            />
+      <>
+        <div className={classnames('ui', 'container', 'form', 'add', { loading })}>
+          <div className="row">
+            <div className="col-12 col-md-4">
+              <ProfileCard
+                onFormSubmit={this.handleSubmit}
+                image={image || ''}
+                previewImage={this.previewImage}
+                onInputChange={this.handleChange}
+                profileCardEditMode={profileCardEditMode}
+                onEditModeChange={this.handleProfileCardUpdate}
+                username={username || ''}
+              />
+              <ProfileSideBar />
+            </div>
+            <div className="col-md-7 userProfileBio">
+              <ProfileBio
+                onFormSubmit={this.handleSubmit}
+                onInputChange={this.handleChange}
+                bioData={bio || ''}
+                bioEditMode={bioEditMode}
+                onUpdatingBio={this.handleUpdateBio}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }
@@ -119,9 +122,9 @@ Profile.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  error: state.profileReducer.error,
-  profile: state.profileReducer.profile,
-  pending: state.profileReducer.profilePending,
+  error: state.user.error,
+  profile: state.user.profile,
+  pending: state.user.profilePending,
 });
 
 export default connect(

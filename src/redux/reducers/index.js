@@ -1,9 +1,7 @@
 import signupReducer from './signupReducer';
-import login from './login';
-import profileReducer from './profile/profileReducer';
+import user from './user/userReducer';
 
 export default {
   userRegistrationData: signupReducer,
-  login,
-  profileReducer,
+  user,
 };

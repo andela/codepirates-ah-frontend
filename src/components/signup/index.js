@@ -11,6 +11,7 @@ import RegistrationHeader from '../common/registrationHeader';
 import { signupAction } from '../../redux/actions/signup/signupAction';
 import SwitchToSignupOrLogin from '../common/switchToSignupOrLogin';
 import loginSvgPath from '../../../public/assets/images/loginSvg.svg';
+import SocialButtons from '../SocialButtons/SocialButton';
 
 export class Signup extends Component {
     state={
@@ -125,7 +126,7 @@ export class Signup extends Component {
           </div>
           <div className="col-md-6 registration--middle-row__right-part">
             <div>
-                        social signup buttons
+              <SocialButtons status="Sign up with" />
             </div>
             <SwitchToSignupOrLogin url="/login" filePath={loginSvgPath} message="If you already have an account!" />
           </div>

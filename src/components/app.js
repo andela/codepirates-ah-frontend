@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
 import Routes from './Routes';
+import Footer from './common/footer/Footer';
 
 const App = () => (
   <div>
@@ -11,7 +12,7 @@ const App = () => (
       <ToastContainer />
       <Routes />
     </BrowserRouter>
-    ,
+    <Footer />
   </div>
 );
 export default App;
