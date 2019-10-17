@@ -15,6 +15,7 @@ import SpecificUserArticles from './articles/allArticles/SpecificUserArticles';
 import CreateArticles from './articles/createArticles/createArticles';
 import LandingPage from './landingPage';
 import Search from './search/search';
+import UpdateArticles from './update';
 
 import ResetRequest from './passwordreset';
 import Feedback from './passwordreset/feedbackContainer';
@@ -56,7 +57,8 @@ const Routes = () => (
     <Route exact path="/privacy" component={Privacy} />
     <Route exact path="/article/:slug" component={ViewArticle} />
     <Route exact path="/signup" component={Signup} />
-    <Route exact path="/verify" component={EmailVerification} />
+    <Route path="/articles/:slug/update" component={UpdateArticles} />
+    <Route path="/verify" component={EmailVerification} />
     <Route exact path="/google/social-login" component={verifyAuth} />
     <Route exact path="/twitter/social-login" component={verifyAuth} />
     <Route exact path="/facebook/social-login" component={verifyAuth} />

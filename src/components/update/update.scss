@@ -1,0 +1,166 @@
+@import '../common/common.scss';
+
+@mixin input-style {
+  border: none;
+  outline: 0;
+  border-width: 0;
+  -webkit-appearance: none;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+@mixin font-styles($size: 120%, $weight: bolder) {
+  font: {
+    size: $size;
+    weigth: $weight;
+  }
+}
+#updateform {
+  width: 80%;
+  left: 0;
+  position: absolute;
+  .updateform {
+    width: 80%;
+    margin-left: 20%;
+    input,
+    input:focus {
+      @include input-style();
+    }
+    .ql-container {
+      border: none !important;
+      font-size: 140%;
+    }
+
+    .ql-editor {
+      text-align: justify !important;
+      font-size: 110%;
+      height: auto !important;
+      margin-bottom: 20vh;
+    }
+    .ql-toolbar {
+      position: sticky;
+      top: 0;
+      background: rgb(240, 240, 240);
+      border: none;
+      z-index: 5;
+    }
+    #title {
+      @include font-styles(250%, 1000);
+    }
+    #description {
+      @include font-styles(180%, 500);
+    }
+  }
+}
+.cover-image-div {
+  position: relative;
+  padding: 0;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  height: auto;
+}
+.cover-image {
+  position: relative;
+  margin: auto;
+  max-height: 15vh;
+  height: auto;
+}
+#delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: white;
+}
+.cover-image-div .message {
+  visibility: hidden;
+  width: 80%;
+  background-color: white;
+  text-align: center;
+  padding: 2% 0;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+}
+
+.cover-image-div:hover .message {
+  visibility: visible;
+}
+
+#actions {
+  position: fixed;
+  padding-top: 15vh;
+  right: 0;
+  display: block;
+  width: 20%;
+  float: right;
+  .btn {
+    @include btn(5px, 1, 60%, 1.6vh);
+    margin: 1% 19%;
+  }
+  .btn:hover {
+    @include btn-hover();
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #updateform {
+    width: 100%;
+    .updateform {
+      margin-left: 5%;
+      width: 90%;
+      margin-top: 10%;
+      #description {
+        @include font-styles(120%, 1000);
+      }
+      #title {
+        @include font-styles(200%, 500);
+      }
+      .ql-container {
+        font-size: 90%;
+      }
+      .ql-toolbar {
+        position: sticky;
+        top: 0;
+        padding: 0;
+        width: 100%;
+        display: none;
+        .ql-formats {
+          font-size: 8px;
+          padding: auto -10%;
+          margin: 30%;
+        }
+      }
+      .ql-toolbar {
+        margin-left: 0 auto;
+        background: rgb(240, 240, 240);
+        z-index: 10;
+        border: none;
+        .ql-formats {
+          margin: 0%;
+          font-size: 10px;
+          svg {
+            margin: -10% 15%;
+          }
+        }
+      }
+    }
+  }
+  #actions {
+    padding: 0;
+    top: 15vh;
+    width: 80%;
+    margin: 0 10%;
+    .btn {
+      @include btn(5px, 1, 30%, 1.6vh);
+      float: right !important;
+      margin: 1%;
+    }
+    .btn:hover {
+      @include btn-hover();
+    }
+  }
+}
