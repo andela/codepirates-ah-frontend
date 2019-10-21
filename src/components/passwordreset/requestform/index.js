@@ -22,7 +22,7 @@ Enter the email address you used to register. We will send you
     an email that contains instructions on how to reset your
                         password
     </p>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id="form">
       <Input name="email" handleChange={handleChange} type="email" defaultValue={email} />
       <div className="error">{message}</div>
       <Button value="send" />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { ResetRequest, mapStateToProps, mapDispatch } from './index';
+import { ResetRequest } from './index';
 
 describe('request container test', () => {
   const resetRequestFunc = (args) => {
@@ -13,7 +13,7 @@ describe('request container test', () => {
       location: {
         search: '',
       },
-      responseMessage: jest.fn(),
+      resetRequest: jest.fn(),
       handleSubmit: jest.fn(),
     };
     const props = { ...defaultProps, ...args };
@@ -38,25 +38,4 @@ describe('request container test', () => {
     });
     expect(wrapper).toHaveLength(1);
   });
-  it('test 3', () => {
-    const responseMessage = jest.fn(() => Promise.resolve({
-      ok: true,
-      json: jest.fn(() => Promise.resolve({
-        message: 'hello',
-      })),
-    }));
-    const wrapper = resetRequestFunc({
-      summary: jest.fn(),
-      formData: jest.fn(),
-    });
-    wrapper.instance().onSendRequest('sent', 'done', responseMessage);
-    const form = wrapper.find('form');
-    form.simulate('submit', {
-      preventDefault: jest.fn(),
-    });
-  });
-});
-
-describe('Test mapstate and mapdispatch', () => {
-
 });

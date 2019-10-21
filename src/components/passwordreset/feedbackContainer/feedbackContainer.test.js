@@ -8,8 +8,10 @@ import FeedBack from './index';
 
 const mockStore = configureMockStore();
 const store = mockStore({
-  responseMessage: { message: 'mikr' },
-  summary: 'email sent',
+  passwordReset: {
+    message: 'mikr',
+    summary: 'email sent',
+  },
 });
 
 const [message, summary] = new Array(2).fill(jest.fn());
@@ -31,7 +33,7 @@ const shallowSetup = () => {
 };
 
 describe('<FeedBackContainer /> rendered', () => {
-  it('should render a header', () => {
+  it('should render the tick icon', () => {
     const { enzymeWrapper } = shallowSetup();
     expect(enzymeWrapper.find('.tick').exists()).toBe(true);
   });

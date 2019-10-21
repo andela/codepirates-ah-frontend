@@ -6,12 +6,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import Request from './requestform';
 import Reset from './resetform';
 import NavBar from './components/navbar';
+// import resetConstants from '../../helpers/passwordResetConstants';
 
-import resetRequest from '../../events';
+// import resetRequest from '../../events';
 import {
-  formData as Data,
-  responseMessage as Message,
-  setStatus,
+  // formData as Data,
+  // responseMessage as Message,
+  // setStatus,
+  resetRequest,
 } from '../../redux/actions/passwordreset';
 
 /**
@@ -29,60 +31,11 @@ export class ResetRequest extends React.Component {
     };
   }
 
-  makeHref = (srv) => `https://${srv}`;
-
-  handleSubmit = async (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
-    const { email } = this.state;
-    const done = (
-      <p>
-        Your password has been successfully reset,
-        {' '}
-        <a href="/login">login?</a>
-      </p>
-    );
-    const mailer = /gmail/.test(email)
-      ? 'mail.google.com'
-      : `${email.slice(email.indexOf('@'))}/login`;
-    const link = (
-      <a href={this.makeHref(mailer)} target="new">
-        {email}
-      </a>
-    );
-    const sent = (
-      <p>
-        A reset link has been sent to
-        {' '}
-        {link}
-. Please check your inbox and follow
-        instructions to reset your password
-      </p>
-    );
-    this.onSendRequest(sent, done, resetRequest);
+    this.props.resetRequest(this.props, this.state);
   };
 
-  onSendRequest = async (sent, done, resetRequestHandler) => {
-    const {
-      history,
-      responseMessage,
-      location,
-      summary,
-      formData,
-    } = this.props;
-    const { email, password, confirmPassword } = this.state;
-    const res = await resetRequestHandler(this);
-    const json = await res.json();
-    const msg = await json.message;
-    const [type, detail] = !location.search
-      ? ['emailSent', sent]
-      : ['passwordReset', done];
-    formData(email, password, confirmPassword);
-    responseMessage(res.ok ? detail : msg);
-    summary(type);
-    if (res.ok) {
-      history.push('/response');
-    }
-  };
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -117,34 +70,26 @@ export class ResetRequest extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  message: state.responseMessage.message,
-  email: state.formData.email,
-  status: state.setStatus.status,
-  formData: state.formData,
-});
-const dispatchProps = (dispatch) => ({
-  responseMessage: (m) => dispatch(Message(m)),
-  setStatus: (m) => dispatch(setStatus(m)),
-  summary: (t) => dispatch({ type: t }),
-  formData: (e, p, c) => dispatch(Data(e, p, c)),
+  message: state.passwordReset.message,
+  email: state.passwordReset.email,
+  status: state.passwordReset.status,
 });
 
 ResetRequest.propTypes = {
+  resetRequest: PropTypes.func.isRequired,
   message: PropTypes.any,
-  responseMessage: PropTypes.func,
-  location: PropTypes.objectOf(PropTypes.any).isRequired,
-  history: PropTypes.object.isRequired,
-  formData: PropTypes.func,
-  summary: PropTypes.func.isRequired,
+  location: PropTypes.objectOf(PropTypes.any),
 };
 
 ResetRequest.defaultProps = {
-  responseMessage: '',
-  formData: '',
   message: '',
+  location: {
+    search: '',
+    pathname: '/reset',
+  },
 };
 
 export default connect(
   mapStateToProps,
-  dispatchProps,
+  { resetRequest },
 )(ResetRequest);

@@ -8,8 +8,8 @@ import Feed from './feedback';
 import NavBar from '../components/navbar';
 
 const mapStateToProps = (state) => ({
-  message: state.responseMessage.message,
-  summary: state.summary.summary,
+  message: state.passwordReset.message,
+  summary: state.passwordReset.summary,
 });
 
 /**

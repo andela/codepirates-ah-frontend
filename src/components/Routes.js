@@ -14,17 +14,19 @@ import LandingPage from './landingPage';
 import Search from './search/search';
 
 
-import ResetRequest from './passwordReset';
-import Feedback from './passwordReset/feedbackContainer';
+import CreateArticles from './articles/createArticles/createArticles';
+
+import ResetRequest from './passwordreset';
+import Feedback from './passwordreset/feedbackContainer';
 
 const user = localStorage.getItem('token');
 const Routes = () => (
   <Switch>
     <Route
       exact
-      path='/profile'
-      render={props => {
-        if (!user) return <Redirect to='/login' />;
+      path="/profile"
+      render={(props) => {
+        if (!user) return <Redirect to="/login" />;
         return <Profile {...props} />;
       }}
     />

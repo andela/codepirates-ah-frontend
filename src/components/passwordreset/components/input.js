@@ -12,7 +12,7 @@ const Input = ({
   <label htmlFor={name}>
     {label || name.charAt(0).toUpperCase() + name.slice(1)}
     <br />
-    <input name={name} onChange={handleChange} type={type} required />
+    <input name={name} onChange={handleChange} type={type} />
   </label>
 );
 
