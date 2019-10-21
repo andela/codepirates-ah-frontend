@@ -1,15 +1,23 @@
 export const fetchSuccesSignup = (...args) => new Promise((resolve) => {
   const res = {
     json: jest.fn(() => ({ args, status: 201 })),
-
   };
   return resolve(res);
 });
 export const fetchSucces = () => new Promise((resolve) => {
   const res = {
-    json: (() => new Promise((resol) => resol({
+    json: () => new Promise((resol) => resol({
       status: 201,
-    }))),
+    })),
+  };
+  return resolve(res);
+});
+export const fetchSuccesArticles = () => new Promise((resolve) => {
+  const res = {
+    // json: jest.fn(() => ({ args, status: 200 })),
+    json: () => new Promise((resol) => resol({
+      status: 200,
+    })),
   };
   return resolve(res);
 });
@@ -29,27 +37,27 @@ export const fetchSignUpAccountError = () => new Promise((resolve, reject) => {
 
 export const fetchSignupAccountNotContent = () => new Promise((resolve) => {
   const res = {
-    json: (() => new Promise((resol) => resol({
+    json: () => new Promise((resol) => resol({
       status: 203,
-    }))),
+    })),
   };
   return resolve(res);
 });
 
 export const fetchVerifyAccount = () => new Promise((resolve) => {
   const res = {
-    json: (() => new Promise((resol) => resol({
+    json: () => new Promise((resol) => resol({
       status: 200,
       message: 'verification is successful',
-    }))),
+    })),
   };
   return resolve(res);
 });
 export const fetchVerifyAccountNotContent = () => new Promise((resolve) => {
   const res = {
-    json: (() => new Promise((resol) => resol({
+    json: () => new Promise((resol) => resol({
       status: 203,
-    }))),
+    })),
   };
   return resolve(res);
 });
@@ -79,7 +87,6 @@ export const fetchClientError = (...args) => new Promise((resolve) => {
   };
   return resolve(res);
 });
-
 
 export const fetchError = (...args) => new Promise((resolve, reject) => {
   const res = {

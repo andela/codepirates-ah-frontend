@@ -3,9 +3,9 @@
 }
 .user-avatar {
   font-size: 7rem;
-  margin: 0rem auto; 
+  margin: 0rem auto;
 }
-.user-profile-card{
+.user-profile-card {
   padding: 1.5rem;
   margin: 0.5rem;
   border: 1px solid #c4c4c4;
@@ -17,23 +17,23 @@
   -webkit-appearance: none;
   border: 1px solid #2f80ed;
 }
-.button--primary{
+.button--primary {
   color: #2f80ed;
   background-color: white;
   border: 1px solid #2f80ed;
 }
-.button--primary:hover{
+.button--primary:hover {
   color: white;
   background-color: #2f80ed;
   border: 1px solid #2f80ed;
   -webkit-appearance: none;
 }
-.button--secondary{
+.button--secondary {
   color: white;
   background-color: #2f80ed;
   border: 1px solid white;
 }
-.button--secondary:hover{
+.button--secondary:hover {
   color: #2f80ed;
   background-color: white;
   border: 1px solid #2f80ed;
@@ -41,16 +41,16 @@
 .button--large {
   width: 100%;
 }
-.bio{
-  blockquote{
+.bio {
+  blockquote {
     border-left: 0.2rem solid #2f80ed;
-    padding-left: 0.5rem
+    padding-left: 0.5rem;
   }
 }
-.bio__form{
+.bio__form {
   padding: 0.3rem;
 }
-.bio__form--button{
+.bio__form--button {
   margin-right: 2rem;
 }
 
@@ -63,12 +63,16 @@
     margin-bottom: 0px !important;
   }
 }
-.userProfileBio {
+.profileBorder {
   padding: 2rem;
-  margin: 0.5rem;
   height: 100%;
   border: 1px solid #c4c4c4;
+  a {
+    text-decoration: none;
+    color: black;
+  }
 }
+
 .userProfile__actions {
   margin: 0.5rem;
   margin-top: 1rem;
@@ -78,7 +82,7 @@
   padding: 1rem;
   border-bottom: 1px solid #c4c4c4;
 }
-.username-input{
+.username-input {
   text-align: center;
 }
 .profile__action:hover {
@@ -89,8 +93,8 @@
   background-color: #2f80ed;
   color: white;
 }
-.userProfileBio{
-  .col-2{
+.userProfileBio {
+  .col-2 {
     padding-top: 0.4rem;
   }
 }
@@ -101,7 +105,7 @@
 }
 .avatar-edit {
   margin: 2rem;
-  label{
+  label {
     font-size: 1rem;
     color: white;
     padding: 0.5rem;
@@ -109,45 +113,45 @@
     display: inline-block;
     cursor: pointer;
   }
-  label:hover{
+  label:hover {
     background-color: white;
     color: #2f80ed;
   }
 }
 .fileInput {
   width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 .avatar-preview {
   width: 192px;
   height: 192px;
   position: relative;
   border-radius: 100%;
-  border: 6px solid #F8F8F8;
+  border: 6px solid #f8f8f8;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
   > div {
-      width: 100%;
-      height: 100%;
-      border-radius: 100%;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) { 
-  .button{
+@media (min-width: 576px) {
+  .button {
     width: 100%;
   }
- }
+}
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { 
-  .button{
-  width: 100%;
-} 
+@media (min-width: 768px) {
+  .button {
+    width: 100%;
+  }
 }

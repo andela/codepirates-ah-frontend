@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { CreateArticles, mapStateToProps } from './createArticles';
 
-describe('Terst React component test with Enzyme', () => {
+describe('Test React component test with Enzyme', () => {
   it('renders without crashing', () => {
     shallow(<CreateArticles />);
   });
@@ -38,5 +38,16 @@ describe('Create an Article', () => {
     const wrapper = renderComponent();
     mapStateToProps(state);
     expect(wrapper).toHaveLength(1);
+  });
+  it('should test Create Articles with 201 status', () => {
+    const wrapper = renderComponent({ status: 201 });
+    expect(wrapper).toHaveLength(1);
+  });
+});
+describe('Create an Article test with', () => {
+  const wrapper = shallow(<CreateArticles />);
+  wrapper.setProps({ loading: 0 });
+  it('should render the whole page', () => {
+    expect(wrapper.length).toEqual(1);
   });
 });

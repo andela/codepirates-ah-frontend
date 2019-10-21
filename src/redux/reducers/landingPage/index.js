@@ -20,6 +20,18 @@ const landingPageReducer = (state = initialState, action) => {
           ...action.payload,
         },
       };
+    case actionTypes.VIEW_SPECIFIC_USER_ARTICLES_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+        isSpecifiUserArticlesViewed: true,
+      };
+    case actionTypes.VIEW_SPECIFIC_USER_ARTICLES_FAIL:
+      return {
+        ...state,
+        ...action.payload,
+        isSpecifiUserArticlesViewed: false,
+      };
     case actionTypes.FETCH_POPULAR_ARTICLES_ON_LANDING_PAGE_ERROR:
       return {
         ...state,
