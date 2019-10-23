@@ -6,7 +6,6 @@ import classnames from 'classnames';
 import {
   LeftSideBar, ArticleContent, RecentArticles, RightSideBar, paginate,
 } from './viewArticleComponents';
-
 import { viewArticle } from '../../redux/actions/viewSingleArticle/viewSingleArticleAction';
 import { getAllArticles } from '../../redux/actions/viewSingleArticle/getRecentArticles';
 

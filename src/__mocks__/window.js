@@ -24,6 +24,10 @@ export const fetchSuccesArticles = () => new Promise((resolve) => {
 export const fetchSuccessfully = (...args) => new Promise((resolve) => {
   const res = {
     json: jest.fn(() => ({ args, status: 200 })),
+    // // json: jest.fn(() => ({ args, status: 200 })),
+    // json: () => new Promise((resol) => resol({
+    //   status: 201,
+    // })),
   };
   return resolve(res);
 });
@@ -88,6 +92,24 @@ export const fetchClientError = (...args) => new Promise((resolve) => {
   return resolve(res);
 });
 
+export const fetchCommentsSuccesUtil = () => new Promise((resolve) => {
+  const res = {
+    json: jest.fn(
+      () => new Promise((resol) => resol({
+        status: 'success',
+        message: 'All comments successfully retrieved',
+        data: [],
+      })),
+    ),
+  };
+  return resolve(res);
+});
+export const fetchErrorUtil = (...args) => new Promise((resolve) => {
+  const res = {
+    json: jest.fn(() => ({ args, status: 'success' })),
+  };
+  return resolve(res);
+});
 export const fetchError = (...args) => new Promise((resolve, reject) => {
   const res = {
     json: jest.fn(() => ({ args, status: 500 })),

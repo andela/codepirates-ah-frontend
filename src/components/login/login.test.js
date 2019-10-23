@@ -18,10 +18,12 @@ const renderComponent = (args) => {
     })),
     message: '',
     loading: 0,
+    history: {
+      push: jest.fn(),
+    },
     location: {
       state: '',
     },
-    history: {},
   };
   const props = { ...defaultProps, ...args };
   return shallow(<Login {...props} />);
