@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
 
 import tick from '../../../../public/assets/images/tick.png';
 
@@ -10,10 +11,11 @@ import './feedback.scss';
  * @param {object} props
  * @returns {JSX} - Social Button JSX template
  */
-const Feedback = ({ summary, message }) => (
+const Feedback = ({ title, message }) => (
   <div className="body">
+    <ToastContainer position={toast.POSITION.TOP_RIGHT} />
     <img className="tick" src={tick} alt="success" />
-    <div className="pageheading"><p>{summary}</p></div>
+    <div className="pageheading"><p>{title}</p></div>
     <hr />
     <div className="message">{message}</div>
   </div>
@@ -21,7 +23,7 @@ const Feedback = ({ summary, message }) => (
 
 Feedback.propTypes = {
   message: PropTypes.any.isRequired,
-  summary: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Feedback;

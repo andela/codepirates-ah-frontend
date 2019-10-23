@@ -1,29 +1,18 @@
-import { ResponseMessage, FormData, Status } from '../actionTypes';
-import { sent, passwordReset } from '../../../helpers/passwordResetConstants';
+import { RESET_PASSWORD_SUCCESS } from '../actionTypes';
 
-export const responseMessage = (message) => ({
-  type: ResponseMessage,
-  update: { message },
+export const responseMessage = (message, title) => ({
+  type: RESET_PASSWORD_SUCCESS,
+  update: { message, title },
 });
 
-export const setStatus = (status) => ({ type: Status, update: { status } });
-
-export const formData = (email, password, confirmPassword) => ({
-  type: FormData,
-  update: { email, password, confirmPassword },
-});
-
-export const summary = (type) => ({ type });
-
-export const resetRequest = (props, state) => async (dispatch) => {
-  const token = new URLSearchParams(props.location.search).get('token');
-  const { history, location } = props;
-  const { email, password, confirmPassword } = state;
-  const emailSent = sent(email);
-  const [url, method, type, detail] = location.search
-    ? [`/${token}`, 'put', 'emailSent', passwordReset]
-    : ['', 'post', 'passwordReset', emailSent];
-  const res = await fetch(
+export const resetRequest = (parent) => {
+  const userData = parent.state;
+  const { location } = parent.props;
+  const token = new URLSearchParams(location.search).get('token');
+  const [url, method] = location.search
+    ? [`/${token}`, 'put']
+    : ['', 'post'];
+  return fetch(
     `https://codepirates-ah-backend.herokuapp.com/api/v1/users/reset${url}`,
     {
       method,

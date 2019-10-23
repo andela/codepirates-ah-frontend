@@ -9,7 +9,7 @@ import NavBar from '../components/navbar';
 
 const mapStateToProps = (state) => ({
   message: state.passwordReset.message,
-  summary: state.passwordReset.summary,
+  title: state.passwordReset.title,
 });
 
 /**
@@ -17,16 +17,16 @@ const mapStateToProps = (state) => ({
  * @param {object} props
  * @returns {JSX} - Social Button JSX template
  */
-const FeedBack = ({ message, summary }) => (
+const FeedBack = ({ message, title }) => (
   <div className="container, styles">
     <NavBar />
-    <Feed message={message} summary={summary} />
+    <Feed message={message} title={title} />
   </div>
 );
 
 FeedBack.propTypes = {
   message: PropTypes.any.isRequired,
-  summary: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps)(FeedBack);

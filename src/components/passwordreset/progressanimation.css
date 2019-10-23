@@ -1,0 +1,13 @@
+.loading {
+    background: red;
+    width: 0;
+    height: 1px;
+    animation-name: progress;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes progress {
+    from {background: red; width: 0}
+    to {background: green; width: 100%}
+}

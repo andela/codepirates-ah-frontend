@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-state */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -10,11 +11,12 @@ import NavBar from './components/navbar';
 
 // import resetRequest from '../../events';
 import {
-  // formData as Data,
-  // responseMessage as Message,
-  // setStatus,
+  responseMessage as Message,
   resetRequest,
 } from '../../redux/actions/passwordreset';
+import { sent, done } from '../../helpers/passwordResetConstants';
+
+import './progressanimation.css';
 
 /**
  * @class - Password reset container Component
@@ -36,6 +38,27 @@ export class ResetRequest extends React.Component {
     this.props.resetRequest(this.props, this.state);
   };
 
+  onSendRequest = async (resetRequestHandler) => {
+    const { history, location, responseMessage } = this.props;
+    this.setState({ progress: 'loading' });
+    const { email } = this.state;
+    const emailSent = sent(email);
+    const { search } = location;
+    const [title, detail] = search
+      ? ['Password reset successful', done]
+      : ['Password reset link sent', emailSent];
+    const res = await resetRequestHandler(this);
+    const json = await res.json();
+    const msg = await json.message;
+    responseMessage(res.ok ? detail : msg, title);
+    this.setState({ progress: 'loaded' });
+    if (res.ok) {
+      toast.success(detail);
+      history.push('/resetpasswordresponse');
+    } else {
+      toast.error(msg);
+    }
+  };
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -43,14 +66,14 @@ export class ResetRequest extends React.Component {
 
   render() {
     const { handleSubmit, handleChange } = this;
+    const { progress, email } = this.state;
     const { location, message } = this.props;
-    const { search } = location;
-    const form = !search ? (
+    const form = !location.search ? (
       <Request
         handleSubmit={handleSubmit}
         message={message}
         handleChange={handleChange}
-        email=""
+        email={email}
       />
     ) : (
       <Reset
@@ -72,21 +95,22 @@ export class ResetRequest extends React.Component {
 const mapStateToProps = (state) => ({
   message: state.passwordReset.message,
   email: state.passwordReset.email,
-  status: state.passwordReset.status,
+});
+
+const dispatchProps = (dispatch) => ({
+  responseMessage: (m, n) => dispatch(Message(m, n)),
 });
 
 ResetRequest.propTypes = {
-  resetRequest: PropTypes.func.isRequired,
-  message: PropTypes.any,
-  location: PropTypes.objectOf(PropTypes.any),
+  responseMessage: PropTypes.func.isRequired,
+  message: PropTypes.string,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.array,
 };
 
 ResetRequest.defaultProps = {
   message: '',
-  location: {
-    search: '',
-    pathname: '/reset',
-  },
+  history: [],
 };
 
 export default connect(

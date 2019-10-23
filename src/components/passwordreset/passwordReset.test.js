@@ -5,11 +5,14 @@ import { ResetRequest } from './index';
 
 describe('request container test', () => {
   const resetRequestFunc = (args) => {
+    const [
+      responseMessage, resetRequest, handleSubmit,
+    ] = Array(3).fill(jest.fn());
     const defaultProps = {
       message: '',
       email: '',
-      status: '',
-      formData: {},
+      history: [],
+      responseMessage,
       location: {
         search: '',
       },

@@ -27,14 +27,19 @@ const PasswordReset = ({ handleSubmit, message, handleChange }) => (
   </div>
 );
 
+const [handleSubmit, handleChange] = Array(2).fill(propTypes.func.isRequired);
+const message = propTypes.any;
+
 PasswordReset.propTypes = {
-  handleSubmit: propTypes.func.isRequired,
-  handleChange: propTypes.func.isRequired,
-  message: propTypes.any,
+  handleSubmit,
+  handleChange,
+  message,
 };
 
 PasswordReset.defaultProps = {
   message: '',
+  handleChange: null,
+  handleSubmit: null,
 };
 
 export default PasswordReset;

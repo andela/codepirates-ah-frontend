@@ -10,16 +10,16 @@ const mockStore = configureMockStore();
 const store = mockStore({
   passwordReset: {
     message: 'mikr',
-    summary: 'email sent',
+    title: 'email sent',
   },
 });
 
-const [message, summary] = new Array(2).fill(jest.fn());
+const [message, title] = new Array(2).fill(jest.fn());
 
 const shallowSetup = () => {
   const props = {
     message,
-    summary,
+    title,
   };
   const enzymeWrapper = mount(
     <Provider store={store}>
