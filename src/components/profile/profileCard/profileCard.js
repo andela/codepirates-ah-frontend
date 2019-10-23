@@ -18,28 +18,82 @@ function showFollowers() {
   );
 }
 
-function editProfileCardView(image, previewImage, onInputChange, username, onEditModeChange) {
+function editProfileCardView(
+  image,
+  previewImage,
+  onInputChange,
+  username,
+  onEditModeChange,
+) {
   return (
     <div>
       <div className="row">
-        {image && (<div className="avatarUpload"><div className="avatar-preview"><div id="imagePreview" ref={previewImage} style={{ backgroundImage: `url(${image})` }} /></div></div>)}
-        {!image && (<span className="user-avatar"><FontAwesomeIcon icon={faUserCircle} /></span>)}
+        {image && (
+          <div className="avatarUpload">
+            <div className="avatar-preview">
+              <div
+                id="imagePreview"
+                ref={previewImage}
+                style={{ backgroundImage: `url(${image})` }}
+              />
+            </div>
+          </div>
+        )}
+        {!image && (
+          <span className="user-avatar">
+            <FontAwesomeIcon icon={faUserCircle} />
+          </span>
+        )}
       </div>
       <div>
         <div className="avatar-edit">
           <label htmlFor="profileImage">
-            <input type="file" onChange={onInputChange} name="image" id="profileImage" className="fileInput" accept=".png, .jpg, .jpeg" />
+            <input
+              type="file"
+              onChange={onInputChange}
+              name="image"
+              id="profileImage"
+              className="fileInput"
+              accept=".png, .jpg, .jpeg"
+            />
             <FontAwesomeIcon icon={faUpload} />
             Upload Profile
           </label>
         </div>
       </div>
-      <span className="user-name"><h6><input onChange={onInputChange} type="text" name="username" value={username} className="form-control username-input" /></h6></span>
-      <span className="user-role"><p>Admin</p></span>
+      <span className="user-name">
+        <h6>
+          <input
+            onChange={onInputChange}
+            type="text"
+            name="username"
+            value={username}
+            className="form-control username-input"
+          />
+        </h6>
+      </span>
+      <span className="user-role">
+        <p>Admin</p>
+      </span>
       {showFollowers()}
       <span className="row">
-        <div className="col-6 col-md-6"><button onClick={onEditModeChange} type="submit" className="button button--primary button--large btn-cancel-edit-card">Cancel</button></div>
-        <div className="col-6 col-md-6"><button type="submit" className="button button--secondary button--large">Save</button></div>
+        <div className="col-6 col-md-6">
+          <button
+            onClick={onEditModeChange}
+            type="submit"
+            className="button button--primary button--large btn-cancel-edit-card"
+          >
+            Cancel
+          </button>
+        </div>
+        <div className="col-6 col-md-6">
+          <button
+            type="submit"
+            className="button button--secondary button--large"
+          >
+            Save
+          </button>
+        </div>
       </span>
     </div>
   );
@@ -49,17 +103,50 @@ function isNotInProfileCardEditMode(image, username, onEditModeChange) {
   return (
     <div>
       <div className="row">
-        {image && (<div className="avatarUpload"><div className="avatar-preview"><div id="imagePreview" style={{ backgroundImage: `url(${image})` }} /></div></div>)}
-        {!image && (<span className="user-avatar"><FontAwesomeIcon icon={faUserCircle} /></span>)}
+        {image && (
+          <div className="avatarUpload">
+            <div className="avatar-preview">
+              <div
+                id="imagePreview"
+                style={{ backgroundImage: `url(${image})` }}
+              />
+            </div>
+          </div>
+        )}
+        {!image && (
+          <span className="user-avatar">
+            <FontAwesomeIcon icon={faUserCircle} />
+          </span>
+        )}
       </div>
-      <span className="user-name"><h6>{username}</h6></span>
-      <span className="user-role"><p>Admin</p></span>
+      <span className="user-name">
+        <h6>{username}</h6>
+      </span>
+      <span className="user-role">
+        <p>Admin</p>
+      </span>
       {showFollowers()}
-      <span className="row"><div className="col-12 col-md-12"><button onClick={onEditModeChange} type="submit" className="button button--primary button--large btn-edit">Edit</button></div></span>
+      <span className="row">
+        <div className="col-12 col-md-12">
+          <button
+            onClick={onEditModeChange}
+            type="submit"
+            className="button button--primary button--large btn-edit"
+          >
+            Edit
+          </button>
+        </div>
+        <div className="col-12 col-md-12">
+          <a href="/articles/create">
+            <p className="button button--secondary button--large btn-edit">
+              Create article
+            </p>
+          </a>
+        </div>
+      </span>
     </div>
   );
 }
-
 
 const ProfileCard = (props) => {
   const {
@@ -74,12 +161,16 @@ const ProfileCard = (props) => {
   return (
     <div className="text-center user-profile-card">
       <form className="profileCardForm" onSubmit={onFormSubmit}>
-        {profileCardEditMode && (
-          editProfileCardView(image, previewImage, onInputChange, username, onEditModeChange)
-        )}
-        {!profileCardEditMode && (
-          isNotInProfileCardEditMode(image, username, onEditModeChange)
-        )}
+        {profileCardEditMode
+          && editProfileCardView(
+            image,
+            previewImage,
+            onInputChange,
+            username,
+            onEditModeChange,
+          )}
+        {!profileCardEditMode
+          && isNotInProfileCardEditMode(image, username, onEditModeChange)}
       </form>
     </div>
   );

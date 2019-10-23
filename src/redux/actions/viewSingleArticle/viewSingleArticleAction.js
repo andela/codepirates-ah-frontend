@@ -6,11 +6,6 @@ export const viewArticleSuccess = (data) => ({
   payload: data,
 });
 
-export const viewArticleFailure = (data) => ({
-  type: actions.VIEW_ARTICLE_ERROR,
-  payload: data,
-});
-
 export const viewArticle = (slug) => (dispatch) => fetch(`${actions.BASE_URL}/api/v1/articles/${slug}`, {
   method: 'GET',
   headers: {
@@ -18,8 +13,8 @@ export const viewArticle = (slug) => (dispatch) => fetch(`${actions.BASE_URL}/ap
     'x-access-token': token,
   },
 }).then((res) => res.json()).then((response) => {
-  if (response.status !== 'That article does not exist!') {
-    return dispatch(viewArticleSuccess(response));
+  if (response.message === 'That article does not exist!') {
+    window.location = '/notfound';
   }
-  return dispatch(viewArticleFailure(response));
+  return dispatch(viewArticleSuccess(response));
 });

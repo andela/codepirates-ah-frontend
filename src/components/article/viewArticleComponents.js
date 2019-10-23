@@ -1,5 +1,6 @@
 import React from 'react';
 import Pagination from 'rc-pagination';
+import PropTypes from 'prop-types';
 import Pages from 'lodash';
 import './viewArticle.scss';
 import star from '../../../public/assets/images/images/yellowStar.png';
@@ -12,31 +13,31 @@ export const paginate = (lists, pageNumber, pageSize) => {
   const startIndex = (pageNumber - 1) * pageSize;
   return Pages(lists).slice(startIndex).take(pageSize).value();
 };
-export const TopComponent = () => (
-  <div className="top">
-    <div className="top-p"><p>Authors haven</p></div>
-    <div className="top-buttons">
-      <div className="header-btn">
-        <a href="./login.html">Login</a>
-        <a href="./signup.html" className="submit-btn">Sign up</a>
-      </div>
-    </div>
-  </div>
-);
 
-export const LeftSideBar = () => (
+export const LeftSideBar = ({
+  firstname, lastname, profilePic, LeftSideStyles, profilePicStyles,
+}) => (
+
   <div className="left-side">
-    <div className="icon">
-      <img
-        src={userImage}
-        alt="user icon"
-        width="40px"
-        height="40px"
-      />
-      <button type="button" className="submit-btn">Follow</button>
+    <div className="icon" style={LeftSideStyles}>
+      <div style={profilePicStyles}>
+        <img
+          src={profilePic == null ? userImage : profilePic}
+          alt="user icon"
+          width="40px"
+          height="40px"
+        />
+      </div>
+      <a href="/users/follow" className="btn btn-outline-primary">Follow</a>
     </div>
     <div className="userprofilename">
-      <p>John Doe</p>
+      <p>
+        {firstname}
+        {' '}
+&nbsp;
+        {' '}
+        {lastname}
+      </p>
       <p>32 Publications</p>
     </div>
   </div>
@@ -100,7 +101,15 @@ export const RecentArticles = ({
     <h1>Most recent on Author’s Haven</h1>
     <div className="popular-div">
       {articles.map((article) => (
-        <ArticleCard coverImage={coverImage} />
+        <ArticleCard
+          coverImage={coverImage}
+          description={article.description}
+          title={article.title}
+          views={article.views}
+          readtime={article.readtime}
+          timeCreated={article.timeCreated}
+          username={article.username}
+        />
       ))}
     </div>
     <div className="pagination-div">
@@ -110,7 +119,7 @@ export const RecentArticles = ({
 );
 
 export const RightSideBar = ({ readtime, createdAt }) => (
-  <div className="right-side">
+  <div className="right-side" style={{ marginLeft: 'auto' }}>
     <div className="rating-pub-read-time">
       <p>
 Published: &nbsp;
@@ -156,31 +165,48 @@ Published: &nbsp;
   </div>
 );
 
-export const Footer = () => (
-  <div className="bottom">
-    <div className="middle-line" />
-    <div className="footer">
-      <div className="footer-icons">
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        <i className="fab fa-twitter" />
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        <i className="fab fa-facebook-f" />
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        <i className="fab fa-linkedin-in" />
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        <i className="fab fa-google" />
-      </div>
-      <div className="at-authors-haven">
-        <h3>&apos; Authors haven Andela</h3>
-      </div>
-    </div>
-  </div>
-);
+ArticleContent.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  body: PropTypes.string,
+};
+ArticleContent.defaultProps = {
+  title: '',
+  description: '',
+  body: '',
+};
+
+RecentArticles.propTypes = {
+  onChange: PropTypes.string,
+  current: PropTypes.string,
+  total: PropTypes.string,
+  articles: PropTypes.string,
+};
+RecentArticles.defaultProps = {
+  onChange: '',
+  current: '',
+  total: '',
+  articles: '',
+};
+RightSideBar.propTypes = {
+  readtime: PropTypes.string,
+  createdAt: PropTypes.string,
+};
+RightSideBar.defaultProps = {
+  readtime: '',
+  createdAt: '',
+};
+LeftSideBar.propTypes = {
+  firstname: PropTypes.string,
+  lastname: PropTypes.string,
+  profilePic: PropTypes.string,
+  LeftSideStyles: PropTypes.object,
+  profilePicStyles: PropTypes.object,
+};
+LeftSideBar.defaultProps = {
+  firstname: '',
+  lastname: '',
+  profilePic: '',
+  LeftSideStyles: '',
+  profilePicStyles: '',
+};

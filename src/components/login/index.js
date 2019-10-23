@@ -13,6 +13,7 @@ import RegistrationHeader from '../common/registrationHeader';
 import loginAction from '../../redux/actions/login';
 import loginValidation from './loginValidation';
 import signupSvgPath from '../../../public/assets/images/signupSvg.svg';
+import SocialButtons from '../SocialButtons/SocialButton';
 
 export class Login extends Component {
   state={
@@ -107,7 +108,7 @@ export class Login extends Component {
           </div>
           <div className="col-md-5 registration--middle-row__right-part">
             <div>
-                social login buttons
+              <SocialButtons status="Login with" />
             </div>
             <SwitchToSignupOrLogin url="/signup" filePath={signupSvgPath} message="if you don't have an account!" />
           </div>
@@ -131,7 +132,7 @@ Login.defaultProps = {
   message: '',
   loginAction: () => {},
 };
-export const mapStateToProps = ({ login: { message, status, token } }) => ({
+export const mapStateToProps = ({ user: { message, status, token } }) => ({
   message, status, token,
 });
 export default connect(mapStateToProps, { loginAction })(Login);

@@ -8,6 +8,7 @@ module.exports = {
     '\\.(css|less|scss|sass)$': '<rootDir>/src/__mocks__/styleMock.js',
   },
   coveragePathIgnorePatterns: [
+    '<rootDir>/src/index.js', '<rootDir>/node_modules/',
   ],
   collectCoverageFrom: ['src/**/*.{js,jsx}'],
   modulePathIgnorePatterns: ['<rootDir>/cypress'],

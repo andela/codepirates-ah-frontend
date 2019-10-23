@@ -225,9 +225,12 @@ body {
     grid-area: bottomm;
   }
   
-  .container{
+  .viewArticleContainer{
     display: grid;
     // grid-template-columns: repeat(8, 1fr);
+    body{
+      font-family: "Roboto", sans-serif;
+  }
     grid-gap: 10px;
     grid-auto-rows: minmax(80px, auto);
     grid-template-areas: 
@@ -276,7 +279,6 @@ body {
       display: flex;
       color: rgba(0, 0, 0, 0.8);
       .icon{
-        flex-basis: 40%;
         display: block;
         button{
           @include btn(12px, 18px, 100%, 9px);
@@ -553,8 +555,9 @@ body {
   
       }
       .right-side{
-        // border: 1px solid red;
         width: 180%;
+        width: auto;
+        align-items: flex-end;
       }
       .middle-down{
         .popular-div{

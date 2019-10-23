@@ -7,7 +7,9 @@ import ArticleCardTextComponent from './articleCardTextComponent';
 
 export default class ArticleCard extends Component {
   render() {
-    const { coverImage } = this.props;
+    const {
+      coverImage, description, title, views, readtime, timeCreated, username,
+    } = this.props;
     return (
       <div className="landingArticlecard" style={style}>
         <div className="landingArticleCard--image">
@@ -15,14 +17,14 @@ export default class ArticleCard extends Component {
         </div>
         <div className="landingArticleCard--userRatingPart">
           <div className="landingArticleCard__userIconArea">
-            <UserIcon />
+            <UserIcon username={username} timeCreated={timeCreated} readtime={readtime} />
           </div>
           <div className="landingArticleCard__RatingIconArea">
             <RatingArticleCardComponent />
           </div>
         </div>
         <div className="landingArticleCard--textPart">
-          <ArticleCardTextComponent />
+          <ArticleCardTextComponent description={description} title={title} views={views} />
         </div>
       </div>
     );
@@ -30,8 +32,20 @@ export default class ArticleCard extends Component {
 }
 ArticleCard.propTypes = {
   coverImage: PropTypes.string,
+  description: PropTypes.string,
+  title: PropTypes.string,
+  readtime: PropTypes.string,
+  views: PropTypes.number,
+  timeCreated: PropTypes.string,
+  username: PropTypes.string,
 };
 
 ArticleCard.defaultProps = {
   coverImage: '',
+  description: '',
+  title: '',
+  readtime: '',
+  views: '',
+  timeCreated: '',
+  username: '',
 };

@@ -5,8 +5,11 @@ export const VIEW_ARTICLE_ERROR = 'VIEW_ARTICLE_ERROR';
 export const BASE_URL = 'https://codepirates-ah-backend.herokuapp.com';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const BACKEND_URL = 'https://codepirates-ah-backend-staging.herokuapp.com';
+export const VERIFICATION_URL = 'https://codepirates-ah-backend-staging.herokuapp.com';
 export const VERIFICATION_SUCCESS = 'VERIFICATION_SUCCESS';
 export const VERIFICATION_FAILURE = 'VERIFICATION_FAILURE';
+
 export const VERSION = 'v1';
 export const FETCH_PROFILE_PENDING = 'FETCH_PROFILE_PENDING';
 export const FETCH_PROFILE_SUCCESS = 'FETCH_PROFILE_SUCCESS';
@@ -16,3 +19,13 @@ export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
 export const UPDATE_PROFILE_ERROR = 'UPDATE_PROFILE_ERROR';
 export const FETCH_ARTICLES_ON_LANDING_PAGE_SUCCESS = 'FETCH_ARTICLES_ON_LANDING_PAGE_SUCCES';
 export const FETCH_ARTICLES_ON_LANDING_PAGE_ERROR = 'FETCH_ARTICLES_ON_LANDING_PAGE_ERROR';
+/** Social auth actions */
+export const GOOGLE_AUTH_SUCCESS = 'GOOGLE_AUTH_SUCCESS';
+export const FACEBOOK_AUTH_SUCCESS = 'FACEBOOK_AUTH_SUCCESS';
+export const TWITTER_AUTH_SUCCESS = 'TWITTER_AUTH_SUCCESS';
+export const GOOGLE_AUTH_FAIL = 'GOOGLE_AUTH_FAIL';
+export const FACEBOOK_AUTH_FAIL = 'FACEBOOK_AUTH_FAIL';
+export const TWITTER_AUTH_FAIL = 'TWITTER_AUTH_FAIL';
+// this will contain actions
+export const CREATE_ARTICLE_SUCCESS = 'CREATE_ARTICLE_SUCCESS';
+export const CREATE_ARTICLE_FAIL = 'CREATE_ARTICLE_FAIL';

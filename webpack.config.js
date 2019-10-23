@@ -9,14 +9,21 @@ const distPath = path.join(__dirname, './dist');
 module.exports = (env) => ({
   mode: env.environment,
   devServer: {
+    historyApiFallback: {
+      disableDotRule: true,
+    },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      https: true,
+    },
     contentBase: distPath,
     publicPath: '/',
-    historyApiFallback: true,
     overlay:
       env.environment === 'development' ? { errors: true, warnings: true } : {},
   },
   entry: [path.join(sourcePath, './index.js')],
   output: {
+    publicPath: '/',
     path: distPath,
     publicPath: '/',
     filename: 'js/[name].[hash].js',

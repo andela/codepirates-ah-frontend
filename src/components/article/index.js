@@ -3,18 +3,24 @@ import { connect } from 'react-redux';
 import './viewArticle.scss';
 import PropTypes from 'prop-types';
 import {
-  TopComponent, LeftSideBar, ArticleContent, RecentArticles, RightSideBar, Footer, paginate,
+  LeftSideBar, ArticleContent, RecentArticles, RightSideBar, paginate,
 } from './viewArticleComponents';
 
 import { viewArticle } from '../../redux/actions/viewSingleArticle/viewSingleArticleAction';
 import { getAllArticles } from '../../redux/actions/viewSingleArticle/getRecentArticles';
 
 
-class ViewArticle extends Component {
+export class ViewArticle extends Component {
     state = {
       getArticle: {
         data: {
-          slug: '', title: '', description: '', body: '', readtime: '', createdAt: '',
+          slug: '',
+          title: '',
+          description: '',
+          body: '',
+          readtime: '',
+          createdAt: '',
+          author: { firstname: '', lastname: '', image: '' },
         },
       },
       allArticles: [],
@@ -25,17 +31,19 @@ class ViewArticle extends Component {
     }
 
     componentDidMount() {
-      const { viewArticle: viewSingleArticle, getAllArticles: articles } = this.props;
-      viewSingleArticle('fakeslug2');
+      const {
+        viewArticle: viewSingleArticle,
+        getAllArticles: articles,
+        match: { params },
+      } = this.props;
+      viewSingleArticle(params.slug);
       articles();
     }
 
     componentWillReceiveProps(nextProps) {
-      console.log('next props', nextProps);
       const { pageSize } = this.state;
       const { getArticle, articles: { data } } = this.props;
       if (nextProps.getArticle !== getArticle) {
-        console.log(nextProps.getArticle);
         this.setState({ getArticle: nextProps.getArticle });
       }
       if (nextProps.articles.data !== data) {
@@ -45,7 +53,6 @@ class ViewArticle extends Component {
           numberOfArticles: nextProps.articles.allArticle,
           paginatedArticles: currentArticles,
         });
-        console.log(1, currentArticles);
       }
     }
 
@@ -57,41 +64,70 @@ class ViewArticle extends Component {
         current: page,
         paginatedArticles: currentArticles,
       });
-      console.log(page, currentArticles);
     }
 
 
     render() {
       const {
-        getArticle: { data }, current, numberOfArticles, paginatedArticles, allArticles,
+        getArticle: { data }, current, numberOfArticles, paginatedArticles,
       } = this.state;
-      // console.log('numberOfArticles', numberOfArticles);
-      // console.log('numberOfArticles', allArticles);
-      console.log('Paginated', paginatedArticles);
+
+      const LeftSideStyles = {
+        display: 'flex', flexDirection: 'column',
+      };
+      const profilePicStyles = {
+        marginBottom: '10px',
+      };
+
       return (
-        <div className="container">
-          <TopComponent />
-          <LeftSideBar />
-          <ArticleContent title={data.title} description={data.description} body={data.body} />
-          <RecentArticles onChange={this.onChange} current={current} total={numberOfArticles} pageSize={2} articles={paginatedArticles} />
-          <RightSideBar readtime={data.readtime} createdAt={data.createdAt} />
-          <Footer />
-        </div>
+        <>
+          <div className="container">
+            <div
+              className="viewArticleContainer"
+            >
+              <LeftSideBar
+                firstname={data.author.firstname}
+                lastname={data.author.lastname}
+                profilePic={data.author.image}
+                LeftSideStyles={LeftSideStyles}
+                profilePicStyles={profilePicStyles}
+
+              />
+              <ArticleContent title={data.title} description={data.description} body={data.body} />
+              <RecentArticles
+                onChange={this.onChange}
+                current={current}
+                total={numberOfArticles}
+                pageSize={2}
+                articles={paginatedArticles}
+              />
+              <RightSideBar readtime={data.readtime} createdAt={data.createdAt} />
+            </div>
+
+          </div>
+        </>
 
       );
     }
 }
 
 ViewArticle.propTypes = {
-  viewArticle: PropTypes.func.isRequired,
-  getArticle: PropTypes.object.isRequired,
-  getAllArticles: PropTypes.func.isRequired,
-  articles: PropTypes.object.isRequired,
-  data: PropTypes.array.isRequired,
-  allArticle: PropTypes.number.isRequired,
+  viewArticle: PropTypes.func,
+  getArticle: PropTypes.object,
+  getAllArticles: PropTypes.func,
+  articles: PropTypes.object,
+  data: PropTypes.array,
+  allArticle: PropTypes.number,
+  match: PropTypes.object,
 };
 ViewArticle.defaultProps = {
-
+  viewArticle: '',
+  getArticle: '',
+  getAllArticles: '',
+  articles: '',
+  data: '',
+  allArticle: '',
+  match: '',
 };
 const mapStateToProps = ({ viewArticle: getArticle, articles }) => ({
   getArticle, articles,
