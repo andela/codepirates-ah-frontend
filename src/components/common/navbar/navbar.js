@@ -22,7 +22,7 @@ export class NavBar extends Component {
     const { isLoggedIn, profile } = user;
     return (
       <>
-        <Navbar collapseOnSelect expand="lg" bg="transparent" variant="light" sticky="top">
+        <Navbar fixed="top" collapseOnSelect expand="lg" bg="transparent" variant="light" sticky="top">
           <Navbar.Brand>
             {' '}
             <Logo />

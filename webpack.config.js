@@ -1,4 +1,3 @@
-const dotenv = require('dotenv');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -25,7 +24,6 @@ module.exports = (env) => ({
   output: {
     publicPath: '/',
     path: distPath,
-    publicPath: '/',
     filename: 'js/[name].[hash].js',
   },
   module: {

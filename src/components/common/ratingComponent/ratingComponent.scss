@@ -1,0 +1,27 @@
+.landingArticleCardRating {
+  display: flex;
+  .landingArticleCardRating--rating {
+    flex-basis: 30%;
+  }
+  .landingArticleCardRating--stars {
+    flex-basis: 60%;
+  }
+  .landingArticleCardRating--elipesIcon {
+    flex-basis: 10%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .landingArticleCardRating {
+    font-size: 12px;
+    .landingArticleCardRating--rating {
+      flex-basis: 15%;
+    }
+    .landingArticleCardRating--stars {
+      flex-basis: 80%;
+    }
+    .landingArticleCardRating--elipesIcon {
+      flex-basis: 5%;
+    }
+  }
+}

@@ -1,11 +1,11 @@
 import { toast } from 'react-toastify';
 import * as profileActionCreators from './profileAction';
-import { BASE_URL, VERSION } from '../actionTypes';
+import { BACKEND_URL, VERSION } from '../actionTypes';
 
 const token = localStorage.getItem('token');
 export const fetchProfile = () => (dispatch) => {
   dispatch(profileActionCreators.fetchProfilePending());
-  return fetch(`${BASE_URL}/api/${VERSION}/profile`, {
+  return fetch(`${BACKEND_URL}/api/${VERSION}/profile`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ export const updateProfile = (data) => (dispatch) => {
   formData.append('username', data.username);
   formData.append('image', data.image);
 
-  return fetch(`${BASE_URL}/api/${VERSION}/profile`, {
+  return fetch(`${BACKEND_URL}/api/${VERSION}/profile`, {
     method: 'PUT',
     mode: 'cors',
     headers: {
