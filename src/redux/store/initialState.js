@@ -34,6 +34,13 @@ export default {
     },
     error: '',
   },
-  article: {
+  article: {},
+  articleFeedback: {
+    clapPending: false,
+    claps: 0,
+    clapError: null,
+    dislikePending: false,
+    dislikes: 0,
+    dislikeError: null,
   },
 };

@@ -21,10 +21,10 @@ const ArticleCardTextComponent = ({
       <div className="landingArticleCardText__views">
         <p>
           <span>{views}</span>
-          {' '}
 views
         </p>
       </div>
+      <div />
       <div className="landingArticleCardText__claps">
         <p>{claps}</p>
         <i className="fas fa-sign-language" />

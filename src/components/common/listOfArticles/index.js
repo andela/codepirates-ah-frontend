@@ -17,12 +17,12 @@ export default function ListOfArticles({ articles, limitArticlesNumber }) {
           description={article && article.description}
           title={article && article.title}
           views={article && article.views}
+          claps={article && article.claps}
           readTime={article && article.readtime}
           userIcon={article && article.userImage}
           username={article && article.username}
           createdTime={article && article.timeCreated}
           slug={article && article.slug}
-          claps={article && article.claps}
           rating={rating}
         />
       </div>

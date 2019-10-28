@@ -45,9 +45,9 @@ const ArticleCard = ({
       <ArticleCardTextComponent
         description={description}
         title={title}
-        views={views}
         claps={claps}
         slug={slug}
+        views={views}
       />
     </div>
   </div>
