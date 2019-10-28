@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import {
   Nav, NavDropdown, Navbar, Image,
 } from 'react-bootstrap';
+import Search from '../search/search';
 import Logo from '../logo';
 
 
@@ -24,14 +24,13 @@ export class NavBar extends Component {
       <>
         <Navbar fixed="top" collapseOnSelect expand="lg" bg="transparent" variant="light" sticky="top">
           <Navbar.Brand>
-            {' '}
             <Logo />
-            {' '}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse className="justify-content-end">
-            <Nav.Link>
-              <Link to="/articles">Articles</Link>
+            <div style={{ width: '20rem' }}><Search /></div>
+            <Nav.Link href="/articles">
+              Articles
             </Nav.Link>
             {isLoggedIn
               ? (
@@ -40,41 +39,37 @@ export class NavBar extends Component {
                   <NavDropdown
                     title={(
                       <div xs={6} md={4}>
-                        {profile.image ? (<Image src={profile.image} roundedCircle width="40" height="40" />) : (profile.username) }
+                        {profile.image ? (<Image src={profile.image} roundedCircle width="40" height="40" />) : (profile.username)}
 
                       </div>
-                        )}
+                    )}
                     id="collasible-nav-dropdown"
                   >
                     {' '}
-                    <NavDropdown.Item>
-                      <Link to="/profile">
-                    profile
-                      </Link>
+                    <NavDropdown.Item href="/profile">
+                        profile
                     </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/create-article">
-                     new article
-                      </Link>
+                    <NavDropdown.Item href="/create-article">
+                        new article
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item onClick={() => {
-                    }}
+                    <NavDropdown.Item
+                      onClick={() => {
+                      }}
+                      href="/"
                     >
-                      <Link to="/">
-                       logout
-                      </Link>
+                        logout
                     </NavDropdown.Item>
                   </NavDropdown>
                 </>
               )
               : (
                 <>
-                  <Nav.Link>
-                    <Link to="/login">login</Link>
+                  <Nav.Link href="/login">
+                    login
                   </Nav.Link>
-                  <Nav.Link>
-                    <Link className=" btn btn-outline-primary" to="/signup">Get Started</Link>
+                  <Nav.Link className=" btn btn-outline-primary" href="/signup">
+                    Get Started
                   </Nav.Link>
                 </>
               )}
@@ -85,7 +80,7 @@ export class NavBar extends Component {
   }
 }
 NavBar.defaultProps = {
-  user: PropTypes.object,
+  user: {},
 };
 NavBar.propTypes = {
   user: PropTypes.object,

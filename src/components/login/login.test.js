@@ -115,7 +115,4 @@ describe('LOGIN TEST WITH MOUNT', () => {
   it('should render the whole page', () => {
     expect(wrapper.length).toEqual(1);
   });
-  it('should render the login header', () => {
-    expect(wrapper.find('RegistrationHeader').length).toEqual(1);
-  });
 });

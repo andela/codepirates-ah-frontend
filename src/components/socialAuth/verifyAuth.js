@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import { socialAuth } from '../../redux/actions/socialAuth/socialAuth';
-import Navbar from '../common/navbar/navbar';
 
 /**
  * @class Home
@@ -59,14 +58,13 @@ export class VerifyAuth extends Component {
     const { isLoggedIn } = this.props;
     if (!isLoggedIn) return (
       <>
-        <Navbar />
         {' '}
         <p>welcome back we are social authenticating</p>
       </>
     );
     return (
       <>
-        {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/login" /> }
+        {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/login" />}
       </>
     );
   }

@@ -1,0 +1,15 @@
+.searchArea{
+  width: auto;
+}
+
+@media all and (min-width: 600px) {
+  .searchArea{
+    // width: 10rem;
+  }
+}
+
+@media all and (min-width: 700px) {
+  .searchArea{
+    // width: 50rem;
+  }
+}
