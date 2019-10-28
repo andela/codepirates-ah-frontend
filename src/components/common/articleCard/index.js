@@ -2,17 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './articleCard.scss';
 import UserIcon from './userIcon';
-import RatingArticleCardComponent from '../ratingComponent';
+import RatingArticleCardComponent from '../ratingComponent/index';
 import ArticleCardTextComponent from './articleCardTextComponent';
 
 const optionImg = 'https://images.pexels.com/photos/1193743/pexels-photo-1193743.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
 
 const ArticleCard = ({
-  coverImage, description, title, views, readTime, userIcon, username, createdTime,
+  coverImage,
+  description,
+  title,
+  views,
+  readTime,
+  userIcon,
+  username,
+  createdTime,
+  slug,
+  claps,
+  rating,
 }) => (
   <div className="landingArticlecard" style={style}>
     <div className="landingArticleCard--image">
-      <img src={coverImage || optionImg} alt="" />
+      <a href={`/article/${slug}`}>
+        {' '}
+        <img src={coverImage || optionImg} alt="" />
+        {' '}
+      </a>
     </div>
     <div className="landingArticleCard--userRatingPart">
       <div className="landingArticleCard__userIconArea">
@@ -24,11 +38,17 @@ const ArticleCard = ({
         />
       </div>
       <div className="landingArticleCard__RatingIconArea">
-        <RatingArticleCardComponent />
+        <RatingArticleCardComponent placeholderRating={rating} />
       </div>
     </div>
     <div className="landingArticleCard--textPart">
-      <ArticleCardTextComponent description={description} title={title} views={views} />
+      <ArticleCardTextComponent
+        description={description}
+        title={title}
+        views={views}
+        claps={claps}
+        slug={slug}
+      />
     </div>
   </div>
 );
@@ -41,6 +61,9 @@ ArticleCard.propTypes = {
   userIcon: PropTypes.string,
   username: PropTypes.string,
   createdTime: PropTypes.string,
+  slug: PropTypes.string,
+  claps: PropTypes.number,
+  rating: PropTypes.number,
 };
 
 ArticleCard.defaultProps = {
@@ -52,6 +75,9 @@ ArticleCard.defaultProps = {
   createdTime: '',
   views: null,
   readTime: null,
+  slug: '',
+  claps: 0,
+  rating: 0,
 };
 
 export default ArticleCard;

@@ -18,6 +18,9 @@ const renderComponent = (args) => {
     })),
     message: '',
     loading: 0,
+    location: {
+      state: '',
+    },
     history: {},
   };
   const props = { ...defaultProps, ...args };

@@ -29,7 +29,7 @@ const Routes = () => (
       }}
     />
     <Route exact path="/" component={LandingPage} />
-    <Route exact path="/" component={Welcome} />
+    <Route exact path="/welcome" component={Welcome} />
     <Route exact path="/search" component={Search} />
     <Route exact path="/login" component={Login} />
     <Route exact path="/articles/create" component={CreateArticles} />

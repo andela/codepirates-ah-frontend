@@ -2,9 +2,7 @@ export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 export const VIEW_ARTICLE_SUCCESS = 'VIEW_ARTICLE_SUCCESS';
 export const VIEW_ARTICLE_ERROR = 'VIEW_ARTICLE_ERROR';
-export const BASE_URL = 'https://codepirates-ah-backend.herokuapp.com';
 export const BACKEND_URL = 'https://codepirates-ah-backend-staging.herokuapp.com';
-export const VERIFICATION_URL = 'https://codepirates-ah-backend-staging.herokuapp.com';
 export const VERIFICATION_SUCCESS = 'VERIFICATION_SUCCESS';
 export const VERIFICATION_FAILURE = 'VERIFICATION_FAILURE';
 
@@ -29,6 +27,13 @@ export const TWITTER_AUTH_FAIL = 'TWITTER_AUTH_FAIL';
 export const CREATE_ARTICLE_SUCCESS = 'CREATE_ARTICLE_SUCCESS';
 export const CREATE_ARTICLE_FAIL = 'CREATE_ARTICLE_FAIL';
 
+/** Single Article  actions */
+export const DELETE_ARTICLE_SUCCESS = 'DELETE_ARTICLE_SUCCESS';
+export const DELETE_ARTICLE_FAIL = 'DELETE_ARTICLE_FAIL';
+
+// rate article action types
+export const RATE_ARTICLE_SUCCESS = 'RATE_ARTICLE_SUCCESS';
+export const RATE_ARTICLE_FAIL = 'RATE_ARTICLE_FAIL';
 // landing page
 export const FETCH_ARTICLES_ON_LANDING_PAGE_SUCCESS = 'FETCH_ARTICLES_ON_LANDING_PAGE_SUCCES';
 export const FETCH_ARTICLES_ON_LANDING_PAGE_ERROR = 'FETCH_ARTICLES_ON_LANDING_PAGE_ERROR';

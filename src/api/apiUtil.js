@@ -3,17 +3,18 @@ import { toast } from 'react-toastify';
 export const handleResponse = async (response) => {
   const data = await response.json();
   if (response.ok) {
-    await toast.success(response.ok);
+    await toast.success(data.message);
     return data;
   }
   if (data.status === 'error') {
-    const error = await response.text();
-    toast.success(data.message);
-    return error;
+    await toast.error(data.message);
+    return data;
   }
-  return 'Network response was not ok.';
+  await toast.error(data.message);
+  return data;
 };
 
 export const handleError = async (error) => {
-  toast.error(error);
+  await toast.error('something went wrong, contact admin');
+  return error;
 };

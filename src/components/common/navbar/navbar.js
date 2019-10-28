@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {
   Nav, NavDropdown, Navbar, Image,
 } from 'react-bootstrap';
+import * as profileActions from '../../../redux/actions/profile/fetchProfile';
 import Search from '../search/search';
 import Logo from '../logo';
 
@@ -17,6 +19,15 @@ import Logo from '../logo';
  */
 
 export class NavBar extends Component {
+  /**
+   * @method componentDidMount
+   * @returns {boolean} changed state
+   */
+  async componentDidMount() {
+    if (!localStorage.getItem('token')) return;
+    await this.props.actions.fetchProfile();
+  }
+
   render() {
     const { user } = this.props;
     const { isLoggedIn, profile } = user;
@@ -84,10 +95,16 @@ NavBar.defaultProps = {
 };
 NavBar.propTypes = {
   user: PropTypes.object,
+  actions: PropTypes.object.isRequired,
 };
 export const mapStateToProps = ({ user }) => (
   {
     user,
   }
 );
-export default connect(mapStateToProps)(NavBar);
+export const mapDispatchToProps = (dispatch) => ({
+  actions: {
+    fetchProfile: bindActionCreators(profileActions.fetchProfile, dispatch),
+  },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

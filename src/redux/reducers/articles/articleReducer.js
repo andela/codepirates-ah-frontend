@@ -1,20 +1,8 @@
 import * as actionTypes from '../../actions/actionTypes';
 import initialState from '../../store/initialState';
 
-const viewArticle = (state = initialState, action) => {
+const ArticleReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.VIEW_ARTICLE_SUCCESS:
-      return {
-        ...state,
-        ...action.payload,
-        isArticleViewed: true,
-      };
-    case actionTypes.VIEW_ARTICLE_ERROR:
-      return {
-        ...state,
-        ...action.payload,
-        isArticleViewed: false,
-      };
     case actionTypes.DELETE_ARTICLE_SUCCESS:
       return { ...state, articleDeleted: true };
     case actionTypes.DELETE_ARTICLE_FAIL:
@@ -27,5 +15,4 @@ const viewArticle = (state = initialState, action) => {
       return state;
   }
 };
-
-export default viewArticle;
+export default ArticleReducer;

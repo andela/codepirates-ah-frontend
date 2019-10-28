@@ -72,12 +72,12 @@ export class Login extends Component {
     const {
       username, password, error, loading,
     } = this.state;
-    const { props } = this;
-    if (props.status === 200) {
+    const { location, message, status } = this.props;
+    if (status === 200) {
       return (
-        <Redirect to={{
+        <Redirect to={location.state ? { pathname: location.state.from.pathname } : {
           pathname: '/',
-          state: { message: props.message },
+          state: { message },
         }}
         />
       );

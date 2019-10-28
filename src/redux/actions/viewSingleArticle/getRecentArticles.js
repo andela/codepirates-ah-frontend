@@ -9,7 +9,7 @@ export const displayArticleActionError = (error) => ({
   payload: error,
 });
 
-export const getAllArticles = () => (dispatch) => fetch(`${actions.BASE_URL}/api/${actions.VERSION}/articles`)
+export const getAllArticles = () => (dispatch) => fetch(`${actions.BACKEND_URL}/api/${actions.VERSION}/articles`)
   .then((res) => res.json())
   .then((data) => {
     if (data.status === 200) {
