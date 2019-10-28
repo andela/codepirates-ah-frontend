@@ -1,0 +1,203 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container-fluid {
+  .landingPage--imagePart {
+    min-height: 400px;
+    background-image: url(https://images.pexels.com/photos/2747385/pexels-photo-2747385.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    background-size: cover;
+    .landingPage--header {
+      max-height: 100px;
+    }
+  }
+  .landingPage--searchPart {
+    .landingPage__searchArea {
+      .searchArea-card {
+        width: 70%;
+        margin: 20px auto;
+      }
+    }
+  }
+  .landingPage--belowSearchPart{
+    width: 80%;
+    margin: 0 auto;
+  }
+  .landingPage--bigArticleArea {
+    margin: 0 10em;
+    padding-top: 20px;
+    .landingPage__bigArticleAreaLeft {
+      .bigArticleAreaLeft-card {
+        width: 90%;
+        min-height: 300px;
+        margin: 0 auto;
+        a{
+          text-decoration: none;
+          color: black;
+        }
+      }
+    }
+    .landingPage__bigArticleAreaRight {
+      .bigArticleAreaRight-card {
+        width: 95%;
+        min-height: 300px;
+        margin: 0 auto;
+        .popularArea-articleCard-div{
+          a{
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+  .landingPage--popularArea {
+    margin: 0 10em;
+    .landingPage__popularAreaLeft {
+      padding: 0;
+      .popularAreaLeft-card {
+        padding-bottom: 50px;
+        width: 100%;
+        min-height: 1000px;
+        box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.05);
+        .popularArea__articlesArea {
+          .popularArea-articleCard-div {
+            margin: 0 auto;
+            width: 95%;
+            a{
+              text-decoration: none;
+              color: black;
+            }
+          }
+        }
+        .landingPage__moreArticles {
+          width: 40%;
+          margin: 0 auto;
+        }
+      }
+      .popularAreaRight-freeSpace {
+        width: 80%;
+        min-height: 170px;
+        margin: 0 auto;
+      }
+
+    }
+    .landingPage__popularAreaRight {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      .popularAreaRight-card {
+        width: 100%;
+        min-height: 600px;
+        margin: 0 auto;
+        padding-bottom: 50px;
+        box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.05);
+        .popularArea__articlesArea {
+
+          .popularArea-articleCard-div {
+            width: 95%;
+            margin: 0 auto;
+            a{
+              text-decoration: none;
+              color: black;
+            }
+          }
+        }
+        .landingPage__moreArticles {
+          width: 40%;
+          margin: 0 auto;
+        }
+      }
+      .popularAreaRight-freeSpace {
+        width: 80%;
+        min-height: 170px;
+        margin: 0 auto;
+      }
+      .popularAreaRight-links {
+        width: 80%;
+        margin: 0 auto;
+        min-height: 130px;
+      }
+    }
+  }
+  .landingPage--footer {
+    width: 100%;
+    .landingPage__footerArea {
+      width: 100%;
+      margin: 0 auto;
+      max-height: 90px;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .container-fluid {
+    .landingPage--imagePart {
+      max-height: 300px;
+    }
+    .landingPage--searchPart {
+      .landingPage__searchArea {
+        .searchArea-card {
+          width: 95%;
+        }
+      }
+    }
+    .landingPage--belowSearchPart{
+      width: 100%;
+      .landingPage__mostRecentTitle{
+        h2{
+          font-size: 18px;
+        }
+      }
+    }
+    .landingPage--bigArticleArea {
+      margin: 0;
+      .landingPage__bigArticleAreaLeft {
+        .bigArticleAreaLeft-card {
+          width: 100%;
+        }
+      }
+      .landingPage__bigArticleAreaRight {
+        .bigArticleAreaRight-card {
+          width: 100%;
+        }
+      }
+    }
+    .landingPage--popularArea {
+      margin: 0;
+      .landingPage__popularAreaLeft {
+        .popularAreaLeft-card {
+          width: 100%;
+          .popularArea__articlesArea {
+            .popularArea-articleCard-div {
+              width: 90%;
+            }
+          }
+        }
+      }
+      .landingPage__popularAreaRight {
+        .popularAreaRight-card {
+          width: 100%;
+          .popularArea__articlesArea {
+            .popularArea-articleCard-div {
+              width: 90%;
+              a{
+                text-decoration: none;
+              }
+            }
+          }
+        }
+        .popularAreaRight-freeSpace {
+          width: 100%;
+        }
+      }
+    }
+    .landingPage--footer {
+      .landingPage__footerArea {
+        width: 100%;
+      }
+    }
+  }
+}

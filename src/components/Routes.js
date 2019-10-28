@@ -9,8 +9,8 @@ import Login from './login';
 import Profile from './profile/profile';
 import ViewArticle from './article';
 import verifyAuth from './socialAuth/verifyAuth';
-
 import CreateArticles from './articles/createArticles/createArticles';
+import LandingPage from './landingPage';
 
 const user = localStorage.getItem('token');
 const Routes = () => (
@@ -23,6 +23,7 @@ const Routes = () => (
         return <Profile {...props} />;
       }}
     />
+    <Route exact path="/" component={LandingPage} />
     <Route exact path="/" component={Welcome} />
     <Route exact path="/login" component={Login} />
     <Route exact path="/articles/create" component={CreateArticles} />

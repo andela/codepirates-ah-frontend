@@ -6,7 +6,7 @@ import './viewArticle.scss';
 import star from '../../../public/assets/images/images/yellowStar.png';
 import blankStar from '../../../public/assets/images/images/blankRateStar.png';
 import userImage from '../../../public/assets/images/images/userIcon.png';
-import ArticleCard from './articleCard';
+import ArticleCard from '../common/articleCard';
 import coverImage from '../../../public/assets/images/nature.jpeg';
 
 export const paginate = (lists, pageNumber, pageSize) => {
@@ -106,8 +106,8 @@ export const RecentArticles = ({
           description={article.description}
           title={article.title}
           views={article.views}
-          readtime={article.readtime}
-          timeCreated={article.timeCreated}
+          readreadTime={article.readtime}
+          createdTime={article.timeCreated}
           username={article.username}
         />
       ))}

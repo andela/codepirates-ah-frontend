@@ -1,0 +1,15 @@
+.landingPageLinksDiv {
+  .landingPageLinksDive--upperLine {
+    width: 100%;
+    height: 1px;
+    background: black;
+    margin-bottom: 20px;
+  }
+  .landingPageLinksDive--links {
+    display: flex;
+    a {
+      color: black;
+      margin-right: 20px;
+    }
+  }
+}

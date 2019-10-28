@@ -17,7 +17,7 @@ export const failedLoginAction = (error) => {
   };
 };
 
-const loginAction = (input) => (dispatch) => fetch(`${actionsTypes.BASE_URL}/api/${actionsTypes.VERSION}/users/login`, {
+const loginAction = (input) => (dispatch) => fetch(`${actionsTypes.BACKEND_URL}/api/${actionsTypes.VERSION}/users/login`, {
   method: 'POST',
   headers: {
     'content-type': 'application/json',

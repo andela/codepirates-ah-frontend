@@ -12,7 +12,7 @@ export const failedCreateArticleAction = (error) => ({
   payload: error,
 });
 export const CreateArticleAction = (input) => (dispatch) => fetch(
-  'https://codepirates-ah-backend-staging.herokuapp.com/api/v1/articles',
+  `${actions.BACKEND_URL}/api/v1/articles`,
   {
     method: 'POST',
     headers: {

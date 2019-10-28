@@ -2,9 +2,9 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import style from './footer.scss';
 
 library.add(fab);
-
 /**
  * @description - FooterComponent
  * @param {object} props
@@ -12,7 +12,7 @@ library.add(fab);
  */
 const Footer = () => (
   <>
-    <footer className="footer dark container fixed-bottom ">
+    <footer className="footer dark container fixed-bottom " style={style}>
       <hr className="divider" />
       <div className="text-center mb-4 blockquote">
         <span>&copy; 2018 Authors Haven.</span>
@@ -23,5 +23,4 @@ const Footer = () => (
     </footer>
   </>
 );
-
 export default Footer;
