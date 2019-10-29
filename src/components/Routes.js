@@ -8,10 +8,10 @@ import Welcome from './welcome/welcome';
 import Login from './login';
 import Profile from './profile/profile';
 import verifyAuth from './socialAuth/verifyAuth';
+import SpecificUserArticles from './articles/allArticles/SpecificUserArticles';
 import CreateArticles from './articles/createArticles/createArticles';
 import LandingPage from './landingPage';
 import Search from './search/search';
-
 
 const user = localStorage.getItem('token');
 const Routes = () => (
@@ -29,6 +29,7 @@ const Routes = () => (
     <Route exact path="/search" component={Search} />
     <Route exact path="/login" component={Login} />
     <Route exact path="/articles/create" component={CreateArticles} />
+    <Route exact path="/articles/mine" component={SpecificUserArticles} />
     <Route exact path="/privacy" component={Privacy} />
     <Route exact path="/signup" component={Signup} />
     <Route path="/verify" component={EmailVerification} />

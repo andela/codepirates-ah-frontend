@@ -2,19 +2,25 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import { updateProfile, fetchProfile } from '../../redux/actions/profile/fetchProfile';
+import {
+  updateProfile,
+  fetchProfile,
+} from '../../redux/actions/profile/fetchProfile';
 import ProfileCard from './profileCard/profileCard';
 import ProfileSideBar from './profileSideBar/profileSideBar';
 import 'react-toastify/dist/ReactToastify.css';
 
 import './profile.scss';
 import ProfileBio from './profileBio/profileBio';
-
+import SpecificUserArticles from '../articles/allArticles/SpecificUserArticles';
 
 export class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = { bioEditMode: false, profileCardEditMode: false };
+    this.state = {
+      bioEditMode: false,
+      profileCardEditMode: false,
+    };
     this.previewImage = React.createRef();
   }
 
@@ -24,12 +30,13 @@ export class Profile extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.profile) {
+    if (nextProps.profile && nextProps.articles) {
       this.setState({
         bio: nextProps.profile.bio,
         username: nextProps.profile.username || nextProps.profile.userName,
         image: nextProps.profile.image,
         loading: nextProps.pending,
+        articles: nextProps.articles.length,
       });
     }
   }
@@ -50,7 +57,7 @@ export class Profile extends Component {
       return;
     }
     this.setState({ [name]: value });
-  }
+  };
 
   handleUpdateBio = (e) => {
     e.preventDefault();
@@ -58,7 +65,7 @@ export class Profile extends Component {
     return isEditEnabled
       ? this.setState({ bioEditMode: false })
       : this.setState({ bioEditMode: true });
-  }
+  };
 
   handleProfileCardUpdate = (e) => {
     e.preventDefault();
@@ -66,7 +73,7 @@ export class Profile extends Component {
     return isEditEnabled
       ? this.setState({ profileCardEditMode: false })
       : this.setState({ profileCardEditMode: true });
-  }
+  };
 
   readURL = (input) => {
     const reader = new FileReader();
@@ -76,15 +83,23 @@ export class Profile extends Component {
       node.style.cssText = `background-image: url(${e.target.result});`;
     };
     reader.readAsDataURL(input.files[0]);
-  }
+  };
 
   render() {
     const {
-      loading, image, username, bio, bioEditMode, profileCardEditMode,
+      loading,
+      image,
+      username,
+      bio,
+      bioEditMode,
+      profileCardEditMode,
+      articles,
     } = this.state;
     return (
       <>
-        <div className={classnames('ui', 'container', 'form', 'add', { loading })}>
+        <div
+          className={classnames('ui', 'container', 'form', 'add', { loading })}
+        >
           <div className="row">
             <div className="col-12 col-md-4">
               <ProfileCard
@@ -96,16 +111,28 @@ export class Profile extends Component {
                 onEditModeChange={this.handleProfileCardUpdate}
                 username={username || ''}
               />
-              <ProfileSideBar />
+
+              <ProfileSideBar articles={articles} />
             </div>
-            <div className="col-md-7 userProfileBio">
-              <ProfileBio
-                onFormSubmit={this.handleSubmit}
-                onInputChange={this.handleChange}
-                bioData={bio || ''}
-                bioEditMode={bioEditMode}
-                onUpdatingBio={this.handleUpdateBio}
-              />
+            <div className="col-md-7">
+              <div className="row">
+                <div
+                  className="col-12 profileBorder"
+                  style={{ marginBottom: '1rem' }}
+                >
+                  <ProfileBio
+                    onFormSubmit={this.handleSubmit}
+                    onInputChange={this.handleChange}
+                    bioData={bio || ''}
+                    bioEditMode={bioEditMode}
+                    onUpdatingBio={this.handleUpdateBio}
+                  />
+                </div>
+                <div className="col-12 profileBorder">
+                  <h2>My articles</h2>
+                  <SpecificUserArticles />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -125,6 +152,7 @@ const mapStateToProps = (state) => ({
   error: state.user.error,
   profile: state.user.profile,
   pending: state.user.profilePending,
+  articles: state.articles.data,
 });
 
 export default connect(

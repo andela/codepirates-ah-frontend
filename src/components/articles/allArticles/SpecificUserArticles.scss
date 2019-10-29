@@ -1,0 +1,55 @@
+.photo-cover {
+  height: 350px;
+}
+.landingArticleCard__RatingIconArea {
+  flex-basis: 50%;
+  padding-left: 20px;
+}
+.card-footer {
+  background-color: white;
+  border: none;
+  margin: -3px;
+}
+a.card-block {
+  color: black;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.card-title {
+  font-size: 30px;
+}
+.values {
+  display: inline-block;
+  margin: 3px;
+}
+.top-card {
+  height: 100%;
+  width: 100%;
+  margin: 8px;
+  border: none;
+  padding: 3px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+.claps {
+  float: right;
+}
+.rating {
+  float: right;
+  width: 30%;
+}
+.usersArticles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  margin: 0;
+
+}
+
+@media screen and (max-width: 450px) {
+  .usersArticles {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

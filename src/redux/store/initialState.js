@@ -12,6 +12,7 @@ export default {
   },
   articles: {
     popular: {},
+    isSpecifiUserArticlesViewed: false,
   },
   // this will contain our initial state object
   createdArticleData: {

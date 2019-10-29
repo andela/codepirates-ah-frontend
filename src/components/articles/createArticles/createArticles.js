@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
+
 import { connect } from 'react-redux';
 import './createArticles.scss';
 import 'react-quill/dist/quill.snow.css';
