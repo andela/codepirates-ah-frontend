@@ -19,4 +19,9 @@ export default {
   createdArticleData: {
     isArticleCreated: false,
   },
+  search: {
+    searchPending: false,
+    searchResults: {},
+    searchError: null,
+  },
 };

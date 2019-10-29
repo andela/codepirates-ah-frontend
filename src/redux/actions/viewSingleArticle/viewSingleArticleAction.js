@@ -6,7 +6,7 @@ export const viewArticleSuccess = (data) => ({
   payload: data,
 });
 
-export const viewArticle = (slug) => (dispatch) => fetch(`${actions.BASE_URL}/api/v1/articles/${slug}`, {
+export const viewArticle = (slug) => (dispatch) => fetch(`${actions.BACKEND_URL}/api/v1/articles/${slug}`, {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',

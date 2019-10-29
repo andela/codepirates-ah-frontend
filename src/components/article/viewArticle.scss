@@ -239,9 +239,6 @@ body {
     " . middleup middleup middleup middleup middleup middleup . "
     " . middleup middleup middleup middleup middleup middleup . "
     " . middleup middleup middleup middleup middleup middleup . "
-    " . middleup middleup middleup middleup middleup middleup . "
-    " . middleup middleup middleup middleup middleup middleup . "
-    " . middleup middleup middleup middleup middleup middleup . "
     " . middledown middledown middledown middledown  middledown middledown . "
     " . middledown middledown middledown middledown  middledown middledown . "
     " . middledown middledown middledown middledown  middledown middledown . "
@@ -542,12 +539,12 @@ body {
         }
         .article-events{
           font-size: 15px;
-          margin-top: 10px;
+          margin-top: 5px;
         }
       }
       .left-side{
         // border: 1px solid red;
-        width: 180%;
+        width: auto;
         margin-left: -50px;
         .icon{
           margin: 2px;
@@ -555,7 +552,6 @@ body {
   
       }
       .right-side{
-        width: 180%;
         width: auto;
         align-items: flex-end;
       }

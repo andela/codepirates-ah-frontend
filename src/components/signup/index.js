@@ -7,22 +7,21 @@ import commonStyle from '../common/common.scss';
 import TextInput from '../common/textInput';
 import SubmitButton from '../common/submitButton';
 import OrLine from '../common/orLine';
-import RegistrationHeader from '../common/registrationHeader';
 import { signupAction } from '../../redux/actions/signup/signupAction';
 import SwitchToSignupOrLogin from '../common/switchToSignupOrLogin';
 import loginSvgPath from '../../../public/assets/images/loginSvg.svg';
 import SocialButtons from '../SocialButtons/SocialButton';
 
 export class Signup extends Component {
-    state={
-      firstname: '',
-      lastname: '',
-      email: '',
-      username: '',
-      password: '',
-      errors: {},
-      loading: false,
-    }
+  state = {
+    firstname: '',
+    lastname: '',
+    email: '',
+    username: '',
+    password: '',
+    errors: {},
+    loading: false,
+  }
 
   onSubmit = (event) => {
     event.preventDefault();
@@ -69,7 +68,7 @@ export class Signup extends Component {
     }
   }
 
-  onChange =(e) => {
+  onChange = (e) => {
     const { errors } = this.state;
     if (errors[e.target.name]) {
       delete errors[e.target.name];
@@ -92,7 +91,6 @@ export class Signup extends Component {
     return (
       <div className="container registration" style={commonStyle}>
         <ToastContainer />
-        <RegistrationHeader title="Sign Up" />
         <div className="row registration--middle-row">
           <div className="col-md-6 registration--middle-row__left-part">
             <div className="registration__form-div">

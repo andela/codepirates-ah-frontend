@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './viewArticle.scss';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import {
   LeftSideBar, ArticleContent, RecentArticles, RightSideBar, paginate,
 } from './viewArticleComponents';
@@ -28,9 +29,11 @@ export class ViewArticle extends Component {
       numberOfArticles: 0,
       current: 1,
       pageSize: 2,
+      loading: false,
     }
 
     componentDidMount() {
+      this.setState({ loading: true });
       const {
         viewArticle: viewSingleArticle,
         getAllArticles: articles,
@@ -54,6 +57,7 @@ export class ViewArticle extends Component {
           paginatedArticles: currentArticles,
         });
       }
+      this.setState({ loading: false });
     }
 
     onChange = (page) => {
@@ -69,7 +73,7 @@ export class ViewArticle extends Component {
 
     render() {
       const {
-        getArticle: { data }, current, numberOfArticles, paginatedArticles,
+        getArticle: { data }, current, numberOfArticles, paginatedArticles, loading,
       } = this.state;
 
       const LeftSideStyles = {
@@ -78,33 +82,43 @@ export class ViewArticle extends Component {
       const profilePicStyles = {
         marginBottom: '10px',
       };
-
       return (
         <>
-          <div className="container">
-            <div
-              className="viewArticleContainer"
-            >
-              <LeftSideBar
-                firstname={data.author.firstname}
-                lastname={data.author.lastname}
-                profilePic={data.author.image}
-                LeftSideStyles={LeftSideStyles}
-                profilePicStyles={profilePicStyles}
-
-              />
-              <ArticleContent title={data.title} description={data.description} body={data.body} />
-              <RecentArticles
-                onChange={this.onChange}
-                current={current}
-                total={numberOfArticles}
-                pageSize={2}
-                articles={paginatedArticles}
-              />
-              <RightSideBar readtime={data.readtime} createdAt={data.createdAt} />
-            </div>
-
+          <div className={classnames('ui', 'form', 'container', { loading })}>
+            { data.author.firstname !== ''
+            && (
+              <div
+                className="viewArticleContainer"
+              >
+                <LeftSideBar
+                  firstname={data.author.firstname}
+                  lastname={data.author.lastname}
+                  profilePic={data.author.image}
+                  LeftSideStyles={LeftSideStyles}
+                  profilePicStyles={profilePicStyles}
+                />
+                <ArticleContent
+                  title={data.title}
+                  description={data.description}
+                  body={data.body}
+                  onChange={this.onChange}
+                  current={current}
+                  total={numberOfArticles}
+                  pageSize={2}
+                  articles={paginatedArticles}
+                />
+                <RecentArticles
+                  onChange={this.onChange}
+                  current={current}
+                  total={numberOfArticles}
+                  pageSize={2}
+                  articles={paginatedArticles}
+                />
+                <RightSideBar readtime={data.readtime} createdAt={data.createdAt} />
+              </div>
+            )}
           </div>
+
         </>
 
       );
@@ -117,7 +131,7 @@ ViewArticle.propTypes = {
   getAllArticles: PropTypes.func,
   articles: PropTypes.object,
   data: PropTypes.array,
-  allArticle: PropTypes.number,
+  allArticle: PropTypes.string,
   match: PropTypes.object,
 };
 ViewArticle.defaultProps = {

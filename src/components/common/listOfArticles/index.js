@@ -8,7 +8,7 @@ export default function ListOfArticles({ articles, limitArticlesNumber }) {
     return (
       <a
         key={article && article.slug}
-        href={`/articles/${article
+        href={`/article/${article
           && article.slug}`}
       >
         <ArticleCard

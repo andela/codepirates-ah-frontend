@@ -1,6 +1,7 @@
 import React from 'react';
 import Pagination from 'rc-pagination';
 import PropTypes from 'prop-types';
+import ReactHtmlParser from 'react-html-parser';
 import Pages from 'lodash';
 import './viewArticle.scss';
 import star from '../../../public/assets/images/images/yellowStar.png';
@@ -44,7 +45,7 @@ export const LeftSideBar = ({
 );
 
 export const ArticleContent = ({ title, description, body }) => (
-  <div className="middle-up">
+  <div className="middle-up" style={{ paddingTop: '0px' }}>
     <div className="article-part">
       <div className="article-title">
         <h1>{title}</h1>
@@ -55,7 +56,7 @@ export const ArticleContent = ({ title, description, body }) => (
         </h4>
       </div>
       <div className="article-paragraph">
-        {body}
+        {ReactHtmlParser(body)}
       </div>
     </div>
     <div className="middle-line" />
