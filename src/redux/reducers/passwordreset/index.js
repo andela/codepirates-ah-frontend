@@ -1,13 +1,15 @@
-import { RESET_PASSWORD_SUCCESS } from '../../actions/actionTypes';
+import { RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAILURE } from '../../actions/actionTypes';
 import initialState from '../../store/initialState';
 
-export const passwordReset = (state = initialState.passwordReset, action) => {
+export const passwordResetReducer = (state = initialState.passwordReset, action) => {
   switch (action.type) {
     case RESET_PASSWORD_SUCCESS:
-      return { ...state, ...action.update };
+      return { ...state, success: action.payload, error: '' };
+    case RESET_PASSWORD_FAILURE:
+      return { ...state, ...action.payload };
     default:
       return state;
   }
 };
 
-export default passwordReset;
+export default passwordResetReducer;

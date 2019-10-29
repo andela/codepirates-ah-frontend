@@ -23,4 +23,11 @@ export default {
     searchResults: {},
     searchError: null,
   },
+  passwordReset: {
+    success: {
+      subject: '',
+      message: '',
+    },
+    error: '',
+  },
 };

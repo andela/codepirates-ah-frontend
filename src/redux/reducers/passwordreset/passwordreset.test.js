@@ -1,7 +1,4 @@
-// import React from 'react';
-// import renderer from 'react-test-renderer';
-
-import passwordReset from '.';
+import passwordResetReducer from '.';
 import { RESET_PASSWORD_SUCCESS } from '../../actions/actionTypes';
 
 let state;
@@ -11,12 +8,12 @@ describe('Password reset reducer', () => {
   }));
   describe('test response message setting', () => {
     it('should return initial state if unknown type ', () => {
-      const newState = passwordReset(state, { type: 'unknown', update: {} });
+      const newState = passwordResetReducer(state, { type: 'unknown', payload: {} });
       expect(newState).toEqual(state);
     });
     it('should set response message to "email sent"', () => {
-      const newState = passwordReset(state, { type: RESET_PASSWORD_SUCCESS, update: { message: 'email sent' } });
-      expect(newState).toEqual({ message: 'email sent' });
+      const newState = passwordResetReducer(state, { type: RESET_PASSWORD_SUCCESS, payload: { message: 'email sent', subject: 'mail sent' } });
+      expect(newState.success.message).toEqual('email sent');
     });
   });
 });

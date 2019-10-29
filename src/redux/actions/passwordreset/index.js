@@ -1,37 +1,55 @@
-import { RESET_PASSWORD_SUCCESS } from '../actionTypes';
+import { toast } from 'react-toastify';
+import {
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAILURE,
+  BACKEND_URL,
+  VERSION,
+} from '../actionTypes';
+import {
+  linkSent,
+  resetSuccess,
+} from '../../../helpers/passwordResetConstants';
 
-export const responseMessage = (message, title) => ({
+export const successfulResetRequest = (message, subject) => ({
   type: RESET_PASSWORD_SUCCESS,
-  update: { message, title },
+  payload: { message, subject },
 });
 
-export const resetRequest = (parent) => {
-  const userData = parent.state;
-  const { location } = parent.props;
-  const token = new URLSearchParams(location.search).get('token');
-  const [url, method] = location.search
-    ? [`/${token}`, 'put']
-    : ['', 'post'];
-  return fetch(
-    `https://codepirates-ah-backend.herokuapp.com/api/v1/users/reset${url}`,
-    {
-      method,
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(state),
-      mode: 'cors',
+export const failedResetRequest = (error) => ({
+  type: RESET_PASSWORD_FAILURE,
+  payload: { error },
+});
+
+export const fetchData = (body) => {
+  const { token } = body;
+  const [url, method] = token ? [`/${token}`, 'put'] : ['', 'post'];
+  return fetch(`${BACKEND_URL}/api/${VERSION}/users/reset${url}`, {
+    method,
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
-  );
-  const json = await res.json();
-  const msg = await json.message;
-  dispatch(formData(email, password, confirmPassword));
-  dispatch(responseMessage(res.ok ? detail : msg));
-  dispatch(summary(type));
-  if (res.ok) {
-    history.push('/response');
-  }
+    body: JSON.stringify(body),
+    mode: 'cors',
+  });
 };
 
+const resetPasswordAction = (body, promise) => async (dispatch) => {
+  const { email, token } = body;
+  const [subject, msg] = token
+    ? ['Reset Successful!', resetSuccess]
+    : ['Reset Link Sent!', linkSent(email)];
+  const json = await promise.json();
+  const { message } = json;
+  let response;
+  if (json.status === 200) {
+    toast.success(message);
+    response = dispatch(successfulResetRequest(msg, subject));
+  } else {
+    toast.error(message);
+    response = dispatch(failedResetRequest(message));
+  }
+  return response;
+};
 
+export default resetPasswordAction;

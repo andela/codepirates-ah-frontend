@@ -1,12 +1,12 @@
 import React from 'react';
 
-export const sent = (email) => {
+export const linkSent = (email) => {
   const makeHref = (srv) => `https://${srv}`;
   const mailer = /gmail/.test(email)
     ? 'mail.google.com'
-    : `${email.slice(email.indexOf('@'))}/login`;
+    : `${email.split('@')[1]}/login`;
   const link = (
-    <a href={makeHref(mailer)} target="new">
+    <a href={makeHref(mailer)} target="blank">
       {email}
     </a>
   );
@@ -21,9 +21,9 @@ export const sent = (email) => {
   );
 };
 
-export const passwordReset = (
+export const resetSuccess = (
   <p>
-      Your password has been successfully reset,
+    Your password has been successfully reset,
     {' '}
     <a href="/login">login?</a>
   </p>

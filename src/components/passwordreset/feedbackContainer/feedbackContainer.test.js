@@ -9,17 +9,17 @@ import FeedBack from './index';
 const mockStore = configureMockStore();
 const store = mockStore({
   passwordReset: {
-    message: 'mikr',
-    title: 'email sent',
+    success: {
+      message: 'mikr',
+      subject: 'email sent',
+    },
   },
 });
 
-const [message, title] = new Array(2).fill(jest.fn());
-
-const shallowSetup = () => {
+const feedBackFunc = () => {
   const props = {
-    message,
-    title,
+    message: '',
+    subject: '',
   };
   const enzymeWrapper = mount(
     <Provider store={store}>
@@ -34,7 +34,7 @@ const shallowSetup = () => {
 
 describe('<FeedBackContainer /> rendered', () => {
   it('should render the tick icon', () => {
-    const { enzymeWrapper } = shallowSetup();
+    const { enzymeWrapper } = feedBackFunc();
     expect(enzymeWrapper.find('.tick').exists()).toBe(true);
   });
 });
