@@ -1,0 +1,132 @@
+// @import '../../resetpassword/base.scss';
+@mixin fonts($size: 1.5rem) {
+  font: {
+    family: Roboto;
+    style: normal;
+    weight: 300;
+    size: $size;
+  }
+}
+
+.styles {
+  text-align: center;
+  .body {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    p {
+      @include fonts();
+      position: relative;
+      width: 45vw;
+      margin: 8vh auto 8vh auto;
+      text-align: center;
+      height: fit-content;
+    }
+    h2 {
+      @include fonts(3.8vw);
+      position: relative;
+      margin-top: 9.3vh;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .hr {
+      position: relative;
+      width: 45vw;
+      height: 0px;
+      margin-left: 50%;
+      transform: translateX(-50%);
+      margin-top: 6vh;
+      border: 1px solid #c4c4c4;
+    }
+    .tick {
+      position: relative;
+      height: 22.7vh;
+      margin-top: 9vh;
+    }
+    form {
+      position: relative;
+      margin: 6vh auto;
+      width: 26vh;
+      text-align: left;
+      z-index: 1;
+      label {
+        @include fonts(2vh);
+        position: relative;
+        width: 100%;
+      }
+      input {
+        @include fonts(24px);
+        position: relative;
+        width: 100%;
+        height: 5.5vh;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        box-sizing: border-box;
+        border-radius: 5px;
+        text-indent: 2%;
+      }
+      .field {
+        margin: auto;
+      }
+      .field div p {
+        display: none !important;
+      }
+      .error {
+        text-align: center;
+        color: red;
+        height: 4vh;
+        padding: 1.2vh auto;
+        font-size: 1.4vh;
+        // width: 140%;
+      }
+      .submit-btn {
+        position: relative;
+        margin: auto auto 12vh;
+        width: 100%;
+        height: 6vh;
+        border: 1px solid #2f80ed;
+        box-sizing: border-box;
+        border-radius: 35px;
+        font-size: 2vh;
+        color: #2f80ed;
+      }
+    }
+    :focus {
+      outline: none;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .styles {
+    .body {
+      h2 {
+        @include fonts(24px);
+        margin: 3vh auto;
+      }
+      .tick {
+        margin-top: 7vh;
+        height: 18vh;
+      }
+      p {
+        @include fonts(1rem);
+        width: 60vw;
+      }
+      .hr {
+        width: 60vw;
+      }
+      form input {
+        @include fonts(1rem);
+      }
+    }
+  }
+}
+.navbar {
+  background: white !important;
+}
+//spread out footer
+.divider {
+  position: relative;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}

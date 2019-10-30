@@ -3,6 +3,7 @@ import user from './user/userReducer';
 import ArticleReducer from './articles/article.reducer';
 import articles from './landingPage';
 import searchReducer from './search/searchReducer';
+import passwordResetReducer from './passwordreset';
 
 export default {
   userRegistrationData: signupReducer,
@@ -10,4 +11,5 @@ export default {
   createdArticleData: ArticleReducer,
   articles,
   search: searchReducer,
+  passwordReset: passwordResetReducer,
 };

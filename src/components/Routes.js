@@ -13,6 +13,10 @@ import CreateArticles from './articles/createArticles/createArticles';
 import LandingPage from './landingPage';
 import Search from './search/search';
 
+
+import ResetRequest from './passwordreset';
+import Feedback from './passwordreset/feedbackContainer';
+
 const user = localStorage.getItem('token');
 const Routes = () => (
   <Switch>
@@ -36,6 +40,8 @@ const Routes = () => (
     <Route exact path="/google/social-login" component={verifyAuth} />
     <Route exact path="/twitter/social-login" component={verifyAuth} />
     <Route exact path="/facebook/social-login" component={verifyAuth} />
+    <Route path={/reset/} component={ResetRequest} />
+    <Route exact path="/response" component={Feedback} />
     <Route component={NotFound} />
   </Switch>
 );

@@ -100,7 +100,7 @@ export class Login extends Component {
                 <TextInput type="password" label="Password" name="password" value={password} onChange={this.onChange} error={error} />
                 <SubmitButton value="Login" />
               </form>
-              <a href="/resetrequest">Forgot password ?</a>
+              <a href="/reset">Forgot password ?</a>
             </div>
             <OrLine />
           </div>
