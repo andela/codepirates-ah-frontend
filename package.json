@@ -18,7 +18,6 @@
     "lint2": "eslint --ignore-path .gitignore .",
     "lint3": "npm run lint2 -- --fix"
   },
-  "proxy": "http://localhost:3000",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andela/codepirates-ah-frontend.git"
@@ -84,6 +83,7 @@
     "image-webpack-loader": "^6.0.0",
     "isomorphic-fetch": "^2.2.1",
     "joi-browser": "^13.4.0",
+    "lodash": "^4.17.15",
     "mdbreact": "^4.21.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
@@ -91,10 +91,13 @@
     "nyc": "^14.1.1",
     "prop-types": "^15.7.2",
     "query-string": "^6.8.3",
+    "rc-pagination": "^1.20.9",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.9.0",
     "react-floating-label-input": "^4.2.1",
+    "react-html-parser": "^2.0.2",
+    "react-paginate": "^6.3.0",
     "react-quill": "^1.3.3",
     "react-rating": "^2.0.0",
     "react-redux": "^7.1.1",

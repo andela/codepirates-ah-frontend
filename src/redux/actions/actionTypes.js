@@ -1,6 +1,10 @@
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
+export const VIEW_ARTICLE_SUCCESS = 'VIEW_ARTICLE_SUCCESS';
+export const VIEW_ARTICLE_ERROR = 'VIEW_ARTICLE_ERROR';
+export const BASE_URL = 'https://codepirates-ah-backend.herokuapp.com';
 export const BACKEND_URL = 'https://codepirates-ah-backend-staging.herokuapp.com';
+export const VERIFICATION_URL = 'https://codepirates-ah-backend-staging.herokuapp.com';
 export const VERIFICATION_SUCCESS = 'VERIFICATION_SUCCESS';
 export const VERIFICATION_FAILURE = 'VERIFICATION_FAILURE';
 
@@ -13,7 +17,6 @@ export const FETCH_PROFILE_ERROR = 'FETCH_PROFILE_ERROR';
 export const UPDATE_PROFILE_PENDING = 'UPDATE_PROFILE_PENDING';
 export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
 export const UPDATE_PROFILE_ERROR = 'UPDATE_PROFILE_ERROR';
-
 /** Social auth actions */
 export const GOOGLE_AUTH_SUCCESS = 'GOOGLE_AUTH_SUCCESS';
 export const FACEBOOK_AUTH_SUCCESS = 'FACEBOOK_AUTH_SUCCESS';

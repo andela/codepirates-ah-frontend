@@ -7,6 +7,7 @@ import EmailVerification from './emailVerification/emailVerification';
 import Welcome from './welcome/welcome';
 import Login from './login';
 import Profile from './profile/profile';
+import ViewArticle from './article';
 import verifyAuth from './socialAuth/verifyAuth';
 import SpecificUserArticles from './articles/allArticles/SpecificUserArticles';
 import CreateArticles from './articles/createArticles/createArticles';
@@ -35,6 +36,7 @@ const Routes = () => (
     <Route exact path="/articles/create" component={CreateArticles} />
     <Route exact path="/articles/mine" component={SpecificUserArticles} />
     <Route exact path="/privacy" component={Privacy} />
+    <Route exact path="/article/:slug" component={ViewArticle} />
     <Route exact path="/signup" component={Signup} />
     <Route path="/verify" component={EmailVerification} />
     <Route exact path="/google/social-login" component={verifyAuth} />

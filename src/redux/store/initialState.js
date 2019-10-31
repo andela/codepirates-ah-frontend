@@ -10,11 +10,13 @@ export default {
     updateProfileSuccess: {},
     updateProfileError: null,
   },
+  viewArticle: {
+    isArticleViewed: false,
+  },
   articles: {
     popular: {},
     isSpecifiUserArticlesViewed: false,
   },
-  // this will contain our initial state object
   createdArticleData: {
     isArticleCreated: false,
   },

@@ -1,0 +1,215 @@
+@media screen and (min-width: 450px){
+    .wrapperGrid{
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-areas: 
+        "upper upper upper upper upper"
+        "middleLeft middleLeft middleLeft middleRight middleRight"
+        "middleLeft middleLeft middleLeft middleRight middleRight"
+        "middleLeft middleLeft middleLeft middleRight middleRight"
+        "middleLeft middleLeft middleLeft middleRight middleRight"
+        "middleLeft middleLeft middleLeft middleRight middleRight"
+        "middleLeft middleLeft middleLeft middleRight middleRight"
+        "lower lower lower lower lower";
+
+        .landingArticleCardRating--stars{
+            font-size: 11px;
+        }
+        .middle-left{
+            .middle-left-content{
+                display: flex;
+                .form-div{
+                    flex-basis: 100%;
+                    .field{
+                        width: 60%;
+                        margin: 0 auto;
+                    };
+                    .submit-div{
+                     width: 60%
+                    }
+                }
+                a{
+                   margin-left: 120px;
+                }
+                .or-div{
+                    flex-basis: 0%;
+                    display: block;
+                    margin: -50px auto auto -100px ;
+                    .line{
+                        height: 400px;
+                        width: 1px;
+                    }
+                    .line-one{
+                        display: none;
+                    }
+                    .line-two{
+                        margin: 0 auto;
+                    }
+                    .or{
+                        margin: 0 20px;
+                    }
+                }
+            }
+        }
+        .middle-right{
+            .middle-right-content{
+                text-align: start;
+                margin:0px 0 0 -80px;
+                padding: 0px;
+                 .social-btn-div {
+                font-size: 12px;
+            }
+            .msg-svg{
+                display: flex;
+                .message{
+                    margin-left: 70px; 
+                    font-size: 10px
+                }
+                .Login-svg{
+                    margin:10px 80px 0 0; 
+                    .svg{
+                        &:hover{
+                            background: #fff;
+                        }
+                    }
+                }
+            }
+            }
+        }
+    }
+}
+@media screen and (min-width: 700px){
+    .wrapperGrid{
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-areas: 
+        "upper upper upper upper upper"
+        "upper upper upper upper upper"
+        "middleLeft middleLeft middleLeft middleRight middleRight"
+        "middleLeft middleLeft middleLeft middleRight middleRight"
+        "middleLeft middleLeft middleLeft middleRight middleRight"
+        "middleLeft middleLeft middleLeft middleRight middleRight"
+        "middleLeft middleLeft middleLeft middleRight middleRight"
+        "middleLeft middleLeft middleLeft middleRight middleRight"
+        "lower lower lower lower lower"
+        "lower lower lower lower lower";
+        .upper{
+            margin-top: 20px;
+            .authors-haven{
+                margin-left: -420px;
+            }
+            .sign{
+                margin-left: 40px;
+            }
+        }
+        .middle-right{
+            .middle-right-content{
+                .msg-svg{
+                    display: flex;
+                    .message{
+                        margin-left: 70px; 
+                        font-size: 10px
+                    }
+                    .Login-svg{
+                        margin:10px 80px 0 0; 
+                        .svg{
+                            &:hover{
+                                background: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 1024px){
+    .wrapperGrid{
+        .upper{
+            margin-top: 20px;
+            .authors-haven{
+                margin-left: -510px;
+            }
+            .sign{
+                margin-left: 40px;
+            }
+        }
+        .middle-left{
+            .middle-left-content{
+                .form-div{
+                    flex-basis: 80%;
+                    .field{
+                        width: 50%;
+                        margin: 0 auto;
+                    };
+                    .submit-div{
+                     width: 50%
+                    }
+                }
+                a{
+                    margin-left: 170px;
+                }
+                .or-div{
+                    margin-left: -80px; 
+                }
+            }
+        }
+        .middle-right{
+            .middle-right-content{
+                .social-btn-div {
+                    width: 50%
+                }
+                .msg-svg{
+                    display: flex;
+                    .message{
+                        margin-left: 118px; 
+                        font-size: 10px;
+                    }
+                    .Login-svg{
+                        margin:10px 120px 0 0; 
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1440px){
+    .wrapperGrid{
+        .upper{
+            margin-top: 20px;
+            .authors-haven{
+                margin-left: -1100px;
+            }
+            .sign{
+                margin-left: -40px;
+            }
+        }
+        .middle-left{
+            .middle-left-content{
+                .form-div{
+                    flex-basis: 60%;
+                }
+                .or-div{
+                    margin-left: -120px; 
+                }
+            }
+        }
+        .middle-right{
+            .middle-right-content{
+                .social-btn-div {
+                    width: 40%;
+                    margin-left: 70px;
+                }
+                .msg-svg{
+                    width: 50%;
+                    .message{
+                        font-size: 15px;
+                        margin-left: 70px; 
+                    }
+                    .Login-svg{
+                        margin:20px 30px 0 0; 
+                    }
+                }
+            }
+        }
+    }
+}
