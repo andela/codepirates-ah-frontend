@@ -12,13 +12,19 @@ import coverImage from '../../../public/assets/images/nature.jpeg';
 
 export const paginate = (lists, pageNumber, pageSize) => {
   const startIndex = (pageNumber - 1) * pageSize;
-  return Pages(lists).slice(startIndex).take(pageSize).value();
+  return Pages(lists)
+    .slice(startIndex)
+    .take(pageSize)
+    .value();
 };
 
 export const LeftSideBar = ({
-  firstname, lastname, profilePic, LeftSideStyles, profilePicStyles,
+  firstname,
+  lastname,
+  profilePic,
+  LeftSideStyles,
+  profilePicStyles,
 }) => (
-
   <div className="left-side">
     <div className="icon" style={LeftSideStyles}>
       <div style={profilePicStyles}>
@@ -29,7 +35,9 @@ export const LeftSideBar = ({
           height="40px"
         />
       </div>
-      <a href="/users/follow" className="btn btn-outline-primary">Follow</a>
+      <a href="/users/follow" className="btn btn-outline-primary">
+        Follow
+      </a>
     </div>
     <div className="userprofilename">
       <p>
@@ -51,13 +59,9 @@ export const ArticleContent = ({ title, description, body }) => (
         <h1>{title}</h1>
       </div>
       <div className="article-description">
-        <h4>
-          {description}
-        </h4>
+        <h4>{description}</h4>
       </div>
-      <div className="article-paragraph">
-        {ReactHtmlParser(body)}
-      </div>
+      <div className="article-paragraph">{ReactHtmlParser(body)}</div>
     </div>
     <div className="middle-line" />
     <div className="article-events">
@@ -77,7 +81,7 @@ export const ArticleContent = ({ title, description, body }) => (
       <div className="M">
         <p>
           <span>154</span>
-comments
+          comments
         </p>
         <div className="plus-circle">
           <i className="fas fa-plus-circle" />
@@ -103,6 +107,7 @@ export const RecentArticles = ({
     <div className="popular-div">
       {articles.map((article) => (
         <ArticleCard
+          key={article.slug}
           coverImage={coverImage}
           description={article.description}
           title={article.title}
@@ -114,7 +119,12 @@ export const RecentArticles = ({
       ))}
     </div>
     <div className="pagination-div">
-      <Pagination onChange={onChange} current={current} total={total} pageSize={2} />
+      <Pagination
+        onChange={onChange}
+        current={current}
+        total={total}
+        pageSize={2}
+      />
     </div>
   </div>
 );
@@ -123,32 +133,17 @@ export const RightSideBar = ({ readtime, createdAt }) => (
   <div className="right-side" style={{ marginLeft: 'auto' }}>
     <div className="rating-pub-read-time">
       <p>
-Published: &nbsp;
+        Published: &nbsp;
         <span>{createdAt}</span>
       </p>
       <p>{readtime}</p>
     </div>
     <div className="article-rates">
       <div className="rate-stars">
-      Rating:
-        <img
-          src={star}
-          alt="yellow rating start"
-          height="12px"
-          width="12px"
-        />
-        <img
-          src={star}
-          alt="yellow rating start"
-          height="12px"
-          width="12px"
-        />
-        <img
-          src={star}
-          alt="yellow rating start"
-          height="12px"
-          width="12px"
-        />
+        Rating:
+        <img src={star} alt="yellow rating start" height="12px" width="12px" />
+        <img src={star} alt="yellow rating start" height="12px" width="12px" />
+        <img src={star} alt="yellow rating start" height="12px" width="12px" />
         <img
           src={blankStar}
           alt="blankrating start"
@@ -178,16 +173,16 @@ ArticleContent.defaultProps = {
 };
 
 RecentArticles.propTypes = {
-  onChange: PropTypes.string,
-  current: PropTypes.string,
-  total: PropTypes.string,
-  articles: PropTypes.string,
+  onChange: PropTypes.func,
+  current: PropTypes.number,
+  total: PropTypes.number,
+  articles: PropTypes.array,
 };
 RecentArticles.defaultProps = {
-  onChange: '',
-  current: '',
-  total: '',
-  articles: '',
+  onChange: () => ({}),
+  current: 0,
+  total: 0,
+  articles: [],
 };
 RightSideBar.propTypes = {
   readtime: PropTypes.string,

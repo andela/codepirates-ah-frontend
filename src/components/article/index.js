@@ -139,7 +139,7 @@ ViewArticle.defaultProps = {
   getArticle: '',
   getAllArticles: '',
   articles: '',
-  data: '',
+  data: [],
   allArticle: '',
   match: '',
 };
