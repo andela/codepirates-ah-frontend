@@ -10,11 +10,13 @@ import searchReducer from './search/searchReducer';
 import passwordResetReducer from './passwordreset';
 import comments from './commentArticle';
 import updateArticleReducer from './updateArticle';
+import bookmarks from './bookmarks/bookmarksReducers';
 
 export default {
   userRegistrationData: signupReducer,
   viewArticle,
   articles,
+  bookmarks,
   user,
   bookmark,
   createdArticleData: ArticleReducer,

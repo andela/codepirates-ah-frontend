@@ -16,6 +16,7 @@ import CreateArticles from './articles/createArticles/createArticles';
 import LandingPage from './landingPage';
 import Search from './search/search';
 import UpdateArticles from './update';
+import bookmarks from './bookmark/bookmark';
 
 import ResetRequest from './passwordreset';
 import Feedback from './passwordreset/feedbackContainer';
@@ -52,6 +53,7 @@ const Routes = () => (
       }}
     />
     <Route exact path="/logout" component={Logout} />
+    <Route exact path="/bookmarks" component={bookmarks} />
     <Route exact path="/articles/create" component={CreateArticles} />
     <Route exact path="/articles/mine" component={SpecificUserArticles} />
     <Route exact path="/privacy" component={Privacy} />

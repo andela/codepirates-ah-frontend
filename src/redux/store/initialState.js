@@ -20,6 +20,9 @@ export default {
     bookmarkSuccess: '',
     bookmarkError: null,
   },
+  bookmarks: {
+    myBookmarks: {},
+  },
   articles: {
     popular: {},
     isSpecifiUserArticlesViewed: false,
