@@ -118,7 +118,7 @@ export class Profile extends Component {
               <div className="row">
                 <div
                   className="col-12 profileBorder"
-                  style={{ marginBottom: '1rem' }}
+                  style={{ marginBottom: '5rem' }}
                 >
                   <ProfileBio
                     onFormSubmit={this.handleSubmit}
