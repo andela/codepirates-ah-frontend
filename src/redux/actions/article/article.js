@@ -31,7 +31,7 @@ export const postRatings = (slug, rate) => async (dispatch) => {
   const data = await postApi('PUT', `rate/${slug}`, given);
 
   if (data.status === 'success') {
-    return dispatch(deleteSuccess());
+    return dispatch(rateSuccess());
   }
-  return dispatch(deleteFail());
+  return dispatch(rateFail());
 };

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Popover, ButtonToolbar, Button,
 } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Popup } from 'semantic-ui-react';
@@ -95,4 +96,4 @@ export const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RateComponent);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RateComponent));

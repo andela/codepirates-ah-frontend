@@ -3,11 +3,13 @@ import ArticleCard from '../articleCard';
 
 export default function ListOfArticles({ articles, limitArticlesNumber }) {
   return articles.map((article, index) => {
+    let rating = 0;
     if (index >= limitArticlesNumber) return false;
-
+    if (article.rating !== null) {
+      rating = parseInt(article.rating, 0);
+    }
     return (
-      // eslint-disable-next-line jsx-a11y/anchor-is-valid
-      <a
+      <div
         key={article && article.slug}
       >
         <ArticleCard
@@ -21,9 +23,9 @@ export default function ListOfArticles({ articles, limitArticlesNumber }) {
           createdTime={article && article.timeCreated}
           slug={article && article.slug}
           claps={article && article.claps}
-          rating={article && article.rating}
+          rating={rating}
         />
-      </a>
+      </div>
     );
   });
 }

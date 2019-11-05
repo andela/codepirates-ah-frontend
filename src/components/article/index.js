@@ -122,7 +122,7 @@ export class ViewArticle extends Component {
                   articles={paginatedArticles}
                 />
                 <RightSideBar
-                  rating={data.rating}
+                  rating={parseInt(data.rating, 10)}
                   readtime={data.readtime}
                   createdAt={data.createdAt}
                 />
