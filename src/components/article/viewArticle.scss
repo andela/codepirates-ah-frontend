@@ -313,16 +313,21 @@ body {
           font-size: 13px;
         }
       }
+      .dislike{
+        margin-left: 1.7rem ;
+      }
+      .rate{
+        margin-top: -0.5rem ;
+        margin-left: 1.7rem ;
+      }
       .article-events{
         display: grid;
+        padding: 3rem;
         grid-template-columns: repeat(3, 1fr);
         font-size: 10px;
         i{
           &:hover{
             color: rgba(18, 134, 243, 0.9);
-            // transition: 500ms;
-            // border-radius: 100%;
-            // padding: 2px;
           }
         }
         .L{

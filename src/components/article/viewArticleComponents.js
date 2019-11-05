@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import ReactHtmlParser from 'react-html-parser';
 import Pages from 'lodash';
 import './viewArticle.scss';
+import Clap from '../common/clap/clap';
+import Dislike from '../common/dislike/dislike';
 import userImage from '../../../public/assets/images/images/userIcon.png';
 import ArticleCard from '../common/articleCard';
 import coverImage from '../../../public/assets/images/nature.jpeg';
@@ -53,7 +55,7 @@ export const LeftSideBar = ({
 );
 
 export const ArticleContent = ({
-  title, description, body, slug, author,
+  title, description, body, slug, author, username,
 }) => (
   <div className="middle-up" style={{ paddingTop: '0px' }}>
     <div className="article-part">
@@ -68,15 +70,15 @@ export const ArticleContent = ({
     <div className="middle-line" />
     <div className="article-events">
       <div className="L">
-        <div className="l-icon">
-          <i className="fas fa-thumbs-up" />
-          <p>15k</p>
+        <div className="clap">
+          <Clap username={username} slug={slug} />
         </div>
-        <div className="l-icon">
-          <i className="fas fa-thumbs-down" />
-          <p>123</p>
+        <div className="dislike">
+          <Dislike username={username} slug={slug} />
         </div>
-        <RateComponent slug={slug} author={author} />
+        <div className="rate">
+          <RateComponent slug={slug} author={author} />
+        </div>
       </div>
       <div className="M">
         <p>
