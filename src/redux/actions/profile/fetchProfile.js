@@ -14,10 +14,11 @@ export const fetchProfile = () => (dispatch) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      if (res.status === 'error') {
-        throw (res.error);
+      if (res.status === 'success') {
+        return dispatch(profileActionCreators.fetchProfileSuccess(res.data));
       }
-      return dispatch(profileActionCreators.fetchProfileSuccess(res.data));
+      toast.error(res.message);
+      return dispatch(profileActionCreators.fetchProfileError(error));
     })
     .catch((error) => dispatch(profileActionCreators.fetchProfileError(error)));
 };

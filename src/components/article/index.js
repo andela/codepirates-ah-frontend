@@ -21,7 +21,11 @@ export class ViewArticle extends Component {
           body: '',
           readtime: '',
           createdAt: '',
-          author: { firstname: '', lastname: '', image: '' },
+          claps: '',
+          rating: '',
+          author: {
+            firstname: '', lastname: '', image: '', username: '',
+          },
         },
       },
       allArticles: [],
@@ -101,6 +105,9 @@ export class ViewArticle extends Component {
                   title={data.title}
                   description={data.description}
                   body={data.body}
+                  claps={data.claps}
+                  author={data.author.username}
+                  slug={data.slug}
                   onChange={this.onChange}
                   current={current}
                   total={numberOfArticles}
@@ -114,7 +121,11 @@ export class ViewArticle extends Component {
                   pageSize={2}
                   articles={paginatedArticles}
                 />
-                <RightSideBar readtime={data.readtime} createdAt={data.createdAt} />
+                <RightSideBar
+                  rating={parseInt(data.rating, 10)}
+                  readtime={data.readtime}
+                  createdAt={data.createdAt}
+                />
               </div>
             )}
           </div>

@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import ReactHtmlParser from 'react-html-parser';
 import Pages from 'lodash';
 import './viewArticle.scss';
-import star from '../../../public/assets/images/images/yellowStar.png';
-import blankStar from '../../../public/assets/images/images/blankRateStar.png';
 import userImage from '../../../public/assets/images/images/userIcon.png';
 import ArticleCard from '../common/articleCard';
 import coverImage from '../../../public/assets/images/nature.jpeg';
+import RatingArticleCardComponent from '../common/ratingComponent/index';
+import RateComponent from '../rateButton/rate';
 
 export const paginate = (lists, pageNumber, pageSize) => {
   const startIndex = (pageNumber - 1) * pageSize;
@@ -52,7 +52,9 @@ export const LeftSideBar = ({
   </div>
 );
 
-export const ArticleContent = ({ title, description, body }) => (
+export const ArticleContent = ({
+  title, description, body, slug, author,
+}) => (
   <div className="middle-up" style={{ paddingTop: '0px' }}>
     <div className="article-part">
       <div className="article-title">
@@ -74,9 +76,7 @@ export const ArticleContent = ({ title, description, body }) => (
           <i className="fas fa-thumbs-down" />
           <p>123</p>
         </div>
-        <div className="l-icon">
-          <i className="fas fa-star" />
-        </div>
+        <RateComponent slug={slug} author={author} />
       </div>
       <div className="M">
         <p>
@@ -115,6 +115,7 @@ export const RecentArticles = ({
           readreadTime={article.readtime}
           createdTime={article.timeCreated}
           username={article.username}
+          slug={article.slug}
         />
       ))}
     </div>
@@ -129,7 +130,7 @@ export const RecentArticles = ({
   </div>
 );
 
-export const RightSideBar = ({ readtime, createdAt }) => (
+export const RightSideBar = ({ readtime, createdAt, rating }) => (
   <div className="right-side" style={{ marginLeft: 'auto' }}>
     <div className="rating-pub-read-time">
       <p>
@@ -138,26 +139,7 @@ export const RightSideBar = ({ readtime, createdAt }) => (
       </p>
       <p>{readtime}</p>
     </div>
-    <div className="article-rates">
-      <div className="rate-stars">
-        Rating:
-        <img src={star} alt="yellow rating start" height="12px" width="12px" />
-        <img src={star} alt="yellow rating start" height="12px" width="12px" />
-        <img src={star} alt="yellow rating start" height="12px" width="12px" />
-        <img
-          src={blankStar}
-          alt="blankrating start"
-          height="12px"
-          width="12px"
-        />
-        <img
-          src={blankStar}
-          alt="blankrating start"
-          height="12px"
-          width="12px"
-        />
-      </div>
-    </div>
+    <RatingArticleCardComponent placeholderRating={rating} readonly />
   </div>
 );
 
@@ -165,11 +147,15 @@ ArticleContent.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   body: PropTypes.string,
+  slug: PropTypes.string,
+  author: PropTypes.string,
 };
 ArticleContent.defaultProps = {
   title: '',
   description: '',
   body: '',
+  slug: '',
+  author: '',
 };
 
 RecentArticles.propTypes = {
@@ -187,10 +173,12 @@ RecentArticles.defaultProps = {
 RightSideBar.propTypes = {
   readtime: PropTypes.string,
   createdAt: PropTypes.string,
+  rating: PropTypes.number,
 };
 RightSideBar.defaultProps = {
   readtime: '',
   createdAt: '',
+  rating: 0,
 };
 LeftSideBar.propTypes = {
   firstname: PropTypes.string,

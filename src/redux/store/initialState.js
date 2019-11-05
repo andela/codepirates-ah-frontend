@@ -12,6 +12,8 @@ export default {
   },
   viewArticle: {
     isArticleViewed: false,
+    articleRated: false,
+    articleDeleted: false,
   },
   articles: {
     popular: {},
@@ -31,5 +33,7 @@ export default {
       message: '',
     },
     error: '',
+  },
+  article: {
   },
 };

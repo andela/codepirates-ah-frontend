@@ -3,13 +3,14 @@ import ArticleCard from '../articleCard';
 
 export default function ListOfArticles({ articles, limitArticlesNumber }) {
   return articles.map((article, index) => {
+    let rating = 0;
     if (index >= limitArticlesNumber) return false;
-
+    if (article.rating !== null) {
+      rating = parseInt(article.rating, 0);
+    }
     return (
-      <a
+      <div
         key={article && article.slug}
-        href={`/article/${article
-          && article.slug}`}
       >
         <ArticleCard
           coverImage={article && article.images && article.images[0]}
@@ -20,8 +21,11 @@ export default function ListOfArticles({ articles, limitArticlesNumber }) {
           userIcon={article && article.userImage}
           username={article && article.username}
           createdTime={article && article.timeCreated}
+          slug={article && article.slug}
+          claps={article && article.claps}
+          rating={rating}
         />
-      </a>
+      </div>
     );
   });
 }
