@@ -103,6 +103,7 @@ export class ViewArticle extends Component {
                 <ArticleContent
                   title={data.title}
                   username={data.author.firstname}
+                  id={data.id}
                   description={data.description}
                   body={data.body}
                   claps={data.claps}
