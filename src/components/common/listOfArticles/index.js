@@ -9,9 +9,7 @@ export default function ListOfArticles({ articles, limitArticlesNumber }) {
       rating = parseInt(article.rating, 0);
     }
     return (
-      <div
-        key={article && article.slug}
-      >
+      <div key={article && article.slug}>
         <ArticleCard
           coverImage={article && article.images && article.images[0]}
           description={article && article.description}

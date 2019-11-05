@@ -46,7 +46,11 @@ export class LandingPage extends Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { data, popularArticles } = nextProps;
-    this.setState((prevState) => ({ ...prevState, articles: data, popularArticles }));
+    this.setState((prevState) => ({
+      ...prevState,
+      articles: data,
+      popularArticles,
+    }));
   }
 
   viewMoreArticles = (viewMoreArticlesButton, articlesNumber, number = 5) => {
@@ -59,7 +63,6 @@ export class LandingPage extends Component {
       [viewMoreArticlesButton]: newNumber,
     }));
   };
-
 
   imagePart = () => (
     <div className="row landingPage--imagePart">
@@ -91,13 +94,13 @@ export class LandingPage extends Component {
     <div className="row landingPage--bigArticleArea">
       <div className="col-md-6 landingPage__bigArticleAreaLeft">
         <div className="bigArticleAreaLeft-card">
-          <ListOfArticles articles={displayFirstAndSecond} />
+          <ListOfArticles articles={displayFirstAndSecond} obj={this} />
         </div>
       </div>
       <div className="col-md-6 landingPage__bigArticleAreaRight">
         <div className="bigArticleAreaRight-card">
           <div className="popularArea-articleCard-div">
-            <ListOfArticles articles={displayThirdAndFourth} />
+            <ListOfArticles articles={displayThirdAndFourth} obj={this} />
           </div>
         </div>
       </div>
@@ -122,7 +125,10 @@ export class LandingPage extends Component {
           {this.imagePart()}
           {this.searchArea()}
           {this.mostRecentTitle()}
-          {this.mostRecentArticles(mostTwoRecentArticles, secondAndThirdArticles)}
+          {this.mostRecentArticles(
+            mostTwoRecentArticles,
+            secondAndThirdArticles,
+          )}
           <div className="row landingPage--popularArea">
             <div className="col-md-6 landingPage__popularAreaLeft">
               <div className="popularAreaLeft-card">
@@ -134,13 +140,18 @@ export class LandingPage extends Component {
                     <ListOfArticles
                       articles={remainingArticles}
                       limitArticlesNumber={limitArticlesNumber}
+                      obj={this}
                     />
                   </div>
                 </div>
                 <div className="landingPage__moreArticles">
                   <LandingPageViewMoreArticles
                     key="1"
-                    onClick={() => this.viewMoreArticles('limitArticlesNumber', remainingArticles.length, 4)}
+                    onClick={() => this.viewMoreArticles(
+                      'limitArticlesNumber',
+                      remainingArticles.length,
+                      4,
+                    )}
                     buttonMessage={
                       limitArticlesNumber < (remainingArticles || []).length
                         ? 'view more articles'
@@ -162,15 +173,21 @@ export class LandingPage extends Component {
                     <ListOfArticles
                       articles={popularArticles}
                       limitArticlesNumber={limitPopularArticlesNumber}
+                      obj={this}
                     />
                   </div>
                 </div>
                 <div className="landingPage__moreArticles">
                   <LandingPageViewMoreArticles
                     key="2"
-                    onClick={() => this.viewMoreArticles('limitPopularArticlesNumber', popularArticles.length, 6)}
+                    onClick={() => this.viewMoreArticles(
+                      'limitPopularArticlesNumber',
+                      popularArticles.length,
+                      6,
+                    )}
                     buttonMessage={
-                      limitPopularArticlesNumber < (popularArticles || []).length
+                      limitPopularArticlesNumber
+                      < (popularArticles || []).length
                         ? 'view more popular articles'
                         : 'view less articles'
                     }

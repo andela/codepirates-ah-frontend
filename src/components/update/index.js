@@ -59,7 +59,7 @@ export class UpdateArticles extends React.Component {
     flashToast(article);
   };
 
-  deleteCoverImage = () => this.setState({ images: [''], editmode: false });
+  deleteCoverImage = () => this.setState({ images: [''], editmode: true });
 
   handleChange = (html) => {
     this.setState({ body: html, editmode: true });
@@ -79,11 +79,12 @@ export class UpdateArticles extends React.Component {
     this.props.setEditModeAction(this.props.success);
     if (this.props.success) {
       this.setState(action.data[1][0]);
+      this.props.history.push(`/article/${this.state.slug}/update`);
     }
     flashToast(action);
   };
 
-  backToArticle = () => this.props.history.push(`/articles/${this.state.slug}`);
+  backToArticle = () => this.props.history.push(`/article/${this.state.slug}`);
 
   showToolbar = () => {
     const toolbar = document.querySelector('.ql-toolbar');
@@ -91,7 +92,6 @@ export class UpdateArticles extends React.Component {
     toolbar.addEventListener('click', () => {
       toolbar.style.display = 'none';
     });
-    // this.setState({ editmode: true });
   };
 
   formActive = () => this.props.setEditModeAction();

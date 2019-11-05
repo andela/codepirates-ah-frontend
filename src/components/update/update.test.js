@@ -12,8 +12,7 @@ import updateArticleAction, {
   failedUpdate,
 } from '../../redux/actions/updateArticle';
 import updateArticleReducer from '../../redux/reducers/updateArticle';
-import { UPDATE_ARTICLE_FAILURE } from '../../redux/actions/actionTypes';
-import { UPDATE_ARTICLE_SUCCESS } from '../../../../codepirates-ah-frontend copy 2/src/redux/actions/actionTypes';
+import { UPDATE_ARTICLE_FAILURE, UPDATE_ARTICLE_SUCCESS } from '../../redux/actions/actionTypes';
 
 const mockStore = configureMockStore([thunk]);
 const store = mockStore({
