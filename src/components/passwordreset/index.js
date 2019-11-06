@@ -68,7 +68,7 @@ export class ResetRequest extends React.Component {
     );
     return (
       <div className="container styles">
-        <div className={this.state.progress} />
+        <div id={this.state.progress} />
         {form}
       </div>
     );
