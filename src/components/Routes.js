@@ -41,7 +41,14 @@ const Routes = () => (
     <Route exact path="/welcome" component={Welcome} />
     <Route exact path="/search" component={Search} />
     <Route exact path="/login" component={Login} />
-    <Route exact path="/articles/create" component={CreateArticles} />
+    <Route
+      exact
+      path="/articles/create"
+      render={(props) => {
+        if (!user) return <Redirect to="/login" />;
+        return <CreateArticles {...props} />;
+      }}
+    />
     <Route exact path="/articles/mine" component={SpecificUserArticles} />
     <Route exact path="/privacy" component={Privacy} />
     <Route exact path="/article/:slug" component={ViewArticle} />

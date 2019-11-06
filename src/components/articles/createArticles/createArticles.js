@@ -32,8 +32,9 @@ export class CreateArticles extends React.Component {
       title: '',
       body: '',
       description: '',
-      schem: '',
+      schema: '',
       images: [],
+      isArticleCreated: false,
       imageWidget: cloudinary.createUploadWidget(
         {
           cloudName: 'nshuti-jonathan',
@@ -58,13 +59,14 @@ export class CreateArticles extends React.Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    const { createdArticleData } = nextProps;
-
+    const { createdArticleData, history } = nextProps;
+    const isArticleCreated = createdArticleData;
     if (createdArticleData && Array.isArray(createdArticleData.err)) {
       createdArticleData.err.forEach(({ message }) => {
         toast.error(message);
       });
     }
+    return isArticleCreated ? history.push('/profile') : '';
   };
 
   handleChange = (html) => {
@@ -90,7 +92,7 @@ export class CreateArticles extends React.Component {
   render() {
     const { title, body, description } = this.state;
     return (
-      <div className="col-12 col-lg-6 offset-lg-3">
+      <div className="col-12 col-lg-6 offset-lg-3 create-div">
         <h3>Create Article</h3>
         <div className="form-group">
           <label>Article Title</label>
@@ -136,9 +138,10 @@ export class CreateArticles extends React.Component {
           required
         />
         <ToastContainer />
+
         <button
           onClick={this.handleSubmit}
-          className="btn btn-primary float-right"
+          className="btn btn-primary float-right publish-button"
           type="button"
         >
           Publish
@@ -151,7 +154,7 @@ export const mapStateToProps = ({ createdArticleData }) => ({
   createdArticleData,
 });
 CreateArticles.propTypes = {
-  createArticlesAction: PropTypes.isRequired,
+  createArticlesAction: PropTypes.func,
 };
 export default connect(
   mapStateToProps,
