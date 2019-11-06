@@ -57,14 +57,14 @@ export class NavBar extends Component {
                     <NavDropdown.Item href="/profile">
                         profile
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="bookmarks">
-                        my Bookmarks
+                    <NavDropdown.Item href="/articles/create">
+                        new article
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item
                       onClick={() => {
                       }}
-                      href="/"
+                      href="/logout"
                     >
                         logout
                     </NavDropdown.Item>

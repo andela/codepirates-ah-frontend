@@ -7,6 +7,7 @@ import Signup from './signup';
 import EmailVerification from './emailVerification/emailVerification';
 import Login from './login';
 import Welcome from './welcome/welcome';
+import Logout from './common/logout/logout';
 import Profile from './profile/profile';
 import ViewArticle from './article';
 import verifyAuth from './socialAuth/verifyAuth';
@@ -49,6 +50,8 @@ const Routes = () => (
         return <CreateArticles {...props} />;
       }}
     />
+    <Route exact path="/logout" component={Logout} />
+    <Route exact path="/articles/create" component={CreateArticles} />
     <Route exact path="/articles/mine" component={SpecificUserArticles} />
     <Route exact path="/privacy" component={Privacy} />
     <Route exact path="/article/:slug" component={ViewArticle} />
