@@ -71,3 +71,7 @@ export const REPLY_A_COMMENT_ERROR = 'REPLY_A_COMMENT_ERROR';
 // save user in the store
 export const SAVE_USER_IN_THE_STORE = 'LOGIN_SUCCESS_AND_SAVE_USER';
 
+// Search related actions
+export const BOOKMARK_PENDING = 'BOOKMARK_PENDING';
+export const BOOKMARK_SUCCESS = 'BOOKMARK_SUCCESS';
+export const BOOKMARK_ERROR = 'BOOKMARK_ERROR';

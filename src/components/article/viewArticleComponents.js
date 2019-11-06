@@ -8,6 +8,7 @@ import Clap from '../common/clap/clap';
 import Dislike from '../common/dislike/dislike';
 import userImage from '../../../public/assets/images/images/userIcon.png';
 import ArticleCard from '../common/articleCard';
+import Bookmark from '../common/bookmark/bookmark';
 import coverImage from '../../../public/assets/images/nature.jpeg';
 import RatingArticleCardComponent from '../common/ratingComponent/index';
 import RateComponent from '../rateButton/rate';
@@ -16,18 +17,10 @@ import ArticleComments from '../commentArticle';
 
 export const paginate = (lists, pageNumber, pageSize) => {
   const startIndex = (pageNumber - 1) * pageSize;
-  return Pages(lists)
-    .slice(startIndex)
-    .take(pageSize)
-    .value();
+  return Pages(lists).slice(startIndex).take(pageSize).value();
 };
-
 export const LeftSideBar = ({
-  firstname,
-  lastname,
-  profilePic,
-  LeftSideStyles,
-  profilePicStyles,
+  firstname, lastname, profilePic, LeftSideStyles, profilePicStyles,
 }) => (
   <div className="left-side">
     <div className="icon" style={LeftSideStyles}>
@@ -39,9 +32,7 @@ export const LeftSideBar = ({
           height="80px"
         />
       </div>
-      <a href="/users/follow" className="btn btn-outline-primary">
-        Follow
-      </a>
+      <a href="/users/follow" className="btn btn-outline-primary">Follow</a>
     </div>
     <div className="userprofilename">
       <p>
@@ -55,7 +46,7 @@ export const LeftSideBar = ({
 );
 
 export const ArticleContent = ({
-  title, description, body, slug, author, username,
+  title, description, body, slug, author, username, id,
 }) => (
   <div className="middle-up" style={{ paddingTop: '0px' }}>
     <div className="article-part">
@@ -63,9 +54,13 @@ export const ArticleContent = ({
         <h1>{title}</h1>
       </div>
       <div className="article-description">
-        <h4>{description}</h4>
+        <h4>
+          {description}
+        </h4>
       </div>
-      <div className="article-paragraph">{ReactHtmlParser(body)}</div>
+      <div className="article-paragraph">
+        {ReactHtmlParser(body)}
+      </div>
     </div>
     <div className="middle-line" />
     <div className="article-events">
@@ -86,14 +81,13 @@ export const ArticleContent = ({
         <i className="fab fa-facebook-f" />
         <i className="fab fa-linkedin-in" />
         <i className="fab fa-google" />
-        <i className="far fa-bookmark" />
+        <Bookmark slug={slug} articleId={id} />
         <MoreOnArticle slug={slug} author={author} />
       </div>
     </div>
     <ArticleComments slug={slug} />
   </div>
 );
-
 export const RecentArticles = ({
   onChange, current, total, articles,
 }) => (
@@ -124,7 +118,7 @@ export const RightSideBar = ({ readtime, createdAt, rating }) => (
   <div className="right-side" style={{ marginLeft: 'auto' }}>
     <div className="rating-pub-read-time">
       <p>
-        Published: &nbsp;
+Published: &nbsp;
         <span>{createdAt}</span>
       </p>
       <p>{readtime}</p>
@@ -132,7 +126,6 @@ export const RightSideBar = ({ readtime, createdAt, rating }) => (
     <RatingArticleCardComponent placeholderRating={rating} readonly />
   </div>
 );
-
 ArticleContent.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,

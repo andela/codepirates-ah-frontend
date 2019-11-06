@@ -15,6 +15,11 @@ export default {
     articleRated: false,
     articleDeleted: false,
   },
+  bookmark: {
+    bookmarkPending: false,
+    bookmarkSuccess: '',
+    bookmarkError: null,
+  },
   articles: {
     popular: {},
     isSpecifiUserArticlesViewed: false,

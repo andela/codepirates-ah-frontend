@@ -4,6 +4,7 @@ import articleFeedback from './like/likeReducer';
 import user from './user/userReducer';
 import article from './articles/articleReducer';
 import ArticleReducer from './articles/article.reducer';
+import bookmark from './bookmark/bookmarkReducer';
 import articles from './landingPage';
 import searchReducer from './search/searchReducer';
 import passwordResetReducer from './passwordreset';
@@ -14,6 +15,7 @@ export default {
   viewArticle,
   articles,
   user,
+  bookmark,
   createdArticleData: ArticleReducer,
   article,
   search: searchReducer,

@@ -48,7 +48,6 @@ export class Login extends Component {
       return false;
     }
     this.setState((prevState) => ({ ...prevState, loading: true }));
-
     const { props } = this;
     props.loginAction(formData).then((res) => {
       if (res.payload.status !== 200) {
@@ -118,12 +117,10 @@ export class Login extends Component {
     );
   }
 }
-
 Login.propTypes = {
   loginAction: PropTypes.func,
   status: PropTypes.number,
   message: PropTypes.string,
-
 };
 Login.defaultProps = {
   status: 0,
