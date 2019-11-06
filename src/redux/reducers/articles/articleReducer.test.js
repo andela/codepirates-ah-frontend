@@ -2,7 +2,7 @@ import articleReducer from './articleReducer';
 import * as actionTypes from '../../actions/actionTypes';
 import initialState from '../../store/initialState';
 
-describe('delete reducers ', () => {
+describe('delete Reducers', () => {
   it('should dispach success  when article deleted', () => {
     const res = articleReducer(initialState, {
       type: actionTypes.DELETE_ARTICLE_SUCCESS,
@@ -31,3 +31,4 @@ describe('rate reducers ', () => {
     expect(res).toMatchObject({ articleRated: false });
   });
 });
+

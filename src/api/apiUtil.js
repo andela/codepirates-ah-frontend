@@ -18,3 +18,13 @@ export const handleError = async (error) => {
   await toast.error('something went wrong, contact admin');
   return error;
 };
+
+export const handleLoggout = async (response) => {
+  if (response.ok) {
+    window.sessionStorage.clear();
+    const data = await response.json();
+    window.location = '/';
+    return data;
+  }
+  return 'Network response was not ok.';
+};

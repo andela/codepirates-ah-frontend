@@ -19,6 +19,7 @@ export const rateFail = () => ({
 export const deleteArticle = (slug) => async (dispatch) => {
   const data = await postApi('DELETE', `articles/${slug}`);
   if (data.status === 'success') {
+    window.location.replace('/profile');
     return dispatch(deleteSuccess());
   }
   return dispatch(deleteFail());
