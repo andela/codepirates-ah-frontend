@@ -53,6 +53,12 @@ const userReducer = (state = initialState, action) => {
         message: `${action.payload.message}${randomSpaces()}`,
         isLoggedIn: false,
       };
+    case actionTypes.SAVE_USER_IN_THE_STORE:
+      return {
+        ...state,
+        ...action.payload,
+        isLoggedIn: true,
+      };
     default:
       return state;
   }

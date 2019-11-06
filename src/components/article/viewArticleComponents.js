@@ -12,6 +12,7 @@ import coverImage from '../../../public/assets/images/nature.jpeg';
 import RatingArticleCardComponent from '../common/ratingComponent/index';
 import RateComponent from '../rateButton/rate';
 import MoreOnArticle from '../moreAction/index';
+import ArticleComments from '../commentArticle';
 
 export const paginate = (lists, pageNumber, pageSize) => {
   const startIndex = (pageNumber - 1) * pageSize;
@@ -34,8 +35,8 @@ export const LeftSideBar = ({
         <img
           src={profilePic == null ? userImage : profilePic}
           alt="user icon"
-          width="40px"
-          height="40px"
+          width="80px"
+          height="80px"
         />
       </div>
       <a href="/users/follow" className="btn btn-outline-primary">
@@ -45,8 +46,6 @@ export const LeftSideBar = ({
     <div className="userprofilename">
       <p>
         {firstname}
-        {' '}
-&nbsp;
         {' '}
         {lastname}
       </p>
@@ -81,15 +80,7 @@ export const ArticleContent = ({
           <RateComponent slug={slug} author={author} />
         </div>
       </div>
-      <div className="M">
-        <p>
-          <span>154</span>
-          comments
-        </p>
-        <div className="plus-circle">
-          <i className="fas fa-plus-circle" />
-        </div>
-      </div>
+      <div className="M" />
       <div className="R">
         <i className="fab fa-twitter" />
         <i className="fab fa-facebook-f" />
@@ -99,6 +90,7 @@ export const ArticleContent = ({
         <MoreOnArticle slug={slug} author={author} />
       </div>
     </div>
+    <ArticleComments slug={slug} />
   </div>
 );
 
@@ -123,12 +115,7 @@ export const RecentArticles = ({
       ))}
     </div>
     <div className="pagination-div">
-      <Pagination
-        onChange={onChange}
-        current={current}
-        total={total}
-        pageSize={2}
-      />
+      <Pagination onChange={onChange} current={current} total={total} pageSize={2} />
     </div>
   </div>
 );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 import NotFound from './notfound/notFound';
 import Privacy from './privacy/privacy';
 import Signup from './signup';
@@ -16,8 +17,16 @@ import Search from './search/search';
 
 import ResetRequest from './passwordreset';
 import Feedback from './passwordreset/feedbackContainer';
+import ArticleComments from './commentArticle';
+import saveUserAction from '../redux/actions/saveUser';
+import store from '../redux/store';
 
 const user = localStorage.getItem('token');
+if (user) {
+  const decodedUser = jwt_decode(user);
+  store.dispatch(saveUserAction(decodedUser));
+}
+
 const Routes = () => (
   <Switch>
     <Route
@@ -43,6 +52,16 @@ const Routes = () => (
     <Route exact path="/facebook/social-login" component={verifyAuth} />
     <Route exact path="/reset" component={ResetRequest} />
     <Route exact path="/response" component={Feedback} />
+    <Route
+      exact
+      path="/comment"
+      render={(props) => {
+        if (!user) {
+          return <Redirect to="/login" />;
+        }
+        return <ArticleComments {...props} />;
+      }}
+    />
     <Route component={NotFound} />
   </Switch>
 );

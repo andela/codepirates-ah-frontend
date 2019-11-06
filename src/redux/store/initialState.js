@@ -45,4 +45,5 @@ export default {
     article: {
     },
   },
+  comments: [],
 };
