@@ -58,4 +58,8 @@ export default {
     error: '',
     editmode: true,
   },
+  likes: {
+    counts: [],
+  },
 };
+

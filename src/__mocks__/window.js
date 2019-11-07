@@ -104,6 +104,44 @@ export const fetchCommentsSuccesUtil = () => new Promise((resolve) => {
   };
   return resolve(res);
 });
+export const fetchAllLikesSuccess = () => new Promise((resolve) => {
+  const res = {
+    json: jest.fn(
+      () => new Promise((resol) => resol({
+        status: 'success',
+        message: {
+          data: {
+            formattedLikeInfo: 'You like this comment',
+            likesCount: 2,
+          },
+        },
+      })),
+    ),
+  };
+  return resolve(res);
+});
+export const likeAndUnlikeFetchSuccess = () => new Promise((resolve) => {
+  const res = {
+    json: jest.fn(
+      () => new Promise((resol) => resol({
+        status: 'success',
+        message: { likesCount: 1, formattedLikeInfo: 'You like this comment' },
+      })),
+    ),
+  };
+  return resolve(res);
+});
+export const likeAndUnlikeFetchError = () => new Promise((resolve) => {
+  const res = {
+    json: jest.fn(
+      () => new Promise((resol) => resol({
+        status: 'error',
+        message: 'You did not like this comment before',
+      })),
+    ),
+  };
+  return resolve(res);
+});
 export const fetchErrorUtil = (...args) => new Promise((resolve) => {
   const res = {
     json: jest.fn(() => ({ args, status: 'success' })),

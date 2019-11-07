@@ -25,7 +25,7 @@ const ArticleCard = ({
     <div className="landingArticleCard--image">
       <a href={`/article/${slug}`}>
         {' '}
-        <img src={coverImage || optionImg} alt="" />
+        <img src={coverImage || optionImg} alt="" style={{ objectFit: 'cover' }} />
         {' '}
       </a>
     </div>

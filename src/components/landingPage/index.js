@@ -201,9 +201,7 @@ export class LandingPage extends Component {
             </div>
           </div>
           <div className="row image-div landingPage--footer">
-            <div className="landingPage__footerArea">
-              <Footer />
-            </div>
+            <div className="landingPage__footerArea" />
           </div>
         </div>
       </div>
