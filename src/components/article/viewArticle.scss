@@ -337,25 +337,25 @@ body {
         p {
           margin-top: 2px;
         }
-        .dislike{
-          margin-left: 1.7rem ;
+        .dislike {
+          margin-left: 1.7rem;
         }
-        .rate{
-          margin-top: -0.5rem ;
-          margin-left: 1.7rem ;
+        .rate {
+          margin-top: -0.5rem;
+          margin-left: 1.7rem;
         }
       }
-      .M{
+      .M {
         text-align: center;
         display: grid;
         place-items: center;
         margin-top: 10px;
       }
-      .R{
+      .R {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         justify-items: end;
-        i{
+        i {
           height: 20%;
         }
       }

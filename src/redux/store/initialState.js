@@ -51,4 +51,9 @@ export default {
     },
   },
   comments: [],
+  updateArticle: {
+    success: '',
+    error: '',
+    editmode: true,
+  },
 };

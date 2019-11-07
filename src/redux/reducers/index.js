@@ -9,6 +9,7 @@ import articles from './landingPage';
 import searchReducer from './search/searchReducer';
 import passwordResetReducer from './passwordreset';
 import comments from './commentArticle';
+import updateArticleReducer from './updateArticle';
 
 export default {
   userRegistrationData: signupReducer,
@@ -22,4 +23,5 @@ export default {
   passwordReset: passwordResetReducer,
   articleFeedback,
   comments,
+  updateArticle: updateArticleReducer,
 };

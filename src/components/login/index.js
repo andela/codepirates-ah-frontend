@@ -20,7 +20,7 @@ export class Login extends Component {
     password: '',
     error: '',
     loading: false,
-  }
+  };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState((prevState) => ({ ...prevState, error: nextProps.message }));
@@ -59,13 +59,13 @@ export class Login extends Component {
     return this.setState({
       error: '',
     });
-  }
+  };
 
   onChange = ({ target }) => {
     this.setState((prevState) => ({ ...prevState, error: '' }));
     const input = { [target.name]: target.value };
     this.setState((prevState) => ({ ...prevState, ...input }));
-  }
+  };
 
   render() {
     const {
@@ -74,10 +74,15 @@ export class Login extends Component {
     const { location, message, status } = this.props;
     if (status === 200) {
       return (
-        <Redirect to={location.state ? { pathname: location.state.from.pathname } : {
-          pathname: '/',
-          state: { message },
-        }}
+        <Redirect
+          to={
+            location.state
+              ? { pathname: location.state.from.pathname }
+              : {
+                pathname: '/',
+                state: { message },
+              }
+          }
         />
       );
     }
@@ -87,7 +92,11 @@ export class Login extends Component {
         <div className="row registration--middle-row">
           <div className="col-md-7 registration--middle-row__left-part">
             <div className="registration__form-div">
-              <form id="login-form" className={classnames('ui', 'form', { loading })} onSubmit={this.onSubmit}>
+              <form
+                id="login-form"
+                className={classnames('ui', 'form', { loading })}
+                onSubmit={this.onSubmit}
+              >
                 <TextInput
                   type="text"
                   label="Username"
@@ -96,7 +105,14 @@ export class Login extends Component {
                   onChange={this.onChange}
                   error={error}
                 />
-                <TextInput type="password" label="Password" name="password" value={password} onChange={this.onChange} error={error} />
+                <TextInput
+                  type="password"
+                  label="Password"
+                  name="password"
+                  value={password}
+                  onChange={this.onChange}
+                  error={error}
+                />
                 <SubmitButton value="Login" />
               </form>
               <a href="/reset">Forgot password ?</a>
@@ -107,7 +123,11 @@ export class Login extends Component {
             <div>
               <SocialButtons status="Login with" />
             </div>
-            <SwitchToSignupOrLogin url="/signup" filePath={signupSvgPath} message="if you don't have an account!" />
+            <SwitchToSignupOrLogin
+              url="/signup"
+              filePath={signupSvgPath}
+              message="if you don't have an account!"
+            />
           </div>
         </div>
         <div className="row registration-footer-row">
@@ -125,9 +145,14 @@ Login.propTypes = {
 Login.defaultProps = {
   status: 0,
   message: '',
-  loginAction: () => { },
+  loginAction: () => {},
 };
 export const mapStateToProps = ({ user: { message, status, token } }) => ({
-  message, status, token,
+  message,
+  status,
+  token,
 });
-export default connect(mapStateToProps, { loginAction })(Login);
+export default connect(
+  mapStateToProps,
+  { loginAction },
+)(Login);
