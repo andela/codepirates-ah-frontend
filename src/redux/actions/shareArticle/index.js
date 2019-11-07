@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import {
   SHARE_ARTICLE_FAILURE,
   SHARE_ARTICLE_SUCCESS,
@@ -23,8 +24,16 @@ export const fetchshare = (slug, channel) => fetch(`${BACKEND_URL}/api/${VERSION
     authorization: localStorage.getItem('token'),
   },
   mode: 'cors',
+  body: JSON.stringify({ url: window.location.href }),
 }).then((res) => res.json());
 
-export const articleShareAction = (status, channel) => (dispatch) => (status === 200 || status === 'success'
-  ? dispatch(articleShareSuccess(channel))
-  : dispatch(articleShareFailure(channel)));
+export const articleShareAction = (status, channel) => (dispatch) => {
+  let res;
+  if (status === 200 || status === 'success') {
+    res = dispatch(articleShareSuccess(channel));
+  } else {
+    toast.error('sharing failed');
+    res = dispatch(articleShareFailure(channel));
+  }
+  return res;
+};
