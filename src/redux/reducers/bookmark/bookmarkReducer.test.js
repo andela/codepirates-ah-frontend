@@ -28,6 +28,26 @@ describe('bookmark reducer', () => {
     const res = bookmarkReducer(initialState, fetchBookmarkAction);
     expect(res).toMatchObject({ bookmarkPending: true });
   });
+  it('should update fechmy bookmark status to error if it fail', () => {
+    const fetchBookmarkAction = {
+      type: actionTypes.FETCH_MY_BOOKMARKS__FAIL,
+    };
+    const res = bookmarkReducer(initialState, fetchBookmarkAction);
+    expect(res).toMatchObject({ myBookmarkSuccess: 'fail' });
+  });
+  it('should update fech my bookmarks state when request successful', () => {
+    const fetchBookmarkAction = {
+      type: actionTypes.FETCH_MY_BOOKMARKS_SUCCESS,
+      bookmarks: bookmarkResultMock,
+    };
+    const res = bookmarkReducer(initialState, fetchBookmarkAction);
+    expect(res.myBookmarks).toMatchObject({
+      data: {
+        results: 'some results',
+      },
+    });
+    expect(res.myBookmarkSuccess).toEqual('success');
+  });
   it('should update bookmark state when request successful', () => {
     const fetchBookmarkAction = {
       type: actionTypes.BOOKMARK_SUCCESS,

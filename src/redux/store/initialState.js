@@ -19,9 +19,8 @@ export default {
     bookmarkPending: false,
     bookmarkSuccess: '',
     bookmarkError: null,
-  },
-  bookmarks: {
-    myBookmarks: {},
+    myBookmarks: [],
+    myBookmarksSuccess: null,
   },
   articles: {
     popular: {},
