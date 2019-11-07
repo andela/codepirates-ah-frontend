@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  Nav, NavDropdown, Navbar, Image,
+  Nav, NavDropdown, Navbar, Image, Container,
 } from 'react-bootstrap';
 import * as profileActions from '../../../redux/actions/profile/fetchProfile';
 import Search from '../search/search';
@@ -33,56 +33,65 @@ export class NavBar extends Component {
     const { isLoggedIn, profile } = user;
     return (
       <>
-        <Navbar fixed="top" collapseOnSelect expand="lg" bg="transparent" variant="light" sticky="top">
-          <Navbar.Brand>
-            <Logo />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse className="justify-content-end">
+        <Container>
+          <Navbar fixed="top" collapseOnSelect expand="lg" bg="transparent" variant="light" sticky="top">
+            <Navbar.Brand>
+              <Logo />
+            </Navbar.Brand>
             <div style={{ width: '20rem' }}><Search /></div>
-            {isLoggedIn
-              ? (
-                <>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse className="justify-content-end">
+              {isLoggedIn
+                ? (
+                  <>
 
-                  <NavDropdown
-                    title={(
-                      <div xs={6} md={4}>
-                        {profile.image ? (<Image src={profile.image} roundedCircle width="40" height="40" />) : (profile.username)}
+                    <NavDropdown
+                      title={(
+                        <div xs={6} md={4}>
+                          {profile.image ? (<Image src={profile.image} roundedCircle width="40" height="40" />) : (profile.username)}
 
-                      </div>
+                        </div>
                     )}
-                    id="collasible-nav-dropdown"
-                  >
-                    {' '}
-                    <NavDropdown.Item href="/profile">
-                        profile
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/articles/create">
-                        new article
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item
-                      onClick={() => {
-                      }}
-                      href="/logout"
+                      id="collasible-nav-dropdown"
                     >
-                        logout
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                </>
-              )
-              : (
-                <>
-                  <Nav.Link href="/login">
+                      {' '}
+                      <NavDropdown.Item href="/profile">
+                        Profile
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/articles/create">
+                        New Article
+                      </NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item
+                        onClick={() => {
+                        }}
+                        href="/bookmarks"
+                      >
+                        Bookmarks
+                      </NavDropdown.Item>
+                      <NavDropdown.Item
+                        onClick={() => {
+                        }}
+                        href="/logout"
+                      >
+                        Logout
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  </>
+                )
+                : (
+                  <>
+                    <Nav.Link href="/login">
                     login
-                  </Nav.Link>
-                  <Nav.Link className=" btn btn-outline-primary" href="/signup">
+                    </Nav.Link>
+                    <Nav.Link className=" btn btn-outline-primary" href="/signup">
                     Get Started
-                  </Nav.Link>
-                </>
-              )}
-          </Navbar.Collapse>
-        </Navbar>
+                    </Nav.Link>
+                  </>
+                )}
+            </Navbar.Collapse>
+          </Navbar>
+        </Container>
       </>
     );
   }

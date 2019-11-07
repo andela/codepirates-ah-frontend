@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Card } from 'react-bootstrap';
+import { Card, CardColumns } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import * as fechMybookmark from '../../redux/actions/bookmark/fetchBookmark';
 
@@ -29,16 +29,15 @@ export const Bookmark = (props) => {
       </p>
     );
   }
-  return myBookmarks.map((bookmark) => {
-    if (bookmarks.length === 0) {
-      window.location.replace('/');
-      return false;
-    }
+  if (bookmarks.length === 0) {
+    window.location.replace('/');
+    return false;
+  }
+  const allBookmarks = myBookmarks.map((bookmark) => {
+    if (!bookmark.article) return false;
     return (
       <div
-        className="container"
         key={bookmark.id}
-        href={`/article/${bookmark.article.slug}`}
       >
         <Card>
           <Card.Body>
@@ -47,13 +46,29 @@ export const Bookmark = (props) => {
               {bookmark.article.description.length > 70 ? `${bookmark.article.description.substring(0, 70)} ...` : bookmark.article.description}
             </Card.Text>
             <Card.Subtitle className="mb-2 text-muted">{bookmark.article.readtime}</Card.Subtitle>
-            <Card.Subtitle className="mb-2 text-muted">{bookmark.article.timeCreated}</Card.Subtitle>
-            <Card.Link href={`/profile/${bookmark.article.author.username}`}>{bookmark.article.author.username}</Card.Link>
+            <Card.Subtitle className="mb-2 text-muted">
+Published
+              {' '}
+              {bookmark.article.timeCreated}
+            </Card.Subtitle>
           </Card.Body>
         </Card>
+        <br />
       </div>
     );
   });
+  return (
+    <>
+      <div
+        className="container"
+      >
+        <h1>Your Bookmarks</h1>
+        <CardColumns>
+          {allBookmarks}
+        </CardColumns>
+      </div>
+    </>
+  );
 };
 
 Bookmark.propTypes = {
