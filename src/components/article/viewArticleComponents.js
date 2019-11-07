@@ -14,13 +14,21 @@ import RatingArticleCardComponent from '../common/ratingComponent/index';
 import RateComponent from '../rateButton/rate';
 import MoreOnArticle from '../moreAction/index';
 import ArticleComments from '../commentArticle';
+import ShareArticle from '../shareArticle';
 
 export const paginate = (lists, pageNumber, pageSize) => {
   const startIndex = (pageNumber - 1) * pageSize;
-  return Pages(lists).slice(startIndex).take(pageSize).value();
+  return Pages(lists)
+    .slice(startIndex)
+    .take(pageSize)
+    .value();
 };
 export const LeftSideBar = ({
-  firstname, lastname, profilePic, LeftSideStyles, profilePicStyles,
+  firstname,
+  lastname,
+  profilePic,
+  LeftSideStyles,
+  profilePicStyles,
 }) => (
   <div className="left-side">
     <div className="icon" style={LeftSideStyles}>
@@ -32,13 +40,15 @@ export const LeftSideBar = ({
           height="80px"
         />
       </div>
-      <a href="/users/follow" className="btn btn-outline-primary">Follow</a>
+      <a href="/users/follow" className="btn btn-outline-primary">
+        Follow
+      </a>
     </div>
     <div className="userprofilename">
       <p>
-        {firstname}
-        {' '}
-        {lastname}
+        {firstname} 
+{' '}
+{lastname}
       </p>
       <p>32 Publications</p>
     </div>
@@ -46,7 +56,13 @@ export const LeftSideBar = ({
 );
 
 export const ArticleContent = ({
-  title, description, body, slug, author, username, id,
+  title,
+  description,
+  body,
+  slug,
+  author,
+  username,
+  id,
 }) => (
   <div className="middle-up" style={{ paddingTop: '0px' }}>
     <div className="article-part">
@@ -54,13 +70,9 @@ export const ArticleContent = ({
         <h1>{title}</h1>
       </div>
       <div className="article-description">
-        <h4>
-          {description}
-        </h4>
+        <h4>{description}</h4>
       </div>
-      <div className="article-paragraph">
-        {ReactHtmlParser(body)}
-      </div>
+      <div className="article-paragraph">{ReactHtmlParser(body)}</div>
     </div>
     <div className="middle-line" />
     <div className="article-events">
@@ -77,10 +89,11 @@ export const ArticleContent = ({
       </div>
       <div className="M" />
       <div className="R">
-        <i className="fab fa-twitter" />
+        {/* <i className="fab fa-twitter" />
         <i className="fab fa-facebook-f" />
         <i className="fab fa-linkedin-in" />
-        <i className="fab fa-google" />
+        <i className="fab fa-google" /> */}
+        <ShareArticle />
         <Bookmark slug={slug} articleId={id} />
         <MoreOnArticle slug={slug} author={author} />
       </div>
@@ -89,7 +102,7 @@ export const ArticleContent = ({
   </div>
 );
 export const RecentArticles = ({
-  onChange, current, total, articles,
+ onChange, current, total, articles 
 }) => (
   <div className="middle-down">
     <h1>Most recent on Author’s Haven</h1>
@@ -109,7 +122,12 @@ export const RecentArticles = ({
       ))}
     </div>
     <div className="pagination-div">
-      <Pagination onChange={onChange} current={current} total={total} pageSize={2} />
+      <Pagination
+        onChange={onChange}
+        current={current}
+        total={total}
+        pageSize={2}
+      />
     </div>
   </div>
 );
@@ -118,7 +136,7 @@ export const RightSideBar = ({ readtime, createdAt, rating }) => (
   <div className="right-side" style={{ marginLeft: 'auto' }}>
     <div className="rating-pub-read-time">
       <p>
-Published: &nbsp;
+        Published: &nbsp;
         <span>{createdAt}</span>
       </p>
       <p>{readtime}</p>
