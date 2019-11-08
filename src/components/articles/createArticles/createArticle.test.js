@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { CreateArticles, mapStateToProps } from './createArticles';
 
+const isArticleCreated = true;
 describe('Test React component test with Enzyme', () => {
   it('renders without crashing', () => {
     shallow(<CreateArticles />);
