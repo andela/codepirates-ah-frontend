@@ -13,6 +13,7 @@ import updateArticleReducer from './updateArticle';
 import notifications from './notifications/index';
 import emailOptInOut from './notifications/emailOptInReducer';
 import appOptInOut from './notifications/appOptInReducer';
+import { ViewUserFollowers } from './followUnfollow/followUserReducer';
 
 export default {
   userRegistrationData: signupReducer,
@@ -30,4 +31,5 @@ export default {
   notifications,
   emailOptInOut,
   appOptInOut,
+  ViewUserFollowers,
 };

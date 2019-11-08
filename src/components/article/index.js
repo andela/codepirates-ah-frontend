@@ -59,6 +59,7 @@ export class ViewArticle extends Component {
       getArticle,
       articles: { data },
     } = this.props;
+
     if (nextProps.getArticle !== getArticle) {
       this.setState({ getArticle: nextProps.getArticle });
     }
@@ -106,6 +107,7 @@ export class ViewArticle extends Component {
             <div className="viewArticleContainer">
               <LeftSideBar
                 firstname={data.author.firstname}
+                id={data.authorId}
                 lastname={data.author.lastname}
                 profilePic={data.author.image}
                 LeftSideStyles={LeftSideStyles}
@@ -167,7 +169,6 @@ const mapStateToProps = ({ viewArticle: getArticle, articles }) => ({
   getArticle,
   articles,
 });
-export default connect(
-  mapStateToProps,
-  { viewArticle, getAllArticles },
-)(ViewArticle);
+export default connect(mapStateToProps, { viewArticle, getAllArticles })(
+  ViewArticle,
+);
