@@ -14,6 +14,9 @@ export default {
     isArticleViewed: false,
     articleRated: false,
     articleDeleted: false,
+    sharedOnfacebook: false,
+    sharedOntwitter: false,
+    sharedOnmail: false,
   },
   bookmark: {
     bookmarkPending: false,
