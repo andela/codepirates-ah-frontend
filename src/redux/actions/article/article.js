@@ -16,6 +16,18 @@ export const rateFail = () => ({
   type: actionTypes.RATE_ARTICLE_FAIL,
 });
 
+export const reportPending = () => ({
+  type: actionTypes.REPORT_PENDING,
+});
+export const reportSuccess = (payload) => ({
+  type: actionTypes.REPORT_SUCCESS,
+  reportMessage: payload,
+});
+export const reportFail = (payload) => ({
+  type: actionTypes.REPORT_ERROR,
+  reportError: payload,
+});
+
 export const deleteArticle = (slug) => async (dispatch) => {
   const data = await postApi('DELETE', `articles/${slug}`);
   if (data.status === 'success') {
@@ -24,6 +36,18 @@ export const deleteArticle = (slug) => async (dispatch) => {
   }
   return dispatch(deleteFail());
 };
+
+export const reportArticle = (slug, reason) => async (dispatch) => {
+  dispatch(reportPending());
+  const payload = JSON.stringify({ reason });
+  const data = await postApi('POST', `reports/${slug}`, payload);
+  if (data.status === 'success') {
+    dispatch(reportSuccess(data.data.reason));
+    return;
+  }
+  return dispatch(reportFail(data.message));
+};
+
 export const postRatings = (slug, rate) => async (dispatch) => {
   let given = {
     rate,
