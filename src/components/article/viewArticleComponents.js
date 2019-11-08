@@ -89,10 +89,6 @@ export const ArticleContent = ({
       </div>
       <div className="M" />
       <div className="R">
-        {/* <i className="fab fa-twitter" />
-        <i className="fab fa-facebook-f" />
-        <i className="fab fa-linkedin-in" />
-        <i className="fab fa-google" /> */}
         <ShareArticle />
         <Bookmark slug={slug} articleId={id} />
         <MoreOnArticle slug={slug} author={author} />

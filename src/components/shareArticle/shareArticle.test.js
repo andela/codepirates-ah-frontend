@@ -15,15 +15,10 @@ const store = mockStore({
   },
 });
 
-const fetchShare = jest.fn(() => Promise.resolve({
-  status: 400,
-  message: 'bad request',
-}));
 describe('Test share article', () => {
   const shareFunc = (args) => {
     const [share, handleClick] = Array(2).fill(jest.fn());
     const defaultProps = {
-      fetchShare,
       share,
       handleClick,
       location: {
@@ -45,7 +40,10 @@ describe('Test share article', () => {
     expect(facebook.length).toBe(1);
   });
   it('should fail to share on facebook', async () => {
-    const wrapper = shareFunc();
+    const fetchShare = jest.fn(() => Promise.resolve({
+      status: 400,
+    }));
+    const wrapper = shareFunc({ fetchShare });
     const facebook = wrapper.find('.fa-facebook-f').first();
     facebook.simulate('click', { channel: 'facebook' });
     await wrapper

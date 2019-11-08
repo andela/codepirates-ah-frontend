@@ -1,8 +1,19 @@
 .share-icons {
-    display: inline-flex;
+  display: inline-flex;
+  padding-right: 2%;
+  .share {
+    border: none;
+    outline: none;
+    margin: -4% 18% auto auto;
+    background: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .share-icons {
+      padding-right: 20%;
     .share {
-        border: none;
-        outline: none;
-        margin: -4% 5% auto 5%;
+      margin: -4% 5% auto 0%;
     }
+  }
 }

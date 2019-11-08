@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 
 import {
   articleShareAction,
@@ -11,10 +12,21 @@ import './share.scss';
 
 export class ShareArticle extends React.Component {
   handleClick = async (channel) => {
-    const { slug } = this.props;
+    const { slug, title, images } = this.props.article;
     const action = await this.props.fetchshare(slug, channel);
     const { status } = action;
+    const url = window.location.href;
     this.props.share(status, channel);
+    const urls = {
+      facebook: `https://www.facebook.com/sharer/sharer.php?s=100&p[url]=${url}&p[images]=${images}`,
+      twitter: `https://twitter.com/intent/tweet?url=${url}`,
+      mail: `mailto:?subject=${title}&body=${url}`,
+    };
+    if (status === 200 || status === 'success') {
+      window.open(urls[channel], '_blank');
+    } else {
+      toast.error('sharing failed');
+    }
   };
 
   render() {
@@ -45,7 +57,7 @@ ShareArticle.defaultProps = {
 };
 
 const mapStateToProps = (store) => ({
-  slug: store.viewArticle.data.slug,
+  article: store.viewArticle.data,
 });
 
 export default connect(
