@@ -47,9 +47,9 @@ export const LeftSideBar = ({
     </div>
     <div className="userprofilename">
       <p>
-        {firstname} 
-{' '}
-{lastname}
+        {firstname}
+        {' '}
+        {lastname}
       </p>
       <p>32 Publications</p>
     </div>
@@ -105,7 +105,7 @@ export const ArticleContent = ({
   </div>
 );
 export const RecentArticles = ({
- onChange, current, total, articles 
+  onChange, current, total, articles,
 }) => (
   <div className="middle-down">
     <h1>Most recent on Author’s Haven</h1>
