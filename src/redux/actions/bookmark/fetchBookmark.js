@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify';
 import * as bookmarkActionCreators from './bookmarkAction';
 import { BACKEND_URL, VERSION } from '../actionTypes';
+import { getApi } from '../../../api/userApi';
 
 export const createBookmark = (articleId, name) => (dispatch) => {
   const token = localStorage.getItem('token');
@@ -53,3 +54,11 @@ export const deleteBookmark = (name) => (dispatch) => {
     })
     .catch((error) => dispatch(bookmarkActionCreators.fetchBookmarkError(error)));
 };
+export const fechMybookmark = () => async (dispatch) => {
+  const data = await getApi('GET', 'users/bookmarks');
+  if (data.status === 'success') {
+    return dispatch(bookmarkActionCreators.fetchSuccess(data.data));
+  }
+  return dispatch(bookmarkActionCreators.fetchFail());
+};
+

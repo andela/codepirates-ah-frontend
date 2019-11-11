@@ -17,6 +17,9 @@ export const fetchProfile = () => (dispatch) => {
       if (res.status === 'success') {
         return dispatch(profileActionCreators.fetchProfileSuccess(res.data));
       }
+      if (res.message === 'Token is not valid') {
+        localStorage.removeItem('token');
+      }
       toast.error(res.message);
       return dispatch(profileActionCreators.fetchProfileError(error));
     })
