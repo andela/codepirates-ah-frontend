@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './navbar.scss';
 import { connect } from 'react-redux';
 import {
   Nav, NavDropdown, Navbar, Image,
 } from 'react-bootstrap';
 import Search from '../search/search';
 import Logo from '../logo';
+import notifications from '../../../redux/actions/notifications/index';
 
 
 /**
@@ -17,6 +19,10 @@ import Logo from '../logo';
  */
 
 export class NavBar extends Component {
+  componentDidMount() {
+    notifications();
+  }
+
   render() {
     const { user } = this.props;
     const { isLoggedIn, profile } = user;
@@ -31,6 +37,26 @@ export class NavBar extends Component {
             <div style={{ width: '20rem' }}><Search /></div>
             <Nav.Link href="/articles">
               Articles
+            </Nav.Link>
+            <Nav.Link>
+              <NavDropdown
+                title={(
+                  <div>
+                    <i className="far fa-bell" />
+                    <span className="badge badge-danger dropdown-toggle">4</span>
+                  </div>
+                    )}
+                id="collasible-nav-dropdown"
+              >
+                {' '}
+                <NavDropdown.Item href="/profile">
+                        notification 1
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                notification 2
+                </NavDropdown.Item>
+              </NavDropdown>
             </Nav.Link>
             {isLoggedIn
               ? (
