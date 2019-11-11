@@ -32,6 +32,8 @@ export class CreateArticles extends React.Component {
       title: '',
       body: '',
       description: '',
+      taglist: [],
+      tags: '',
       schema: '',
       images: [],
       isArticleCreated: false,
@@ -85,12 +87,15 @@ export class CreateArticles extends React.Component {
   }
 
   handleSubmit() {
+    this.state.taglist = this.state.tags.split(',').map((tag) => tag.trim());
     const { createArticlesAction: createArticle } = this.props;
     createArticle(this.state, this.schema);
   }
 
   render() {
-    const { title, body, description } = this.state;
+    const {
+      title, body, description, tags,
+    } = this.state;
     return (
       <div className="col-12 col-lg-6 offset-lg-3 create-div">
         <h3>Create Article</h3>
@@ -137,8 +142,16 @@ export class CreateArticles extends React.Component {
           theme="snow"
           required
         />
+        <div className="form-group">
+          <label>taglist(separate tags by commas)</label>
+          <input
+            type="text"
+            className="form-control form-control-md"
+            onChange={(ev) => this.handleChangeField('tags', ev)}
+            value={tags}
+          />
+        </div>
         <ToastContainer />
-
         <button
           onClick={this.handleSubmit}
           className="btn btn-primary float-right publish-button"
