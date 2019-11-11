@@ -27,9 +27,13 @@ const userReducer = (state = initialState, action) => {
     case actionTypes.FETCH_PROFILE_PENDING:
       return { ...state, profilePending: true };
     case actionTypes.FETCH_PROFILE_SUCCESS:
-      return { ...state, profilePending: false, profile: action.profile };
+      return {
+        ...state, profilePending: false, profile: action.profile, isLoggedIn: true,
+      };
     case actionTypes.FETCH_PROFILE_ERROR:
-      return { ...state, profilePending: false, profileError: action.error };
+      return {
+        ...state, profilePending: false, profileError: action.error, isLoggedIn: false,
+      };
     case actionTypes.UPDATE_PROFILE_PENDING:
       return { ...state, profilePending: true };
     case actionTypes.UPDATE_PROFILE_SUCCESS:
@@ -48,6 +52,12 @@ const userReducer = (state = initialState, action) => {
         ...action.payload,
         message: `${action.payload.message}${randomSpaces()}`,
         isLoggedIn: false,
+      };
+    case actionTypes.SAVE_USER_IN_THE_STORE:
+      return {
+        ...state,
+        ...action.payload,
+        isLoggedIn: true,
       };
     default:
       return state;

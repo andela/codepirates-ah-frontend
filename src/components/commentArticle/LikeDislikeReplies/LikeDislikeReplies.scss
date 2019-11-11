@@ -1,0 +1,41 @@
+.listOfComments--likeDislikeAndButton {
+    display: flex;
+    padding-top: 5px;
+    align-content: end;
+    color: gray;
+    .listOfComments--likeDislikeAndButton__insideDiv {
+      margin-right: 20px;
+      button {
+        background: transparent;
+        border: none;
+        outline: none;
+        &:hover {
+          color: #2f80ed;
+        }
+      }
+      .fa-thumbs-up {
+        cursor: pointer;
+        &:hover {
+          color: #2f80ed;
+        }
+      }
+      .fa-thumbs-down {
+        cursor: pointer;
+        &:hover {
+          color: #2f80ed;
+        }
+      }
+      p {
+        cursor: pointer;
+        &:hover {
+          color: #2f80ed;
+        }
+      }
+    }
+    .fa-thumbs-down {
+      transform: rotate(0deg);
+    }
+    .replies {
+      display: flex;
+    }
+  }

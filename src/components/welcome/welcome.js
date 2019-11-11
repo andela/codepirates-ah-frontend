@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import logo from '../../../public/assets/images/logo.png';
 import displayWelcomeMessage from '../../helpers/displayWelcomeMessage';
+import RateComponent from '../rateButton/rate';
 
 class Welcome extends Component {
   componentDidMount() {
@@ -16,6 +17,7 @@ class Welcome extends Component {
           <img src={logo} alt="logo" />
           <h3 style={{ color: 'navy' }}>
             Welcome to Authors Haven
+            <RateComponent slug="fakeslug" />
           </h3>
         </div>
       </div>

@@ -47,4 +47,3 @@ export const socialAuth = (token, authType) => async (dispatch) => {
   }
   return dispatch(authFail(data.data, authType));
 };
-// export default socialAuth;

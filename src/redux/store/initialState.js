@@ -12,6 +12,13 @@ export default {
   },
   viewArticle: {
     isArticleViewed: false,
+    articleRated: false,
+    articleDeleted: false,
+  },
+  bookmark: {
+    bookmarkPending: false,
+    bookmarkSuccess: '',
+    bookmarkError: null,
   },
   articles: {
     popular: {},
@@ -32,4 +39,22 @@ export default {
     },
     error: '',
   },
+  article: {},
+  articleFeedback: {
+    clapPending: false,
+    claps: 0,
+    clapError: null,
+    dislikePending: false,
+    dislikes: 0,
+    dislikeError: null,
+    article: {
+    },
+  },
+  comments: [],
+  updateArticle: {
+    success: '',
+    error: '',
+    editmode: true,
+  },
+  notifications: {},
 };

@@ -6,3 +6,4 @@ package-lock.json
 coverage/
 jsconfig.json
 .vscode/settings.json
+yarn.lock
