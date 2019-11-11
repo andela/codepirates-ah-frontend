@@ -37,6 +37,7 @@ export const Bookmark = (props) => {
     if (!bookmark.article) return false;
     return (
       <div
+        className="col-sm-6"
         key={bookmark.id}
       >
         <Card>
@@ -62,10 +63,10 @@ Published
       <div
         className="container"
       >
-        <h1>Your Bookmarks</h1>
-        <CardColumns>
+        <h1>My Bookmarks</h1>
+        <div className="row">
           {allBookmarks}
-        </CardColumns>
+        </div>
       </div>
     </>
   );
