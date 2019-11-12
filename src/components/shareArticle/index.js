@@ -12,13 +12,13 @@ import './share.scss';
 
 export class ShareArticle extends React.Component {
   handleClick = async (channel) => {
-    const { slug, title, images } = this.props.article;
+    const { slug, title } = this.props.article;
     const action = await this.props.fetchshare(slug, channel);
     const { status } = action;
     const url = window.location.href;
     this.props.share(status, channel);
     const urls = {
-      facebook: `https://www.facebook.com/sharer/sharer.php?s=100&p[url]=${url}&p[images]=${images}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
       twitter: `https://twitter.com/intent/tweet?url=${url}`,
       mail: `mailto:?subject=${title}&body=${url}`,
     };
