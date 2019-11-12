@@ -23,6 +23,7 @@ import Feedback from './passwordreset/feedbackContainer';
 import ArticleComments from './commentArticle';
 import saveUserAction from '../redux/actions/saveUser';
 import store from '../redux/store';
+import Tags from './tags/tags';
 
 const user = localStorage.getItem('token');
 if (user) {
@@ -53,6 +54,7 @@ const Routes = () => (
       }}
     />
     <Route exact path="/logout" component={Logout} />
+    <Route exact path="/tag" component={Tags} />
     <Route exact path="/bookmarks" component={bookmarks} />
     <Route exact path="/articles/create" component={CreateArticles} />
     <Route exact path="/articles/mine" component={SpecificUserArticles} />

@@ -1,26 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Card } from 'react-bootstrap';
-import { bindActionCreators } from 'redux';
-import * as fechMybookmark from '../../redux/actions/bookmark/fetchBookmark';
+import queryString from 'query-string';
+import displayArticles from '../../redux/actions/landingPage';
+import ListOfArticles from '../common/listOfArticles';
 
 export const Tags = (props) => {
-  const [myBookmarks, setBookmarks] = useState([]);
+  const [articles, setAtricle] = useState([]);
+  const [articleNumber, setarticleNumber] = useState(3);
   const [loading, setLoading] = useState(true);
-  const { bookmarks, actions, isSuccess } = props;
+  const { location: { search }, displayArticles } = props;
+  const { tag } = queryString.parse(search);
+  let allSort = [];
   useEffect(() => {
-    actions.fechMybookmark();
-  }, []);
-  useEffect(() => {
-    if (isSuccess === 'success') {
-      setBookmarks(bookmarks);
-      setLoading(false);
-    }
-    if (isSuccess === 'fail') {
+    if (!tag) {
       window.location.replace('/');
     }
-  }, [props.setBookmarks, props.isSuccess]);
+    displayArticles();
+  }, []);
+  useEffect(() => {
+    const { data } = props;
+    if (data && data !== null) {
+      setLoading(false);
+      setAtricle(data);
+    }
+  }, [props.data]);
 
   if (loading) {
     return (
@@ -29,47 +33,39 @@ export const Tags = (props) => {
       </p>
     );
   }
-  return myBookmarks.map((bookmark) => {
-    if (bookmarks.length === 0) {
-      window.location.replace('/');
-      return false;
-    }
-    if (!bookmark.article) return false;
-    return (
+
+  allSort = articles.filter((data) => (data.taglist !== null && data.taglist.includes(tag)));
+  return (
+    <>
       <div
         className="container"
-        key={bookmark.id}
-        href={`/article/${bookmark.article.slug}`}
       >
-        <Card>
-          <Card.Body>
-            <Card.Title style={{ cursor: 'pointer' }} as="a" href={`/article/${bookmark.article.slug}`}>{bookmark.article.title}</Card.Title>
-            <Card.Text>
-              {bookmark.article.description.length > 70 ? `${bookmark.article.description.substring(0, 70)} ...` : bookmark.article.description}
-            </Card.Text>
-            <Card.Subtitle className="mb-2 text-muted">{bookmark.article.readtime}</Card.Subtitle>
-            <Card.Subtitle className="mb-2 text-muted">{bookmark.article.timeCreated}</Card.Subtitle>
-            <Card.Link href={`/profile/${bookmark.article.author.username}`}>{bookmark.article.author.username}</Card.Link>
-          </Card.Body>
-        </Card>
+        <h1>
+All Article with
+          {' '}
+          {tag}
+          {' '}
+tag
+        </h1>
+        <div>
+          <ListOfArticles
+            articles={allSort}
+          />
+        </div>
       </div>
-    );
-  });
+    </>
+  );
 };
 
 Tags.propTypes = {
-  actions: PropTypes.object.isRequired,
-  bookmarks: PropTypes.array,
-  isSuccess: PropTypes.string,
+  displayArticles: PropTypes.func.isRequired,
+  data: PropTypes.array,
 };
+Tags.defaultValues = {
+  data: null,
+};
+const mapStateToProps = ({ articles }) => ({
+  data: articles.data,
+});
+export default connect(mapStateToProps, { displayArticles })(Tags);
 
-const mapStateToProps = ({ bookmark }) => ({
-  bookmarks: bookmark.myBookmarks,
-  isSuccess: bookmark.myBookmarkSuccess,
-});
-export const mapDispatchToProps = (dispatch) => ({
-  actions: {
-    fechMybookmark: bindActionCreators(fechMybookmark.fechMybookmark, dispatch),
-  },
-});
-export default connect(mapStateToProps, mapDispatchToProps)(Tags);
