@@ -142,6 +142,11 @@ function isNotInProfileCardEditMode(image, username, onEditModeChange) {
               Create article
             </p>
           </a>
+          <a href="/bookmarks">
+            <p className="button button--secondary button--large btn-edit">
+              My Bookmarks
+            </p>
+          </a>
         </div>
       </span>
     </div>

@@ -6,7 +6,15 @@ export const getUserNotificationsSuccess = (data) => ({
   payload: data,
 });
 
-const getNotifications = () => (dispatch) => fetch(`${actions.BACKEND_URL}/api/v1/notifications/`, {
+export const updateNotificationsStatus = (notificationId) => (dispatch) => fetch(`${actions.BACKEND_URL}/api/v1/notifications/${notificationId}`, {
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+    'x-access-token': token,
+  },
+}).then((res) => res.json()).then((response) => console.log('STATUS UPDATED', response));
+
+export const getNotifications = () => (dispatch) => fetch(`${actions.BACKEND_URL}/api/v1/notifications/`, {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
@@ -14,4 +22,3 @@ const getNotifications = () => (dispatch) => fetch(`${actions.BACKEND_URL}/api/v
   },
 }).then((res) => res.json()).then((response) => dispatch(getUserNotificationsSuccess(response)));
 
-export default getNotifications;
