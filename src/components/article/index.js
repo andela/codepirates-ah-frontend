@@ -12,6 +12,9 @@ import {
 } from './viewArticleComponents';
 import { viewArticle } from '../../redux/actions/viewSingleArticle/viewSingleArticleAction';
 import { getAllArticles } from '../../redux/actions/viewSingleArticle/getRecentArticles';
+import HighlightArticle from './highlightArticle';
+// import mouseupHandler from '../../redux/actions/highlight/mouseup';
+// import { displayHighlightAction } from '../../redux/actions/highlight';
 
 export class ViewArticle extends Component {
   state = {
@@ -42,14 +45,14 @@ export class ViewArticle extends Component {
     loading: false,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.setState({ loading: true });
     const {
       viewArticle: viewSingleArticle,
       getAllArticles: articles,
       match: { params },
     } = this.props;
-    viewSingleArticle(params.slug);
+    await viewSingleArticle(params.slug);
     articles();
   }
 
@@ -84,6 +87,14 @@ export class ViewArticle extends Component {
     });
   };
 
+  // highlightSelection = () => {
+  //   const { title } = this.state.getArticle.data;
+  //   const newTitle = mouseupHandler(title);
+  //   this.setState({ getArticle: { data: { title: newTitle } } });
+  //   this.props.displayHighlightAction();
+  //   console.log('222', this.state.getArticle.title);
+  // };
+
   render() {
     const {
       getArticle: { data },
@@ -92,6 +103,8 @@ export class ViewArticle extends Component {
       paginatedArticles,
       loading,
     } = this.state;
+
+    // const { highlightSelection } = this;
 
     const LeftSideStyles = {
       display: 'flex',
@@ -140,6 +153,7 @@ export class ViewArticle extends Component {
                 readtime={data.readtime}
                 createdAt={data.createdAt}
               />
+              <HighlightArticle />
             </div>
           )}
         </div>
@@ -155,6 +169,7 @@ ViewArticle.propTypes = {
   articles: PropTypes.object,
   data: PropTypes.array,
   match: PropTypes.object,
+  // highlights: PropTypes.Array,
 };
 ViewArticle.defaultProps = {
   viewArticle: '',
@@ -163,6 +178,7 @@ ViewArticle.defaultProps = {
   articles: '',
   data: [],
   match: '',
+  // highlights: [],
 };
 const mapStateToProps = ({ viewArticle: getArticle, articles }) => ({
   getArticle,

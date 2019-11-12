@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 //mixins
 @mixin btn($radius, $height-num, $width-num, $font-size) {
@@ -51,15 +51,15 @@ body {
   display: grid;
   grid-auto-rows: minmax(100px, auto);
   grid-template-areas:
-    'upper'
-    'middleLeft'
-    'middleLeft '
-    'middleLeft '
-    'middleLeft '
-    'middleRight'
-    'middleRight'
-    'middleRight'
-    'lower';
+    "upper"
+    "middleLeft"
+    "middleLeft "
+    "middleLeft "
+    "middleLeft "
+    "middleRight"
+    "middleRight"
+    "middleRight"
+    "lower";
   > * {
     padding: 10px;
   }
@@ -201,7 +201,7 @@ body {
     }
   }
 }
-@import './mediaqueries';
+@import "./mediaqueries";
 
 // view single article
 
@@ -228,20 +228,20 @@ body {
   display: grid;
   // grid-template-columns: repeat(8, 1fr);
   body {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
   }
   grid-gap: 10px;
   grid-auto-rows: minmax(80px, auto);
   grid-template-areas:
-    'topp topp topp topp topp topp topp topp'
-    ' . leftside leftside leftside rightside rightside rightside .'
-    ' . middleup middleup middleup middleup middleup middleup . '
-    ' . middleup middleup middleup middleup middleup middleup . '
-    ' . middleup middleup middleup middleup middleup middleup . '
-    ' . middledown middledown middledown middledown  middledown middledown . '
-    ' . middledown middledown middledown middledown  middledown middledown . '
-    ' . middledown middledown middledown middledown  middledown middledown . '
-    ' . bottomm bottomm bottomm bottomm bottomm bottomm . ';
+    "topp topp topp topp topp topp topp topp"
+    " . leftside leftside leftside rightside rightside rightside ."
+    " . middleup middleup middleup middleup middleup middleup . "
+    " . middleup middleup middleup middleup middleup middleup . "
+    " . middleup middleup middleup middleup middleup middleup . "
+    " . middledown middledown middledown middledown  middledown middledown . "
+    " . middledown middledown middledown middledown  middledown middledown . "
+    " . middledown middledown middledown middledown  middledown middledown . "
+    " . bottomm bottomm bottomm bottomm bottomm bottomm . ";
   .top {
     width: 100%;
     display: flex;
@@ -499,25 +499,25 @@ body {
   .container {
     grid-template-columns: repeat(10, 1fr);
     grid-template-areas:
-      'topp topp topp topp topp topp topp topp topp topp'
-      ' . leftside middleup middleup middleup middleup middleup middleup rightside . '
-      ' . leftside middleup middleup middleup middleup middleup middleup rightside . '
-      ' . leftside middleup middleup middleup middleup middleup middleup rightside . '
-      ' . leftside middleup middleup middleup middleup middleup middleup rightside . '
-      ' . leftside middleup middleup middleup middleup middleup middleup rightside . '
-      ' . leftside middleup middleup middleup middleup middleup middleup rightside . '
-      ' . leftside middleup middleup middleup middleup middleup middleup rightside . '
-      ' . leftside middleup middleup middleup middleup middleup middleup rightside . '
-      ' . leftside middleup middleup middleup middleup middleup middleup rightside . '
-      ' . leftside middleup middleup middleup middleup middleup middleup rightside . '
-      ' . leftside middleup middleup middleup middleup middleup middleup rightside . '
-      ' . leftside middleup middleup middleup middleup middleup middleup rightside . '
-      ' . leftside middleup middleup middleup middleup middleup middleup rightside . '
-      ' . leftside middledown middledown middledown middledown  middledown middledown rightside . '
-      ' . leftside middledown middledown middledown middledown  middledown middledown rightside . '
-      ' . leftside middledown middledown middledown middledown  middledown middledown rightside . '
-      ' . leftside middledown middledown middledown middledown  middledown middledown rightside . '
-      ' . leftside bottomm bottomm bottomm bottomm bottomm bottomm rightside . ';
+      "topp topp topp topp topp topp topp topp topp topp"
+      " . leftside middleup middleup middleup middleup middleup middleup rightside . "
+      " . leftside middleup middleup middleup middleup middleup middleup rightside . "
+      " . leftside middleup middleup middleup middleup middleup middleup rightside . "
+      " . leftside middleup middleup middleup middleup middleup middleup rightside . "
+      " . leftside middleup middleup middleup middleup middleup middleup rightside . "
+      " . leftside middleup middleup middleup middleup middleup middleup rightside . "
+      " . leftside middleup middleup middleup middleup middleup middleup rightside . "
+      " . leftside middleup middleup middleup middleup middleup middleup rightside . "
+      " . leftside middleup middleup middleup middleup middleup middleup rightside . "
+      " . leftside middleup middleup middleup middleup middleup middleup rightside . "
+      " . leftside middleup middleup middleup middleup middleup middleup rightside . "
+      " . leftside middleup middleup middleup middleup middleup middleup rightside . "
+      " . leftside middleup middleup middleup middleup middleup middleup rightside . "
+      " . leftside middledown middledown middledown middledown  middledown middledown rightside . "
+      " . leftside middledown middledown middledown middledown  middledown middledown rightside . "
+      " . leftside middledown middledown middledown middledown  middledown middledown rightside . "
+      " . leftside middledown middledown middledown middledown  middledown middledown rightside . "
+      " . leftside bottomm bottomm bottomm bottomm bottomm bottomm rightside . ";
     // >*{
     //   background: #27aae1;
     // }

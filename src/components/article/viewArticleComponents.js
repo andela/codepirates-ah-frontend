@@ -57,10 +57,18 @@ export const LeftSideBar = ({
 );
 
 export const ArticleContent = ({
-  title, description, body, slug, author, username, id, taglist,
+  taglist,
+  title,
+  description,
+  body,
+  slug,
+  author,
+  username,
+  id,
+  highlightSelection,
 }) => (
   <div className="middle-up" style={{ paddingTop: '0px' }}>
-    <div className="article-part">
+    <div className="article-part" onMouseUp={()=>{}}>
       <div className="article-title">
         <h1>{title}</h1>
       </div>

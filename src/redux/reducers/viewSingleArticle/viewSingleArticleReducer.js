@@ -27,6 +27,10 @@ const viewArticle = (state = initialState, action) => {
       return { ...state, ...action.payload };
     case actionTypes.SHARE_ARTICLE_FAILURE:
       return { ...state, ...action.payload };
+    case actionTypes.HIGHLIGHT_ARTICLE_SUCCESS:
+      return { ...state, highlights: highlights.push(payload.highlight) };
+    case actionTypes.HIGHLIGHT_ARTICLE_FAILURE:
+      return { ...state, ...action.payload };
     default:
       return state;
   }
