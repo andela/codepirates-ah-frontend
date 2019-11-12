@@ -13,8 +13,6 @@ import {
 import { viewArticle } from '../../redux/actions/viewSingleArticle/viewSingleArticleAction';
 import { getAllArticles } from '../../redux/actions/viewSingleArticle/getRecentArticles';
 import HighlightArticle from './highlightArticle';
-// import mouseupHandler from '../../redux/actions/highlight/mouseup';
-// import { displayHighlightAction } from '../../redux/actions/highlight';
 
 export class ViewArticle extends Component {
   state = {

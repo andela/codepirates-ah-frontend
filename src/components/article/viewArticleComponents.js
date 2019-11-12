@@ -65,10 +65,9 @@ export const ArticleContent = ({
   author,
   username,
   id,
-  highlightSelection,
 }) => (
   <div className="middle-up" style={{ paddingTop: '0px' }}>
-    <div className="article-part" onMouseUp={()=>{}}>
+    <div className="article-part" onMouseUp={() => {}}>
       <div className="article-title">
         <h1>{title}</h1>
       </div>

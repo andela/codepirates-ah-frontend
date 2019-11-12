@@ -1,4 +1,3 @@
-import { toast } from 'react-toastify';
 import * as actions from '../actionTypes';
 import { flashToast } from '../actionHelpers';
 

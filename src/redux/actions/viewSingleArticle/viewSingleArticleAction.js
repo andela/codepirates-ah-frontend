@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import * as actions from '../actionTypes';
 import { getHighlights } from '../highlight';
 
@@ -13,7 +14,7 @@ const stripHtml = (html) => {
   return tmp.textContent || tmp.innerText || '';
 };
 
-const findIndex = (html, index, text) => {
+export const findIndex = (html, index, text) => {
   let i = index;
   const section = html.slice(0, i);
   while (
@@ -31,7 +32,7 @@ const findIndex = (html, index, text) => {
 const countText = (html, index) => {
   let i;
   let str = `${html.slice(0, index).replace(/\"/g, "'")}`;
-  const markup = str.match(/(<\/?[\w\s="/.':;#-\/\?]+>\s?(\s=\s)?|<\/p>+)/gi);
+  const markup = str.match(/<\/?[\w\s="/.':;#-\/\?]+>\s?(\s=\s)?/gi);
   if (!markup) {
     i = index;
   } else {
@@ -48,7 +49,10 @@ const showHighlights = (body, indices) => {
   let res = body;
   const highlight = (index) => res.slice(countText(res, index[0]), countText(res, index[1]));
   indices.forEach((index) => {
-    res = res.replace(highlight(index), `<em>${highlight(index)}</em>`);
+    res = res.replace(
+      highlight(index),
+      `<em style=\"background: yellow\">${highlight(index)}</em>`,
+    );
   });
   return res;
 };

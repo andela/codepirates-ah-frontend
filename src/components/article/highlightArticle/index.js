@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -34,12 +35,10 @@ class HighlighArticle extends Component {
     const ctrl = document.querySelector('#highlightActions');
     ctrl.style.display = 'block';
     this.setState(cursorIndexFrom(body));
-    console.log('sss', this.state);
   };
 
   render() {
-    const { top, left } = this.state;
-    console.log({ top });
+    // const { top, left } = this.state;
     return (
       <div
         id="highlightActions"
