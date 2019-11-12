@@ -22,6 +22,7 @@ export default function ListOfArticles({ articles, limitArticlesNumber }) {
           createdTime={article && article.timeCreated}
           slug={article && article.slug}
           rating={rating}
+          report={article && article.reportReason}
         />
       </div>
     );

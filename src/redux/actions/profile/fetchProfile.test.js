@@ -1,4 +1,4 @@
-import { fetchProfile, updateProfile } from './fetchProfile';
+import { fetchProfile, updateProfile, readReportedArticles } from './fetchProfile';
 import { fetchError, fetchSuccess } from '../../../__mocks__/mockFetch';
 
 const dispatch = jest.fn(() => ({ data: {} }));
@@ -22,6 +22,16 @@ describe('profile calling backend services', () => {
       image: 'dd',
     };
     const response = await updateProfile(input)(dispatchError);
+    expect(response).toHaveProperty('error');
+  });
+  it('should throw if success occurs', async () => {
+    window.fetch = fetchSuccess;
+    const response = await readReportedArticles()(dispatch);
+    expect(response).toHaveProperty('data');
+  });
+  it('should throw if fetchError occurs', async () => {
+    window.fetch = fetchError;
+    const response = await readReportedArticles()(dispatchError);
     expect(response).toHaveProperty('error');
   });
   it('should fetch profile data from authors haven API', async () => {
