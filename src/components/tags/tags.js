@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
+import { Jumbotron, Button } from 'react-bootstrap';
 import displayArticles from '../../redux/actions/landingPage';
 import ListOfArticles from '../common/listOfArticles';
 
@@ -37,22 +38,45 @@ export const Tags = (props) => {
   allSort = articles.filter((data) => (data.taglist !== null && data.taglist.includes(tag)));
   return (
     <>
-      <div
-        className="container"
-      >
-        <h1>
-All Article with
-          {' '}
-          {tag}
-          {' '}
+      {allSort.length === 0
+        ? (
+          <div
+            className="container"
+          >
+            <Jumbotron>
+              <h1>Ohhh OOps</h1>
+              <p>
+    Sorry there is no Articles tagged
+                {' '}
+                <b>{tag}</b>
+                {' '}
+tag.
+              </p>
+              <p>
+                <Button variant="primary" href="/">Go To Homepage </Button>
+              </p>
+            </Jumbotron>
+          </div>
+        )
+        : (
+
+          <div
+            className="container"
+          >
+            <h2 style={{ fontWeight: 'normal' }}>
+All Articles with
+              {' '}
+              <b>{tag}</b>
+              {' '}
 tag
-        </h1>
-        <div>
-          <ListOfArticles
-            articles={allSort}
-          />
-        </div>
-      </div>
+            </h2>
+            <div className="col-12 col-md-6 offset-md-2">
+              <ListOfArticles
+                articles={allSort}
+              />
+            </div>
+          </div>
+        )}
     </>
   );
 };

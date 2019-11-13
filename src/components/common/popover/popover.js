@@ -8,7 +8,7 @@ const SearchPopover = ({ title, items }) => (
       <a href="/search" style={{ float: 'right' }}>More</a>
     </h6>
     {title !== 'Tags' && (<div className="list-group">{items.map((item) => (<a href={`/article/${item.slug}`} className="list-group-item list-group-item-action" key={item.slug}>{item.title}</a>))}</div>)}
-    {title === 'Tags' && (<div className="list-group">{items.map((item) => (<p key={item.name}><a href={`article/${item.slug}`} className="ui teal tag label">{item.name}</a></p>))}</div>)}
+    {title === 'Tags' && (<div className="list-group">{items.map((item) => (<p key={item.name}><a href={`/articles/tag?tag=${item.name}`} className="ui teal tag label">{item.name}</a></p>))}</div>)}
   </div>
 );
 

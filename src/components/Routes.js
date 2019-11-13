@@ -54,7 +54,7 @@ const Routes = () => (
       }}
     />
     <Route exact path="/logout" component={Logout} />
-    <Route exact path="/tag" component={Tags} />
+    <Route exact path="/articles/tag" component={Tags} />
     <Route exact path="/bookmarks" component={bookmarks} />
     <Route exact path="/articles/create" component={CreateArticles} />
     <Route exact path="/articles/mine" component={SpecificUserArticles} />
