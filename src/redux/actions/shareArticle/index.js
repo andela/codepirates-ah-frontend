@@ -26,7 +26,6 @@ export const fetchshare = (slug, channel) => fetch(`${BACKEND_URL}/api/${VERSION
   body: JSON.stringify({ url: window.location.href }),
 }).then((res) => res.json());
 
-export const articleShareAction = (status, channel) => (dispatch) => (
-  status === 200 || status === 'success'
-    ? dispatch(articleShareSuccess(channel))
-    : dispatch(articleShareFailure(channel)));
+export const articleShareAction = (status, channel) => (dispatch) => (status === 200 || status === 'success'
+  ? dispatch(articleShareSuccess(channel))
+  : dispatch(articleShareFailure(channel)));

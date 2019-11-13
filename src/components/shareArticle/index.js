@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
@@ -12,6 +13,13 @@ import './share.scss';
 
 export class ShareArticle extends React.Component {
   handleClick = async (channel) => {
+    if (!localStorage.getItem('token')) {
+      this.props.history.push({
+        pathname: '/login',
+        state: { from: this.props.location },
+      });
+      return;
+    }
     const { slug, title } = this.props.article;
     const action = await this.props.fetchshare(slug, channel);
     const { status } = action;
@@ -60,7 +68,6 @@ const mapStateToProps = (store) => ({
   article: store.viewArticle.data,
 });
 
-export default connect(
-  mapStateToProps,
-  { share: articleShareAction },
-)(ShareArticle);
+export default withRouter(
+  connect(mapStateToProps, { share: articleShareAction })(ShareArticle),
+);
