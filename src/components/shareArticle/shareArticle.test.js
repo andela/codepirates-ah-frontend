@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { BrowserRouter as Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
@@ -28,9 +29,11 @@ describe('Test share article', () => {
     };
     const props = { ...defaultProps, ...args };
     return mount(
-      <Provider store={store}>
-        <ShareArticle {...props} />
-      </Provider>,
+      <Router>
+        <Provider store={store}>
+          <ShareArticle {...props} />
+        </Provider>
+      </Router>,
       { context: { store } },
     );
   };
