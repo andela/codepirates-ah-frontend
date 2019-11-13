@@ -39,3 +39,23 @@ export function updateProfileError(error) {
     error,
   };
 }
+
+export function fetchreadReportsPending() {
+  return {
+    type: actionType.REPORTEDARTICLES_PENDING,
+  };
+}
+
+export function fetchreadReportsSuccess(payload) {
+  return {
+    type: actionType.REPORTEDARTICLES_SUCCESS,
+    reportedArticles: payload,
+  };
+}
+
+export function fetchreadReportsError(payload) {
+  return {
+    type: actionType.REPORTEDARTICLES_ERROR,
+    readreportedArticlesError: payload,
+  };
+}

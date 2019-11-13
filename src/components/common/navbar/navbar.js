@@ -48,8 +48,8 @@ export class NavBar extends Component {
      }
    }
 
-   handleNotifications = (id) => {
-     this.props.actions.updateNotificationsStatus(id);
+   handleNotifications = (id, articleSlug) => {
+     this.props.actions.updateNotificationsStatus(id, articleSlug);
    }
 
    render() {
@@ -87,7 +87,7 @@ export class NavBar extends Component {
                          {' '}
 
                          { data.length !== 0 ? (data.map((notification) => (
-                           <p onClick={() => this.handleNotifications(notification.id)}>
+                           <p onClick={() => this.handleNotifications(notification.id, notification.articleSlug)} style={{ cursor: 'pointer' }}>
                              <NavDropdown.Item style={{ fontSize: '10px' }}>
                                {notification.read === false
                                  ? (<b>{notification.message}</b>) : (notification.message)}

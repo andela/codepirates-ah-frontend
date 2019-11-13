@@ -5,11 +5,12 @@ import classnames from 'classnames';
 import {
   updateProfile,
   fetchProfile,
+  readReportedArticles,
 } from '../../redux/actions/profile/fetchProfile';
 import ProfileCard from './profileCard/profileCard';
 import ProfileSideBar from './profileSideBar/profileSideBar';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Report from '../common/report/report';
 import './profile.scss';
 import ProfileBio from './profileBio/profileBio';
 import SpecificUserArticles from '../articles/allArticles/SpecificUserArticles';
@@ -20,23 +21,30 @@ export class Profile extends Component {
     this.state = {
       bioEditMode: false,
       profileCardEditMode: false,
+      selectedTab: 'bio',
+      readReportedArticles: '',
     };
     this.previewImage = React.createRef();
   }
 
   componentDidMount() {
-    const { fetchProfile: getProfile } = this.props;
+    const { fetchProfile: getProfile, readReportedArticles: getReportedArticles } = this.props;
     getProfile();
+    getReportedArticles();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.profile && nextProps.articles) {
+    if (this.props.profile !== nextProps.profile) {
       this.setState({
         bio: nextProps.profile.bio,
         username: nextProps.profile.username || nextProps.profile.userName,
         image: nextProps.profile.image,
         loading: nextProps.pending,
-        articles: nextProps.articles.length,
+      });
+    }
+    if (this.props.reports !== nextProps.reports) {
+      this.setState({
+        readReportedArticles: nextProps.reports,
       });
     }
   }
@@ -67,6 +75,10 @@ export class Profile extends Component {
       : this.setState({ bioEditMode: true });
   };
 
+  handleChangeTabs = (tab) => {
+    this.setState({ selectedTab: tab });
+  }
+
   handleProfileCardUpdate = (e) => {
     e.preventDefault();
     const { profileCardEditMode: isEditEnabled } = this.state;
@@ -93,8 +105,46 @@ export class Profile extends Component {
       bio,
       bioEditMode,
       profileCardEditMode,
-      articles,
+      readReportedArticles,
+      selectedTab,
     } = this.state;
+    let activeContent;
+    switch (selectedTab) {
+      case 'bio':
+        activeContent = (
+          <ProfileBio
+            onFormSubmit={this.handleSubmit}
+            onInputChange={this.handleChange}
+            bioData={bio || ''}
+            bioEditMode={bioEditMode}
+            onUpdatingBio={this.handleUpdateBio}
+          />
+        );
+        break;
+      case 'my blogs':
+        activeContent = (
+          <div>
+            <h2>My articles</h2>
+            <SpecificUserArticles />
+          </div>
+        );
+        break;
+      case 'report':
+        activeContent = (
+          <Report reportedArticles={readReportedArticles} />
+        );
+        break;
+      default:
+        activeContent = (
+          <ProfileBio
+            onFormSubmit={this.handleSubmit}
+            onInputChange={this.handleChange}
+            bioData={bio || ''}
+            bioEditMode={bioEditMode}
+            onUpdatingBio={this.handleUpdateBio}
+          />
+        );
+    }
     return (
       <>
         <div
@@ -112,25 +162,15 @@ export class Profile extends Component {
                 username={username || ''}
               />
 
-              <ProfileSideBar articles={articles} />
+              <ProfileSideBar
+                currentTab={selectedTab}
+                onChangeTab={this.handleChangeTabs}
+              />
             </div>
             <div className="col-md-7">
               <div className="row">
-                <div
-                  className="col-12 profileBorder"
-                  style={{ marginBottom: '5rem' }}
-                >
-                  <ProfileBio
-                    onFormSubmit={this.handleSubmit}
-                    onInputChange={this.handleChange}
-                    bioData={bio || ''}
-                    bioEditMode={bioEditMode}
-                    onUpdatingBio={this.handleUpdateBio}
-                  />
-                </div>
                 <div className="col-12 profileBorder">
-                  <h2>My articles</h2>
-                  <SpecificUserArticles />
+                  {activeContent}
                 </div>
               </div>
             </div>
@@ -148,14 +188,15 @@ Profile.propTypes = {
   updateProfile: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  error: state.user.error,
-  profile: state.user.profile,
-  pending: state.user.profilePending,
-  articles: state.articles.data,
+const mapStateToProps = ({ user, articles, article }) => ({
+  error: user.error,
+  profile: user.profile,
+  pending: user.profilePending,
+  articles: articles.data,
+  reports: article,
 });
 
 export default connect(
   mapStateToProps,
-  { fetchProfile, updateProfile },
+  { fetchProfile, updateProfile, readReportedArticles },
 )(Profile);

@@ -75,7 +75,6 @@ export class ViewArticle extends Component {
   onChange = (page) => {
     const { allArticles, pageSize } = this.state;
     const currentArticles = paginate(allArticles, page, pageSize);
-
     this.setState({
       current: page,
       paginatedArticles: currentArticles,
