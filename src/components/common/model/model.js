@@ -36,7 +36,6 @@ const ModelComponent = (props) => {
 ModelComponent.defaultProps = {
   CancelMessage: 'Cancel',
   ConfirmMessage: 'Confirm',
-  children: PropTypes.array,
   modelHeading: 'Attention',
   show: 'false',
 };
@@ -45,7 +44,6 @@ ModelComponent.propTypes = {
   handleConfirmed: PropTypes.func.isRequired,
   CancelMessage: PropTypes.string,
   ConfirmMessage: PropTypes.string,
-  children: PropTypes.array,
   modelHeading: PropTypes.string,
   show: PropTypes.bool,
 };

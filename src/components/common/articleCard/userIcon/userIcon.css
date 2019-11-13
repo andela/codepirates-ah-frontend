@@ -1,0 +1,36 @@
+.landingUserIconPartComponent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.landingUserIconPartComponent .landingUserIconPartComponent--icon {
+  padding-right: 5px;
+}
+
+.landingUserIconPartComponent .landingUserIconPartComponent--icon img {
+  border-radius: 100%;
+}
+
+.landingUserIconPartComponent .landingUserIconPartComponent--usernameAndreadtime .landingUserIconPartComponent--pubAndReadTime {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 12px;
+}
+
+.landingUserIconPartComponent .landingUserIconPartComponent--usernameAndreadtime .landingUserIconPartComponent--pubAndReadTime .landingUserIconPartComponent--pubAndReadTime-and-dot {
+  padding-left: 3px;
+}
+
+@media screen and (max-width: 450px) {
+  .landingUserIconPartComponent {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .landingUserIconPartComponent .landingUserIconPartComponent--usernameAndreadtime .landingUserIconPartComponent--pubAndReadTime {
+    font-size: 9px;
+  }
+}
+/*# sourceMappingURL=userIcon.css.map */

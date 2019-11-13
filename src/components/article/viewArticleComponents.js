@@ -15,13 +15,21 @@ import RatingArticleCardComponent from '../common/ratingComponent/index';
 import RateComponent from '../rateButton/rate';
 import MoreOnArticle from '../moreAction/index';
 import ArticleComments from '../commentArticle';
+import ShareArticle from '../shareArticle';
 
 export const paginate = (lists, pageNumber, pageSize) => {
   const startIndex = (pageNumber - 1) * pageSize;
-  return Pages(lists).slice(startIndex).take(pageSize).value();
+  return Pages(lists)
+    .slice(startIndex)
+    .take(pageSize)
+    .value();
 };
 export const LeftSideBar = ({
-  firstname, lastname, profilePic, LeftSideStyles, profilePicStyles,
+  firstname,
+  lastname,
+  profilePic,
+  LeftSideStyles,
+  profilePicStyles,
 }) => (
   <div className="left-side">
     <div className="icon" style={LeftSideStyles}>
@@ -33,7 +41,9 @@ export const LeftSideBar = ({
           height="80px"
         />
       </div>
-      <a href="/users/follow" className="btn btn-outline-primary">Follow</a>
+      <a href="/users/follow" className="btn btn-outline-primary">
+        Follow
+      </a>
     </div>
     <div className="userprofilename">
       <p>
@@ -55,20 +65,16 @@ export const ArticleContent = ({
         <h1>{title}</h1>
       </div>
       <div className="article-description">
-        <h4>
-          {description}
-        </h4>
+        <h4>{description}</h4>
       </div>
-      <div className="article-paragraph">
-        {ReactHtmlParser(body)}
-      </div>
+      <div className="article-paragraph">{ReactHtmlParser(body)}</div>
       <br />
       <div className="tags">
         {' '}
         <p>
           {' '}
           { taglist && taglist.map((tag) => (
-            <button type="button" className="btn btn-secondary" style={{ marginRight: '5px', marginTop: '3px' }}>{tag}</button>
+            <button type="button" key={tag} className="btn btn-secondary" style={{ marginRight: '5px', marginTop: '3px' }}>{tag}</button>
           ))}
 
         </p>
@@ -89,10 +95,7 @@ export const ArticleContent = ({
       </div>
       <div className="M" />
       <div className="R">
-        <i className="fab fa-twitter" />
-        <i className="fab fa-facebook-f" />
-        <i className="fab fa-linkedin-in" />
-        <i className="fab fa-google" />
+        <ShareArticle />
         <Bookmark slug={slug} articleId={id} />
         <MoreOnArticle slug={slug} author={author} />
       </div>
@@ -122,7 +125,12 @@ export const RecentArticles = ({
       ))}
     </div>
     <div className="pagination-div">
-      <Pagination onChange={onChange} current={current} total={total} pageSize={2} />
+      <Pagination
+        onChange={onChange}
+        current={current}
+        total={total}
+        pageSize={2}
+      />
     </div>
   </div>
 );
@@ -131,7 +139,7 @@ export const RightSideBar = ({ readtime, createdAt, rating }) => (
   <div className="right-side" style={{ marginLeft: 'auto' }}>
     <div className="rating-pub-read-time">
       <p>
-Published: &nbsp;
+        Published: &nbsp;
         <span>{createdAt}</span>
       </p>
       <p>{readtime}</p>

@@ -1,0 +1,14 @@
+.commentCard {
+  padding: 10px;
+}
+
+.commentCard .listOfComments--commentMessage {
+  padding: 10px 0;
+}
+
+.commentCard .divToDisplayOnClick {
+  min-height: 20px;
+  width: 80%;
+  margin: 0 auto;
+}
+/*# sourceMappingURL=commentCard.css.map */

@@ -1,0 +1,55 @@
+.PopularArticleAreaUpperGreenLine {
+  margin-bottom: 30px;
+}
+
+.PopularArticleAreaUpperGreenLine .PopularArticleAreaUpperGreenLine--textAndSelector {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.PopularArticleAreaUpperGreenLine .PopularArticleAreaUpperGreenLine--textAndSelector .PopularArticleAreaUpperGreenLine__textDiv {
+  -ms-flex-preferred-size: 70%;
+      flex-basis: 70%;
+}
+
+.PopularArticleAreaUpperGreenLine .PopularArticleAreaUpperGreenLine--textAndSelector .PopularArticleAreaUpperGreenLine__selectorDiv {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.PopularArticleAreaUpperGreenLine .PopularArticleAreaUpperGreenLine--textAndSelector .PopularArticleAreaUpperGreenLine__selectorDiv .PopularArticleAreaUpperGreenLine__select {
+  margin-left: 10px;
+}
+
+.PopularArticleAreaUpperGreenLine .PopularArticleAreaUpperGreenLine--textAndSelector .PopularArticleAreaUpperGreenLine__selectorDiv .PopularArticleAreaUpperGreenLine__select select {
+  background: transparent;
+  border: none;
+  color: #2f80ed;
+  outline: none;
+}
+
+.PopularArticleAreaUpperGreenLine .PopularArticleAreaUpperGreenLine--line {
+  width: 90%;
+  height: 4px;
+  background: grey;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.PopularArticleAreaUpperGreenLine .PopularArticleAreaUpperGreenLine--line .PopularArticleAreaUpperGreenLine__greenLine {
+  width: 80%;
+  height: 4px;
+  background: greenyellow;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=popularArticleAreaUpperLine.css.map */
