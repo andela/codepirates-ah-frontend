@@ -23,6 +23,10 @@ const viewArticle = (state = initialState, action) => {
       return { ...state, articleRated: true };
     case actionTypes.RATE_ARTICLE_FAIL:
       return { ...state, articleRated: false };
+    case actionTypes.SHARE_ARTICLE_SUCCESS:
+      return { ...state, ...action.payload };
+    case actionTypes.SHARE_ARTICLE_FAILURE:
+      return { ...state, ...action.payload };
     default:
       return state;
   }
