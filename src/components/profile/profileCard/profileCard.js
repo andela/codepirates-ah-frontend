@@ -97,7 +97,8 @@ function editProfileCardView(
   );
 }
 
-function isNotInProfileCardEditMode(image, username, onEditModeChange) {
+function isNotInProfileCardEditMode(image, username, onEditModeChange,
+  optInAppStatus, optInEmailStatus, handleInAppNotifications, handleEmailNotifications) {
   return (
     <div>
       <div className="row">
@@ -145,6 +146,16 @@ function isNotInProfileCardEditMode(image, username, onEditModeChange) {
             </p>
           </a>
         </div>
+        <div className="col-12 col-md-12" style={{ cursor: 'pointer' }}>
+          <p className="button button--primary button--large btn-edit" onClick={handleInAppNotifications}>
+            {optInAppStatus ? 'Opt Out For in-App Notifications' : 'Opt In For in-App Notifications'}
+          </p>
+        </div>
+        <div className="col-12 col-md-12" style={{ cursor: 'pointer' }}>
+          <p className="button button--primary button--large btn-edit" onClick={handleEmailNotifications}>
+            {optInEmailStatus === true ? 'Opt Out For email Notifications' : 'Opt In For email Notifications'}
+          </p>
+        </div>
       </span>
     </div>
   );
@@ -159,6 +170,10 @@ const ProfileCard = (props) => {
     onEditModeChange,
     username,
     previewImage,
+    handleInAppNotifications,
+    optInAppStatus,
+    optInEmailStatus,
+    handleEmailNotifications,
   } = props;
   return (
     <div className="text-center user-profile-card">
@@ -172,7 +187,9 @@ const ProfileCard = (props) => {
             onEditModeChange,
           )}
         {!profileCardEditMode
-          && isNotInProfileCardEditMode(image, username, onEditModeChange)}
+          && isNotInProfileCardEditMode(image, username,
+            onEditModeChange, optInAppStatus, optInEmailStatus,
+            handleInAppNotifications, handleEmailNotifications)}
       </form>
     </div>
   );

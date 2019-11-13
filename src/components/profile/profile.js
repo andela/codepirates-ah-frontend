@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 import classnames from 'classnames';
 import {
   updateProfile,
@@ -14,6 +15,7 @@ import Report from '../common/report/report';
 import './profile.scss';
 import ProfileBio from './profileBio/profileBio';
 import SpecificUserArticles from '../articles/allArticles/SpecificUserArticles';
+import { inAppNotifications, emailNotifications } from '../../redux/actions/notifications/index';
 
 export class Profile extends Component {
   constructor(props) {
@@ -23,6 +25,8 @@ export class Profile extends Component {
       profileCardEditMode: false,
       selectedTab: 'bio',
       readReportedArticles: '',
+      optInAppStatus: false,
+      optInEmailStatus: false,
     };
     this.previewImage = React.createRef();
   }
@@ -47,6 +51,24 @@ export class Profile extends Component {
         readReportedArticles: nextProps.reports,
       });
     }
+    if (this.props.appOptInOut !== nextProps.appOptInOut) {
+      if (nextProps.appOptInOut.message === 'You have successfully subscribed to in app notifications') {
+        toast.success('You have successfully subscribed to in app notifications');
+        this.setState({ optInAppStatus: true });
+      } else {
+        toast.success('You have successfully unsubscribed from in app notifications');
+        this.setState({ optInAppStatus: false });
+      }
+    }
+    if (this.props.emailOptInOut !== nextProps.emailOptInOut) {
+      if (nextProps.emailOptInOut.message === 'You have successfully subscribed to our email notifications') {
+        toast.success('You have successfully subscribed to our email notifications');
+        this.setState({ optInEmailStatus: true });
+      } else {
+        toast.success('You have successfully unsubscribed from our email notifications');
+        this.setState({ optInEmailStatus: false });
+      }
+    }
   }
 
   handleSubmit = async (e) => {
@@ -66,6 +88,9 @@ export class Profile extends Component {
     }
     this.setState({ [name]: value });
   };
+
+
+
 
   handleUpdateBio = (e) => {
     e.preventDefault();
@@ -97,6 +122,16 @@ export class Profile extends Component {
     reader.readAsDataURL(input.files[0]);
   };
 
+  handleInAppNotifications = (e) => {
+    const { inAppNotifications: inappCall } = this.props;
+    inappCall();
+  }
+
+  handleEmailNotifications = (e) => {
+    const { emailNotifications: emailCall, emailOptInOut } = this.props;
+    emailCall();
+  }
+
   render() {
     const {
       loading,
@@ -107,6 +142,8 @@ export class Profile extends Component {
       profileCardEditMode,
       readReportedArticles,
       selectedTab,
+      optInAppStatus,
+      optInEmailStatus,
     } = this.state;
     let activeContent;
     switch (selectedTab) {
@@ -160,6 +197,10 @@ export class Profile extends Component {
                 profileCardEditMode={profileCardEditMode}
                 onEditModeChange={this.handleProfileCardUpdate}
                 username={username || ''}
+                optInAppStatus={optInAppStatus}
+                optInEmailStatus={optInEmailStatus}
+                handleInAppNotifications={this.handleInAppNotifications}
+                handleEmailNotifications={this.handleEmailNotifications}
               />
 
               <ProfileSideBar
@@ -188,15 +229,21 @@ Profile.propTypes = {
   updateProfile: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ user, articles, article }) => ({
+const mapStateToProps = ({
+  user, articles, article, emailOptInOut, appOptInOut,
+}) => ({
   error: user.error,
   profile: user.profile,
   pending: user.profilePending,
   articles: articles.data,
   reports: article,
+  emailOptInOut,
+  appOptInOut,
 });
 
 export default connect(
   mapStateToProps,
-  { fetchProfile, updateProfile, readReportedArticles },
+  {
+    fetchProfile, updateProfile, readReportedArticles, inAppNotifications, emailNotifications,
+  },
 )(Profile);
