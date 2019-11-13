@@ -62,3 +62,48 @@ describe('## more on article Dispatch functions', () => {
     });
   });
 });
+
+describe('report article functionality', () => {
+  const renderMore = (args) => {
+    const defaultProps = {
+      cancelClaps: jest.fn(),
+      slug: 'fakeslug',
+      author: 'admin',
+      user: {
+        profile: {
+          username: 'usertwo',
+        },
+        isLoggedIn: true,
+      },
+    };
+    const props = { ...defaultProps, ...args };
+    return shallow(<MoreOnArticle {...props} />);
+  };
+
+  it('should render more button ', () => {
+    localStorage.setItem('token', 'ddd');
+    const wrapper = renderMore();
+    expect(wrapper).toHaveLength(1);
+  });
+
+  it('should simulate click event to delete', () => {
+    window.localStorage.getItem = jest.fn(() => true);
+    const wrapper = renderMore();
+    const reportBtn = wrapper.find('.report');
+    reportBtn.simulate('click');
+    expect(wrapper).toHaveLength(1);
+  });
+  it('should simulate click event to delete', () => {
+    window.localStorage.getItem = jest.fn(() => true);
+    const wrapper = renderMore();
+    const reportBtn = wrapper.find('.report');
+    reportBtn.simulate('click');
+    const selectElement = wrapper.find('.custom-select');
+    selectElement.simulate('change', {
+      target: {
+        value: 'Spam',
+      },
+    });
+    expect(wrapper).toHaveLength(1);
+  });
+});

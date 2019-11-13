@@ -12,7 +12,7 @@ library.add(fab);
  */
 const Footer = () => (
   <>
-    <footer className="footer dark container fixed-bottom " style={style}>
+    <footer className="footer dark" style={style}>
       <hr className="divider" />
       <div className="text-center mb-4 blockquote">
         <span>&copy; 2018 Authors Haven.</span>

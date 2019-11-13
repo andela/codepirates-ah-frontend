@@ -19,6 +19,7 @@ const ArticleCard = ({
   slug,
   claps,
   rating,
+  report,
 }) => (
   <div className="landingArticlecard" style={style}>
     <div className="landingArticleCard--image">
@@ -49,6 +50,14 @@ const ArticleCard = ({
         slug={slug}
         views={views}
       />
+    </div>
+    <div>
+      {report && (
+      <div className="alert-danger" role="alert">
+  Reported due to this reason:
+        <b>{ `  ${report}` }</b>
+      </div>
+      )}
     </div>
   </div>
 );

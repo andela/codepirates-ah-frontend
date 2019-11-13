@@ -7,6 +7,9 @@ export const handleResponse = async (response) => {
     return data;
   }
   if (data.status === 'error') {
+    if (data.message === 'Token is not valid') {
+      localStorage.removeItem('token');
+    }
     await toast.error(data.message);
     return data;
   }

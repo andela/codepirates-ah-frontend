@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faUpload } from '@fortawesome/free-solid-svg-icons';
+import './profileCard.scss';
 
 function showFollowers() {
   return (
@@ -72,9 +73,6 @@ function editProfileCardView(
           />
         </h6>
       </span>
-      <span className="user-role">
-        <p>Admin</p>
-      </span>
       {showFollowers()}
       <span className="row">
         <div className="col-6 col-md-6">
@@ -122,11 +120,8 @@ function isNotInProfileCardEditMode(image, username, onEditModeChange) {
       <span className="user-name">
         <h6>{username}</h6>
       </span>
-      <span className="user-role">
-        <p>Admin</p>
-      </span>
       {showFollowers()}
-      <span className="row">
+      <span className="row profileActionBtns">
         <div className="col-12 col-md-12">
           <button
             onClick={onEditModeChange}
@@ -138,8 +133,15 @@ function isNotInProfileCardEditMode(image, username, onEditModeChange) {
         </div>
         <div className="col-12 col-md-12">
           <a href="/articles/create">
-            <p className="button button--secondary button--large btn-edit">
+            <p className="button button--primary button--large btn-edit">
               Create article
+            </p>
+          </a>
+        </div>
+        <div className="col-12 col-md-12">
+          <a href="/bookmarks">
+            <p className="button button--primary button--large btn-edit">
+              My Bookmarks
             </p>
           </a>
         </div>

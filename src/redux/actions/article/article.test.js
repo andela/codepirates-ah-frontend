@@ -43,4 +43,38 @@ describe(' rate article test', () => {
     expect(response).toHaveProperty('data');
   });
 });
+describe('report article test', () => {
+  it('should dispach action if report pending ',
+    () => {
+      expect(article.reportPending()).toEqual({
+        type: actionTypes.REPORT_PENDING,
+      });
+    });
+  it('should dispach action if report success ',
+    () => {
+      expect(article.reportSuccess('message')).toEqual({
+        type: actionTypes.REPORT_SUCCESS,
+        reportMessage: 'message',
+      });
+    });
+  it('should dispach action if report success ',
+    () => {
+      expect(article.reportFail('message')).toEqual({
+        type: actionTypes.REPORT_ERROR,
+        reportError: 'message',
+      });
+    });
+  it('should dispatch ratefail ',
+    () => {
+      expect(article.rateFail())
+        .toEqual({
+          type: actionTypes.RATE_ARTICLE_FAIL,
+        });
+    });
+  it('Should rate article successfully', async () => {
+    window.fetch = fetchSucces;
+    const response = await article.postRatings('fakeslug', 2)(dispatch);
+    expect(response).toHaveProperty('data');
+  });
+});
 

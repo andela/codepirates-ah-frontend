@@ -11,17 +11,14 @@ export const failedCreateArticleAction = (error) => ({
   type: actions.CREATE_ARTICLE_FAIL,
   payload: error,
 });
-export const CreateArticleAction = (input) => (dispatch) => fetch(
-  `${actions.BACKEND_URL}/api/v1/articles`,
-  {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      'x-access-token': `Bearer ${token}`,
-    },
-    body: JSON.stringify(input),
+export const CreateArticleAction = (input) => (dispatch) => fetch(`${actions.BACKEND_URL}/api/v1/articles`, {
+  method: 'POST',
+  headers: {
+    'content-type': 'application/json',
+    'x-access-token': `Bearer ${token}`,
   },
-)
+  body: JSON.stringify(input),
+})
   .then((res) => res.json())
   .then((data) => {
     if (data.status === 201) {
