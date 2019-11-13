@@ -10,6 +10,7 @@ import searchReducer from './search/searchReducer';
 import passwordResetReducer from './passwordreset';
 import comments from './commentArticle';
 import updateArticleReducer from './updateArticle';
+import likes from './commentArticle/likeAndUnlike';
 
 export default {
   userRegistrationData: signupReducer,
@@ -24,4 +25,5 @@ export default {
   articleFeedback,
   comments,
   updateArticle: updateArticleReducer,
+  likes,
 };

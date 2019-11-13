@@ -12,8 +12,6 @@ import * as actionTypes from '../../redux/actions/actionTypes';
 
 export class ArticleComments extends Component {
   state = {
-    likes: 154,
-    dislikes: 1,
     numberOfReply: 12,
     displayTextArea: 'none',
     clicked: false,
@@ -62,8 +60,6 @@ export class ArticleComments extends Component {
   render() {
     const {
       displayTextArea,
-      likes,
-      dislikes,
       numberOfReply,
       comments,
     } = this.state;
@@ -104,8 +100,6 @@ export class ArticleComments extends Component {
                 {comments && comments.map((comment) => (
                   <CommentCard
                     key={uuid()}
-                    likes={likes}
-                    dislikes={dislikes}
                     numberOfReply={numberOfReply}
                     comment={comment && comment.body}
                     timeCreated={comment && comment.timeCreated}
