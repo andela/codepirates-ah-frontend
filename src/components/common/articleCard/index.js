@@ -20,6 +20,7 @@ const ArticleCard = ({
   claps,
   rating,
   report,
+  userImage,
 }) => (
   <div className="landingArticlecard" style={style}>
     <div className="landingArticleCard--image">
@@ -33,7 +34,7 @@ const ArticleCard = ({
       <div className="landingArticleCard__userIconArea">
         <UserIcon
           readTime={readTime}
-          userIcon={userIcon}
+          userIcon={userImage || userIcon}
           username={username}
           createdTime={createdTime}
         />
