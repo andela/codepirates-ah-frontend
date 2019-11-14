@@ -1,0 +1,39 @@
+.landingArticleCardRating {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.landingArticleCardRating .landingArticleCardRating--rating {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+}
+
+.landingArticleCardRating .landingArticleCardRating--stars {
+  -ms-flex-preferred-size: 60%;
+      flex-basis: 60%;
+}
+
+.landingArticleCardRating .landingArticleCardRating--elipesIcon {
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
+}
+
+@media screen and (max-width: 900px) {
+  .landingArticleCardRating {
+    font-size: 12px;
+  }
+  .landingArticleCardRating .landingArticleCardRating--rating {
+    -ms-flex-preferred-size: 15%;
+        flex-basis: 15%;
+  }
+  .landingArticleCardRating .landingArticleCardRating--stars {
+    -ms-flex-preferred-size: 80%;
+        flex-basis: 80%;
+  }
+  .landingArticleCardRating .landingArticleCardRating--elipesIcon {
+    -ms-flex-preferred-size: 5%;
+        flex-basis: 5%;
+  }
+}
+/*# sourceMappingURL=ratingComponent.css.map */

@@ -1,0 +1,23 @@
+.share-icons {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding-right: 2%;
+}
+
+.share-icons .share {
+  border: none;
+  outline: none;
+  margin: -4% 18% auto auto;
+  background: none;
+}
+
+@media screen and (max-width: 600px) {
+  .share-icons {
+    padding-right: 20%;
+  }
+  .share-icons .share {
+    margin: -4% 5% auto 0%;
+  }
+}
+/*# sourceMappingURL=share.css.map */

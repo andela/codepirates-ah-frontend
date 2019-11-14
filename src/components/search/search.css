@@ -1,0 +1,27 @@
+.peopleCard {
+  padding: 1rem 0rem;
+  margin-left: 0.2rem;
+  border-bottom: 1px solid #CDCDCD;
+}
+
+.peopleCard .peopleAvatar {
+  font-size: 4rem;
+}
+
+.tags p {
+  padding: 1rem;
+}
+
+.storyCard {
+  margin-bottom: 1rem;
+}
+
+.storyCard .peopleAvatar {
+  font-size: 3.5rem;
+}
+
+.storyCard .articleMetadata {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+/*# sourceMappingURL=search.css.map */

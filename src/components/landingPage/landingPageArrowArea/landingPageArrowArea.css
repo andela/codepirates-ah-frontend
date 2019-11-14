@@ -1,0 +1,39 @@
+.landingPageArrowArea {
+  width: 40%;
+  height: 80px;
+  border: 1px solid #2f80ed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 100px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.landingPageArrowArea .landingPageArrowArea--textPart {
+  -ms-flex-preferred-size: 80%;
+      flex-basis: 80%;
+  font-weight: bold;
+  color: white;
+  margin-left: 10px;
+}
+
+.landingPageArrowArea .landingPageArrowArea--circleWithArrow {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  border: 2px solid white;
+  background: #303f9f;
+  color: white;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+@media screen and (max-width: 450px) {
+  .landingPageArrowArea {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=landingPageArrowArea.css.map */
