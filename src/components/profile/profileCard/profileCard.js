@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faUpload } from '@fortawesome/free-solid-svg-icons';
 import './profileCard.scss';
+import Allfollowers from '../../followUnfollow/AllfollowersComponent';
 
 function showFollowers() {
   return (
@@ -97,8 +98,15 @@ function editProfileCardView(
   );
 }
 
-function isNotInProfileCardEditMode(image, username, onEditModeChange,
-  optInAppStatus, optInEmailStatus, handleInAppNotifications, handleEmailNotifications) {
+function isNotInProfileCardEditMode(
+  image,
+  username,
+  onEditModeChange,
+  optInAppStatus,
+  optInEmailStatus,
+  handleInAppNotifications,
+  handleEmailNotifications,
+) {
   return (
     <div>
       <div className="row">
@@ -145,15 +153,35 @@ function isNotInProfileCardEditMode(image, username, onEditModeChange,
               My Bookmarks
             </p>
           </a>
+          <a href="/users/me/myfollowers">
+            <p className="button button--primary button--large btn-edit">
+              My Followers
+            </p>
+          </a>
+          <a href="/users/me/following">
+            <p className="button button--primary button--large btn-edit">
+              Users I follow
+            </p>
+          </a>
         </div>
         <div className="col-12 col-md-12" style={{ cursor: 'pointer' }}>
-          <p className="button button--primary button--large btn-edit" onClick={handleInAppNotifications}>
-            {optInAppStatus ? 'Opt Out For in-App Notifications' : 'Opt In For in-App Notifications'}
+          <p
+            className="button button--primary button--large btn-edit"
+            onClick={handleInAppNotifications}
+          >
+            {optInAppStatus
+              ? 'Opt Out For in-App Notifications'
+              : 'Opt In For in-App Notifications'}
           </p>
         </div>
         <div className="col-12 col-md-12" style={{ cursor: 'pointer' }}>
-          <p className="button button--primary button--large btn-edit" onClick={handleEmailNotifications}>
-            {optInEmailStatus === true ? 'Opt Out For email Notifications' : 'Opt In For email Notifications'}
+          <p
+            className="button button--primary button--large btn-edit"
+            onClick={handleEmailNotifications}
+          >
+            {optInEmailStatus === true
+              ? 'Opt Out For email Notifications'
+              : 'Opt In For email Notifications'}
           </p>
         </div>
       </span>
@@ -187,9 +215,15 @@ const ProfileCard = (props) => {
             onEditModeChange,
           )}
         {!profileCardEditMode
-          && isNotInProfileCardEditMode(image, username,
-            onEditModeChange, optInAppStatus, optInEmailStatus,
-            handleInAppNotifications, handleEmailNotifications)}
+          && isNotInProfileCardEditMode(
+            image,
+            username,
+            onEditModeChange,
+            optInAppStatus,
+            optInEmailStatus,
+            handleInAppNotifications,
+            handleEmailNotifications,
+          )}
       </form>
     </div>
   );

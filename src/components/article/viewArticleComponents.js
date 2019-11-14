@@ -16,6 +16,7 @@ import RateComponent from '../rateButton/rate';
 import MoreOnArticle from '../moreAction/index';
 import ArticleComments from '../commentArticle';
 import ShareArticle from '../shareArticle';
+import FollowUserComponent from '../followUnfollow/followComponent';
 
 export const paginate = (lists, pageNumber, pageSize) => {
   const startIndex = (pageNumber - 1) * pageSize;
@@ -30,6 +31,7 @@ export const LeftSideBar = ({
   profilePic,
   LeftSideStyles,
   profilePicStyles,
+  id,
 }) => (
   <div className="left-side">
     <div className="icon" style={LeftSideStyles}>
@@ -41,9 +43,7 @@ export const LeftSideBar = ({
           height="80px"
         />
       </div>
-      <a href="/users/follow" className="btn btn-outline-primary">
-        Follow
-      </a>
+      <FollowUserComponent userId={id} />
     </div>
     <div className="userprofilename">
       <p>
@@ -57,7 +57,6 @@ export const LeftSideBar = ({
 );
 
 export const ArticleContent = ({
-  taglist,
   title,
   description,
   body,
@@ -65,6 +64,7 @@ export const ArticleContent = ({
   author,
   username,
   id,
+  taglist,
 }) => (
   <div className="middle-up" style={{ paddingTop: '0px' }}>
     <div className="article-part" onMouseUp={() => {}}>
@@ -80,6 +80,20 @@ export const ArticleContent = ({
         {' '}
         <p>
           {' '}
+          { taglist && taglist.map((tag) => (
+            <button
+              type="button"
+              key={tag}
+              onClick={() => {
+                window.location.replace(`/articles/tag?tag=${tag}`);
+              }}
+              className="btn btn-secondary"
+              style={{ marginRight: '5px', marginTop: '3px' }}
+            >
+              {tag}
+
+            </button>
+          ))}
           {taglist
             && taglist.map((tag) => (
               <button

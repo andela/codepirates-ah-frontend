@@ -42,6 +42,6 @@ describe('Navbar Component', () => {
       },
     });
     const NavDropdown = wrapper.find('NavDropdown');
-    expect(NavDropdown.length).toEqual(1);
+    expect(NavDropdown.length).toEqual(2);
   });
 });

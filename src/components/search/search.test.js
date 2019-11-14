@@ -20,7 +20,7 @@ describe('Search test', () => {
       query: {},
       searchResults: {
         searchResults: {
-          foundTags: [{ name: 'tag1' }, { name: 'tag2' }],
+          foundTags: ['tags', 'tagdd'],
           foundUsers: [{ username: 'codepirate', bio: 'sample bio', images: { 0: 'image1' } }],
           foundArticles: [{ slug: 'aaa', title: 'ddd' }, { slug: 'bbb', title: 'eee' }],
         },
@@ -34,7 +34,7 @@ describe('Search test', () => {
       query: {},
       searchResults: {
         searchResults: {
-          foundTags: [{ name: 'tag1' }, { name: 'tag2' }],
+          foundTags: ['ddd', 'dd'],
           foundUsers: [{ username: 'codepirate', bio: 'sample bio', images: { 0: 'image1' } }],
           foundArticles: [{ slug: 'aaa', title: 'ddd' }, { slug: 'bbb', title: 'eee' }],
         },
@@ -47,7 +47,7 @@ describe('Search test', () => {
     wrapper.setState({
       searchResults: {
         searchResults: {
-          foundTags: [{ name: 'tag1' }, { name: 'tag2' }],
+          foundTags: ['ddd', 'dddd'],
           foundUsers: [{ username: 'codepirate', bio: 'bio', image: null }, { username: 'codepirate1', bio: 'bio1', image: null }],
           foundArticles: [],
         },
@@ -62,7 +62,7 @@ describe('Search test', () => {
     const fakeFunc = jest.fn();
     fakeFunc.mockReturnValue({
       searchResults: {
-        foundTags: [{ name: 'tag1' }, { name: 'tag2' }],
+        foundTags: ['dddddd', 'ddd'],
         foundUsers: [{ username: 'codepirate', bio: 'sample bio', images: { 0: 'image1' } }],
         foundArticles: [{ slug: 'aaa', title: 'ddd' }, { slug: 'bbb', title: 'eee' }],
       },
