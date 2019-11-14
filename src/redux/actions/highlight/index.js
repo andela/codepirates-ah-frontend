@@ -39,9 +39,7 @@ export const fetchPostHighlight = (slug, start, end) => fetch(
 ).then((res) => res.json());
 
 export const getHighlights = async (articleId) => {
-  const highlights = token
-    ? await fetchHighlights(articleId)
-    : [];
+  const highlights = token ? await fetchHighlights(articleId) : [];
   return highlights.map((highlight) => [
     highlight.startindex,
     highlight.endindex,

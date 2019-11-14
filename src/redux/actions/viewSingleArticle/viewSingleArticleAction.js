@@ -8,27 +8,6 @@ export const viewArticleSuccess = (data) => ({
   payload: data,
 });
 
-const stripHtml = (html) => {
-  const tmp = document.createElement('DIV');
-  tmp.innerHTML = html;
-  return tmp.textContent || tmp.innerText || '';
-};
-
-export const findIndex = (html, index, text) => {
-  let i = index;
-  const section = html.slice(0, i);
-  while (
-    section
-    && stripHtml(section.length < index)
-    && html[i] !== text
-    && html.slice(i).indexOf(text) !== -1
-  ) {
-    i += html.slice(i).indexOf(text);
-    findIndex(html, i, text);
-  }
-  return i;
-};
-
 const countText = (html, index) => {
   let i;
   let str = `${html.slice(0, index).replace(/\"/g, "'")}`;
@@ -57,20 +36,20 @@ const showHighlights = (body, indices) => {
   return res;
 };
 
-export const viewArticle = (slug) => async (dispatch) => fetch(`${actions.BACKEND_URL}/api/${actions.VERSION}/articles/${slug}`, {
+export const fetchArticle = (slug) => fetch(`${actions.BACKEND_URL}/api/${actions.VERSION}/articles/${slug}`, {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
     'x-access-token': token,
   },
-})
-  .then((res) => res.json())
-  .then((response) => {
-    if (response.message === 'That article does not exist!') {
-      window.location = '/notfound';
-    }
-    getHighlights(response.data.id).then((res1) => {
-      response.data.body = showHighlights(response.data.body, res1);
-      return dispatch(viewArticleSuccess(response));
-    });
-  });
+}).then((res) => res.json());
+
+export const viewArticle = (slug, geter, highlight) => async (dispatch) => {
+  const response = await geter(slug);
+  if (response.message === 'That article does not exist!') {
+    window.location = '/notfound';
+  }
+  const res1 = await highlight(response.data.id);
+  response.data.body = await showHighlights(response.data.body, res1);
+  return dispatch(viewArticleSuccess(response));
+};

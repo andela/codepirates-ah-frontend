@@ -10,9 +10,13 @@ import {
   RightSideBar,
   paginate,
 } from './viewArticleComponents';
-import { viewArticle } from '../../redux/actions/viewSingleArticle/viewSingleArticleAction';
+import {
+  viewArticle,
+  fetchArticle,
+} from '../../redux/actions/viewSingleArticle/viewSingleArticleAction';
 import { getAllArticles } from '../../redux/actions/viewSingleArticle/getRecentArticles';
 import HighlightArticle from './highlightArticle';
+import { getHighlights } from '../../redux/actions/highlight';
 
 export class ViewArticle extends Component {
   state = {
@@ -49,8 +53,10 @@ export class ViewArticle extends Component {
       viewArticle: viewSingleArticle,
       getAllArticles: articles,
       match: { params },
+      geter,
+      highlight,
     } = this.props;
-    await viewSingleArticle(params.slug);
+    await viewSingleArticle(params.slug, geter, highlight);
     articles();
   }
 
@@ -85,14 +91,6 @@ export class ViewArticle extends Component {
     });
   };
 
-  // highlightSelection = () => {
-  //   const { title } = this.state.getArticle.data;
-  //   const newTitle = mouseupHandler(title);
-  //   this.setState({ getArticle: { data: { title: newTitle } } });
-  //   this.props.displayHighlightAction();
-  //   console.log('222', this.state.getArticle.title);
-  // };
-
   render() {
     const {
       getArticle: { data },
@@ -101,8 +99,6 @@ export class ViewArticle extends Component {
       paginatedArticles,
       loading,
     } = this.state;
-
-    // const { highlightSelection } = this;
 
     const LeftSideStyles = {
       display: 'flex',
@@ -162,27 +158,28 @@ export class ViewArticle extends Component {
 
 ViewArticle.propTypes = {
   viewArticle: PropTypes.func,
+  geter: PropTypes.func,
+  highlight: PropTypes.func,
   getArticle: PropTypes.object,
   getAllArticles: PropTypes.func,
   articles: PropTypes.object,
   data: PropTypes.array,
   match: PropTypes.object,
-  // highlights: PropTypes.Array,
 };
 ViewArticle.defaultProps = {
   viewArticle: '',
+  geter: fetchArticle,
+  highlight: getHighlights,
   getArticle: '',
   getAllArticles: '',
   articles: '',
   data: [],
   match: '',
-  // highlights: [],
 };
 const mapStateToProps = ({ viewArticle: getArticle, articles }) => ({
   getArticle,
   articles,
 });
-export default connect(
-  mapStateToProps,
-  { viewArticle, getAllArticles },
-)(ViewArticle);
+export default connect(mapStateToProps, { viewArticle, getAllArticles })(
+  ViewArticle,
+);

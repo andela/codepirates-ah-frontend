@@ -7,7 +7,9 @@ import { createHighlightAction } from '../../../redux/actions/highlight';
 
 import cursorIndexFrom from '../../../helpers/cursorOffset';
 
-class HighlighArticle extends Component {
+import './styles.scss';
+
+export class HighlightArticle extends Component {
   constructor() {
     super();
     this.state = {
@@ -28,6 +30,7 @@ class HighlighArticle extends Component {
     const { start, end } = this.state;
     await createHighlightAction(slug, start, end);
     document.querySelector('#highlightActions').style.display = 'none';
+    window.location.replace(`/article/${slug}`);
   };
 
   selectContent = () => {
@@ -38,42 +41,42 @@ class HighlighArticle extends Component {
   };
 
   render() {
-    // const { top, left } = this.state;
+    const { top, left } = this.state;
     return (
       <div
         id="highlightActions"
         style={{
-          position: 'absolute',
-          top: '50vh',
-          left: '50vw',
-          transform: 'translate(-50%, -50%)',
+          top,
+          left,
+          transform: 'translate(-120%, -200%)',
           display: 'none',
-          width: '20vw',
-          height: '20vh',
           background: 'grey',
         }}
       >
-        <button type="button" onClick={this.handleSubmit}>
+        <button type="button" className="highlightActions" onClick={this.handleSubmit}>
           create highlight?
+        </button>
+        <button type="button" className="highlightActions" onClick={this.handleSubmit}>
+          share highlight?
+        </button>
+        <button type="button" className="highlightActions" onClick={this.handleSubmit}>
+          comment on highlight?
         </button>
       </div>
     );
   }
 }
 
-HighlighArticle.propTypes = {
+HighlightArticle.propTypes = {
   createHighlightAction: PropTypes.func,
   slug: PropTypes.string,
 };
 
-HighlighArticle.defaultProps = {
+HighlightArticle.defaultProps = {
   createHighlightAction: null,
   slug: '',
 };
 
 const mapState = (state) => ({ slug: state.viewArticle.data.slug });
 
-export default connect(
-  mapState,
-  { createHighlightAction },
-)(HighlighArticle);
+export default connect(mapState, { createHighlightAction })(HighlightArticle);
