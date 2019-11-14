@@ -10,6 +10,7 @@ import searchReducer from './search/searchReducer';
 import passwordResetReducer from './passwordreset';
 import comments from './commentArticle';
 import updateArticleReducer from './updateArticle';
+import notifications from './notifications/index';
 import emailOptInOut from './notifications/emailOptInReducer';
 import appOptInOut from './notifications/appOptInReducer';
 
@@ -26,6 +27,7 @@ export default {
   articleFeedback,
   comments,
   updateArticle: updateArticleReducer,
+  notifications,
   emailOptInOut,
   appOptInOut,
 };

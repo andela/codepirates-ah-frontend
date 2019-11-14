@@ -1,8 +1,18 @@
 import userdata from '../../../__mocks__/registeredUser';
-import { inAppNotificationsSuccess, EmailNotificationsSuccess } from './index';
+import { getUserNotificationsSuccess, inAppNotificationsSuccess, EmailNotificationsSuccess } from './index';
 import * as actionType from '../actionTypes';
 
-const dispatch = jest.fn(() => ({ data: {} }));
+
+describe('Signup action', () => {
+  it('should test notifications action', () => {
+    const expectedAction = {
+      type: actionType.GET_NOTIFICATIONS_SUCCESS,
+      payload: userdata,
+    };
+    const action = getUserNotificationsSuccess(userdata);
+    expect(action).toEqual(expectedAction);
+  });
+});
 describe('Signup action', () => {
   it('should test inApp opt in out action', () => {
     const expectedAction = {
