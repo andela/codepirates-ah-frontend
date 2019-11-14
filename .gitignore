@@ -9,4 +9,4 @@ jsconfig.json
 yarn.lock
 .sass-cache/
 *.css.map
-
+.prettierrc

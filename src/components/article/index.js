@@ -10,8 +10,13 @@ import {
   RightSideBar,
   paginate,
 } from './viewArticleComponents';
-import { viewArticle } from '../../redux/actions/viewSingleArticle/viewSingleArticleAction';
+import {
+  viewArticle,
+  fetchArticle,
+} from '../../redux/actions/viewSingleArticle/viewSingleArticleAction';
 import { getAllArticles } from '../../redux/actions/viewSingleArticle/getRecentArticles';
+import HighlightArticle from './highlightArticle';
+import { getHighlights } from '../../redux/actions/highlight';
 
 export class ViewArticle extends Component {
   state = {
@@ -48,8 +53,10 @@ export class ViewArticle extends Component {
       viewArticle: viewSingleArticle,
       getAllArticles: articles,
       match: { params },
+      geter,
+      highlight,
     } = this.props;
-    viewSingleArticle(params.slug);
+    viewSingleArticle(params.slug, geter, highlight);
     articles();
   }
 
@@ -59,6 +66,7 @@ export class ViewArticle extends Component {
       getArticle,
       articles: { data },
     } = this.props;
+
     if (nextProps.getArticle !== getArticle) {
       this.setState({ getArticle: nextProps.getArticle });
     }
@@ -106,6 +114,7 @@ export class ViewArticle extends Component {
             <div className="viewArticleContainer">
               <LeftSideBar
                 firstname={data.author.firstname}
+                id={data.authorId}
                 lastname={data.author.lastname}
                 profilePic={data.author.image}
                 LeftSideStyles={LeftSideStyles}
@@ -139,6 +148,7 @@ export class ViewArticle extends Component {
                 readtime={data.readtime}
                 createdAt={data.createdAt}
               />
+              <HighlightArticle />
             </div>
           )}
         </div>
@@ -149,6 +159,8 @@ export class ViewArticle extends Component {
 
 ViewArticle.propTypes = {
   viewArticle: PropTypes.func,
+  geter: PropTypes.func,
+  highlight: PropTypes.func,
   getArticle: PropTypes.object,
   getAllArticles: PropTypes.func,
   articles: PropTypes.object,
@@ -157,6 +169,8 @@ ViewArticle.propTypes = {
 };
 ViewArticle.defaultProps = {
   viewArticle: '',
+  geter: fetchArticle,
+  highlight: getHighlights,
   getArticle: '',
   getAllArticles: '',
   articles: '',
@@ -167,7 +181,6 @@ const mapStateToProps = ({ viewArticle: getArticle, articles }) => ({
   getArticle,
   articles,
 });
-export default connect(
-  mapStateToProps,
-  { viewArticle, getAllArticles },
-)(ViewArticle);
+export default connect(mapStateToProps, { viewArticle, getAllArticles })(
+  ViewArticle,
+);

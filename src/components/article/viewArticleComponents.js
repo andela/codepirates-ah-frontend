@@ -16,6 +16,7 @@ import RateComponent from '../rateButton/rate';
 import MoreOnArticle from '../moreAction/index';
 import ArticleComments from '../commentArticle';
 import ShareArticle from '../shareArticle';
+import FollowUserComponent from '../followUnfollow/followComponent';
 
 export const paginate = (lists, pageNumber, pageSize) => {
   const startIndex = (pageNumber - 1) * pageSize;
@@ -30,6 +31,7 @@ export const LeftSideBar = ({
   profilePic,
   LeftSideStyles,
   profilePicStyles,
+  id,
 }) => (
   <div className="left-side">
     <div className="icon" style={LeftSideStyles}>
@@ -41,9 +43,7 @@ export const LeftSideBar = ({
           height="80px"
         />
       </div>
-      <a href="/users/follow" className="btn btn-outline-primary">
-        Follow
-      </a>
+      <FollowUserComponent userId={id} />
     </div>
     <div className="userprofilename">
       <p>
@@ -57,10 +57,17 @@ export const LeftSideBar = ({
 );
 
 export const ArticleContent = ({
-  title, description, body, slug, author, username, id, taglist,
+  title,
+  description,
+  body,
+  slug,
+  author,
+  username,
+  id,
+  taglist,
 }) => (
   <div className="middle-up" style={{ paddingTop: '0px' }}>
-    <div className="article-part">
+    <div className="article-part" onMouseUp={() => {}}>
       <div className="article-title">
         <h1>{title}</h1>
       </div>
@@ -87,9 +94,20 @@ export const ArticleContent = ({
 
             </button>
           ))}
-
+          {taglist
+            && taglist.map((tag) => (
+              <button
+                type="button"
+                key={tag}
+                className="btn btn-secondary"
+                style={{ marginRight: '5px', marginTop: '3px' }}
+              >
+                {tag}
+              </button>
+            ))}
         </p>
       </div>
+      <div className="article-paragraph">{ReactHtmlParser(body)}</div>
     </div>
     <div className="middle-line" />
     <div className="article-events">
@@ -123,7 +141,7 @@ export const RecentArticles = ({
       {articles.map((article) => (
         <ArticleCard
           key={article.slug}
-          coverImage={article.images[0]}
+          coverImage={article.images && article.images[0]}
           description={article.description}
           title={article.title}
           views={article.views}

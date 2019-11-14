@@ -1,0 +1,21 @@
+#highlightActions {
+  padding: 1%;
+  border-radius: 10px;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  display: none;
+  background: grey;
+  button {
+    display: block;
+    margin: 2% 0;
+    width: 20vh;
+    padding: 2%;
+    border-radius: 15px;
+  }
+}
+
+em {
+    background: yellow;
+}

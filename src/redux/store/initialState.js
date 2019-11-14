@@ -17,6 +17,8 @@ export default {
     sharedOnfacebook: false,
     sharedOntwitter: false,
     sharedOnmail: false,
+    highlights: [],
+    highlightError: '',
   },
   bookmark: {
     bookmarkPending: false,
