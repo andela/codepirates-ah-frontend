@@ -19,7 +19,7 @@ describe('Search test', () => {
     const fakeFunc = jest.fn();
     fakeFunc.mockReturnValue({
       searchResults: {
-        foundTags: [{ name: 'tag1' }, { name: 'tag2' }],
+        foundTags: ['tags', 'tag2'],
         foundArticles: [{ slug: 'aaa', title: 'ddd' }, { slug: 'bbb', title: 'eee' }],
       },
     });
@@ -49,7 +49,7 @@ describe('Search test', () => {
       query: {},
       searchResults: {
         searchResults: {
-          foundTags: [{ name: 'tag1' }, { name: 'tag2' }],
+          foundTags: ['name', 'tag2'],
           foundArticles: [{ slug: 'aaa', title: 'ddd' }, { slug: 'bbb', title: 'eee' }],
         },
       },

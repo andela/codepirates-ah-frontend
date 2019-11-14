@@ -74,7 +74,18 @@ export const ArticleContent = ({
         <p>
           {' '}
           { taglist && taglist.map((tag) => (
-            <button type="button" key={tag} className="btn btn-secondary" style={{ marginRight: '5px', marginTop: '3px' }}>{tag}</button>
+            <button
+              type="button"
+              key={tag}
+              onClick={() => {
+                window.location.replace(`/articles/tag?tag=${tag}`);
+              }}
+              className="btn btn-secondary"
+              style={{ marginRight: '5px', marginTop: '3px' }}
+            >
+              {tag}
+
+            </button>
           ))}
 
         </p>

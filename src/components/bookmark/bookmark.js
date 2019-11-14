@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Card, CardColumns } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import * as fechMybookmark from '../../redux/actions/bookmark/fetchBookmark';
 

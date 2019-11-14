@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import style from './landingPage.scss';
-import Footer from '../common/footer/Footer';
 import LandingPageLinks from './landingPageLinks';
 import InterestArticlesAreaUpperGreenLine from './interestArticleAreaUpperLine';
 import PopularArticleAreaUpperLine from './interestArticleAreaUpperLine/popularArticleAreaUpperHeader';
@@ -198,11 +197,6 @@ export class LandingPage extends Component {
               <div className="popularAreaRight-links">
                 <LandingPageLinks />
               </div>
-            </div>
-          </div>
-          <div className="row image-div landingPage--footer">
-            <div className="landingPage__footerArea">
-              <Footer />
             </div>
           </div>
         </div>
