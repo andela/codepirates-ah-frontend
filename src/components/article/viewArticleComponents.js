@@ -80,10 +80,17 @@ export const ArticleContent = ({
         {' '}
         <p>
           {' '}
-          { taglist && taglist.map((tag) => (
-            <button type="button" key={tag} className="btn btn-secondary" style={{ marginRight: '5px', marginTop: '3px' }}>{tag}</button>
-          ))}
-
+          {taglist
+            && taglist.map((tag) => (
+              <button
+                type="button"
+                key={tag}
+                className="btn btn-secondary"
+                style={{ marginRight: '5px', marginTop: '3px' }}
+              >
+                {tag}
+              </button>
+            ))}
         </p>
       </div>
       <div className="article-paragraph">{ReactHtmlParser(body)}</div>
@@ -120,7 +127,7 @@ export const RecentArticles = ({
       {articles.map((article) => (
         <ArticleCard
           key={article.slug}
-          coverImage={article.images[0]}
+          coverImage={article.images && article.images[0]}
           description={article.description}
           title={article.title}
           views={article.views}

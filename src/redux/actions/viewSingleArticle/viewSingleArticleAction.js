@@ -11,7 +11,7 @@ export const viewArticleSuccess = (data) => ({
 const countText = (html, index) => {
   let i;
   let str = `${html.slice(0, index).replace(/\"/g, "'")}`;
-  const markup = str.match(/<\/?[\w\s="/.':;#-\/\?]+>\s?(\s=\s)?/gi);
+  const markup = str.match(/<\/?[\w\s="/.':;#-\/\?]+>\s?(\s=\s)?[\t \n]?/gi);
   if (!markup) {
     i = index;
   } else {
@@ -44,12 +44,14 @@ export const fetchArticle = (slug) => fetch(`${actions.BACKEND_URL}/api/${action
   },
 }).then((res) => res.json());
 
-export const viewArticle = (slug, geter, highlight) => async (dispatch) => {
-  const response = await geter(slug);
-  if (response.message === 'That article does not exist!') {
-    window.location = '/notfound';
-  }
-  const res1 = await highlight(response.data.id);
-  response.data.body = await showHighlights(response.data.body, res1);
-  return dispatch(viewArticleSuccess(response));
+export const viewArticle = (slug, geter, highlight) => (dispatch) => {
+  geter(slug).then((response) => {
+    if (response.message === 'That article does not exist!') {
+      window.location = '/notfound';
+    }
+    highlight(response.data.id).then((res1) => {
+      response.data.body = showHighlights(response.data.body, res1);
+      dispatch(viewArticleSuccess(response));
+    });
+  });
 };

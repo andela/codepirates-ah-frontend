@@ -47,7 +47,7 @@ export class ViewArticle extends Component {
     loading: false,
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     this.setState({ loading: true });
     const {
       viewArticle: viewSingleArticle,
@@ -56,7 +56,7 @@ export class ViewArticle extends Component {
       geter,
       highlight,
     } = this.props;
-    await viewSingleArticle(params.slug, geter, highlight);
+    viewSingleArticle(params.slug, geter, highlight);
     articles();
   }
 
