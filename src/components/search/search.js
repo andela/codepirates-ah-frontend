@@ -58,7 +58,7 @@ export class SearchDetail extends Component {
     const { foundTags, foundUsers, foundArticles } = results;
     let tags;
     if (foundTags.length !== 0) {
-      tags = foundTags.map((tag) => (<p key={foundTags.indexOf(tag)}><a href={`/articles/tag?tag=${tag.name}`} className="ui teal tag label">{tag.name}</a></p>));
+      tags = foundTags.map((tag) => (<p key={foundTags.indexOf(tag)}><a href={`/articles/tag?tag=${tag}`} className="ui teal tag label">{tag}</a></p>));
     } else {
       tags = <p>No tags found</p>;
     }
