@@ -1,0 +1,25 @@
+.ladingPageVieMoreArticlesButton {
+  width: 100%;
+  height: 30px;
+  margin: 0 auto;
+  text-align: center;
+  color: #2f80ed;
+  padding-top: 2px;
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+.ladingPageVieMoreArticlesButton:hover {
+  border: 1px solid #2f80ed;
+  cursor: pointer;
+  outline: none;
+}
+
+@media screen and (max-width: 450px) {
+  .ladingPageVieMoreArticlesButton {
+    height: 40px;
+    font-size: 10px;
+  }
+}
+/*# sourceMappingURL=landingPageViewMoreArticles.css.map */

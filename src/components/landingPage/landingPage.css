@@ -1,0 +1,195 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container-fluid .landingPage--imagePart {
+  min-height: 400px;
+  background-image: url(https://images.pexels.com/photos/2747385/pexels-photo-2747385.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-size: cover;
+}
+
+.container-fluid .landingPage--imagePart .landingPage--header {
+  max-height: 100px;
+}
+
+.container-fluid .landingPage--searchPart .landingPage__searchArea .searchArea-card {
+  width: 70%;
+  margin: 20px auto;
+}
+
+.container-fluid .landingPage--belowSearchPart {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.container-fluid .landingPage--bigArticleArea {
+  margin: 0 10em;
+  padding-top: 20px;
+}
+
+.container-fluid .landingPage--bigArticleArea .landingPage__bigArticleAreaLeft .bigArticleAreaLeft-card {
+  width: 90%;
+  min-height: 300px;
+  margin: 0 auto;
+}
+
+.container-fluid .landingPage--bigArticleArea .landingPage__bigArticleAreaLeft .bigArticleAreaLeft-card a {
+  text-decoration: none;
+  color: black;
+}
+
+.container-fluid .landingPage--bigArticleArea .landingPage__bigArticleAreaRight .bigArticleAreaRight-card {
+  width: 95%;
+  min-height: 300px;
+  margin: 0 auto;
+}
+
+.container-fluid .landingPage--bigArticleArea .landingPage__bigArticleAreaRight .bigArticleAreaRight-card .popularArea-articleCard-div a {
+  text-decoration: none;
+  color: black;
+}
+
+.container-fluid .landingPage--popularArea {
+  margin: 0 10em;
+}
+
+.container-fluid .landingPage--popularArea .landingPage__popularAreaLeft {
+  padding: 0;
+}
+
+.container-fluid .landingPage--popularArea .landingPage__popularAreaLeft .popularAreaLeft-card {
+  padding-bottom: 50px;
+  width: 100%;
+  min-height: 1000px;
+  -webkit-box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.05);
+}
+
+.container-fluid .landingPage--popularArea .landingPage__popularAreaLeft .popularAreaLeft-card .popularArea__articlesArea .popularArea-articleCard-div {
+  margin: 0 auto;
+  width: 95%;
+}
+
+.container-fluid .landingPage--popularArea .landingPage__popularAreaLeft .popularAreaLeft-card .popularArea__articlesArea .popularArea-articleCard-div a {
+  text-decoration: none;
+  color: black;
+}
+
+.container-fluid .landingPage--popularArea .landingPage__popularAreaLeft .popularAreaLeft-card .landingPage__moreArticles {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.container-fluid .landingPage--popularArea .landingPage__popularAreaLeft .popularAreaRight-freeSpace {
+  width: 80%;
+  min-height: 170px;
+  margin: 0 auto;
+}
+
+.container-fluid .landingPage--popularArea .landingPage__popularAreaRight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0;
+}
+
+.container-fluid .landingPage--popularArea .landingPage__popularAreaRight .popularAreaRight-card {
+  width: 100%;
+  min-height: 600px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+  -webkit-box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.05);
+}
+
+.container-fluid .landingPage--popularArea .landingPage__popularAreaRight .popularAreaRight-card .popularArea__articlesArea .popularArea-articleCard-div {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.container-fluid .landingPage--popularArea .landingPage__popularAreaRight .popularAreaRight-card .popularArea__articlesArea .popularArea-articleCard-div a {
+  text-decoration: none;
+  color: black;
+}
+
+.container-fluid .landingPage--popularArea .landingPage__popularAreaRight .popularAreaRight-card .landingPage__moreArticles {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.container-fluid .landingPage--popularArea .landingPage__popularAreaRight .popularAreaRight-freeSpace {
+  width: 80%;
+  min-height: 170px;
+  margin: 0 auto;
+}
+
+.container-fluid .landingPage--popularArea .landingPage__popularAreaRight .popularAreaRight-links {
+  width: 80%;
+  margin: 0 auto;
+  min-height: 130px;
+}
+
+.container-fluid .landingPage--footer {
+  width: 100%;
+}
+
+.container-fluid .landingPage--footer .landingPage__footerArea {
+  width: 100%;
+  margin: 0 auto;
+  max-height: 90px;
+}
+
+@media screen and (max-width: 900px) {
+  .container-fluid .landingPage--imagePart {
+    max-height: 300px;
+  }
+  .container-fluid .landingPage--searchPart .landingPage__searchArea .searchArea-card {
+    width: 95%;
+  }
+  .container-fluid .landingPage--belowSearchPart {
+    width: 100%;
+  }
+  .container-fluid .landingPage--belowSearchPart .landingPage__mostRecentTitle h2 {
+    font-size: 18px;
+  }
+  .container-fluid .landingPage--bigArticleArea {
+    margin: 0;
+  }
+  .container-fluid .landingPage--bigArticleArea .landingPage__bigArticleAreaLeft .bigArticleAreaLeft-card {
+    width: 100%;
+  }
+  .container-fluid .landingPage--bigArticleArea .landingPage__bigArticleAreaRight .bigArticleAreaRight-card {
+    width: 100%;
+  }
+  .container-fluid .landingPage--popularArea {
+    margin: 0;
+  }
+  .container-fluid .landingPage--popularArea .landingPage__popularAreaLeft .popularAreaLeft-card {
+    width: 100%;
+  }
+  .container-fluid .landingPage--popularArea .landingPage__popularAreaLeft .popularAreaLeft-card .popularArea__articlesArea .popularArea-articleCard-div {
+    width: 90%;
+  }
+  .container-fluid .landingPage--popularArea .landingPage__popularAreaRight .popularAreaRight-card {
+    width: 100%;
+  }
+  .container-fluid .landingPage--popularArea .landingPage__popularAreaRight .popularAreaRight-card .popularArea__articlesArea .popularArea-articleCard-div {
+    width: 90%;
+  }
+  .container-fluid .landingPage--popularArea .landingPage__popularAreaRight .popularAreaRight-card .popularArea__articlesArea .popularArea-articleCard-div a {
+    text-decoration: none;
+  }
+  .container-fluid .landingPage--popularArea .landingPage__popularAreaRight .popularAreaRight-freeSpace {
+    width: 100%;
+  }
+  .container-fluid .landingPage--footer .landingPage__footerArea {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=landingPage.css.map */

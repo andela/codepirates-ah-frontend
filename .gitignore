@@ -7,3 +7,6 @@ coverage/
 jsconfig.json
 .vscode/settings.json
 yarn.lock
+.sass-cache/
+*.css.map
+
