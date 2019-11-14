@@ -38,35 +38,6 @@ export class ShareArticle extends React.Component {
   };
 
   render() {
-    // document.onmouseup = () => {
-    //   let userSelection;
-    //   if (window.getSelection) {
-    //     userSelection = window.getSelection();
-    //   } else if (document.selection) {
-    //     // should come last; Opera!
-    //     userSelection = document.selection.createRange();
-    //   }
-    //   let selectedText = userSelection;
-    //   if (userSelection.text) selectedText = userSelection.text;
-    //   const getRangeObject = (selectionObject) => {
-    //     if (selectionObject.getRangeAt) return selectionObject.getRangeAt(0);
-    //     // Safari!
-    //     const range = document.createRange();
-    //     range.setStart(
-    //       selectionObject.anchorNode,
-    //       selectionObject.anchorOffset,
-    //     );
-    //     range.setEnd(selectionObject.focusNode, selectionObject.focusOffset);
-    //     return range;
-    //   };
-    //   const range = getRangeObject(userSelection);
-    //   console.log({range});
-    //   console.log({ userSelection });
-    //   console.log('ddd', document.getElementsByClassName('article-part')[0]);
-    //   console.log('****', this.props.article.body.indexOf(userSelection.toString()));
-    //   // range.setStart(selectionObject.anchorNode, selectionObject.anchorOffset);
-    //   // range.setEnd(selectionObject.focusNode, selectionObject.focusOffset);
-    // };
     const { handleClick } = this;
     const icons = [
       { twitter: 'fab fa-twitter' },

@@ -3,7 +3,6 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import { shallow, mount } from 'enzyme';
-import { HighlightArticle } from '.';
 import ViewArticle from '../index';
 
 global.fetch = require('node-fetch');

@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -26,6 +27,13 @@ export class HighlightArticle extends Component {
   };
 
   handleSubmit = async () => {
+    if (!localStorage.getItem('token')) {
+      this.props.history.push({
+        pathname: '/login',
+        state: { from: this.props.location },
+      });
+      return;
+    }
     const { slug, createHighlightAction } = this.props;
     const { start, end } = this.state;
     await createHighlightAction(slug, start, end);
@@ -53,13 +61,25 @@ export class HighlightArticle extends Component {
           background: 'grey',
         }}
       >
-        <button type="button" className="highlightActions" onClick={this.handleSubmit}>
+        <button
+          type="button"
+          className="highlightActions"
+          onClick={this.handleSubmit}
+        >
           create highlight?
         </button>
-        <button type="button" className="highlightActions" onClick={this.handleSubmit}>
+        <button
+          type="button"
+          className="highlightActions"
+          onClick={this.handleSubmit}
+        >
           share highlight?
         </button>
-        <button type="button" className="highlightActions" onClick={this.handleSubmit}>
+        <button
+          type="button"
+          className="highlightActions"
+          onClick={this.handleSubmit}
+        >
           comment on highlight?
         </button>
       </div>
@@ -79,4 +99,6 @@ HighlightArticle.defaultProps = {
 
 const mapState = (state) => ({ slug: state.viewArticle.data.slug });
 
-export default connect(mapState, { createHighlightAction })(HighlightArticle);
+export default withRouter(
+  connect(mapState, { createHighlightAction })(HighlightArticle),
+);

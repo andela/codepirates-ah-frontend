@@ -48,9 +48,11 @@ export const getHighlights = async (articleId) => {
 };
 
 export const createHighlightAction = (slug, start, end) => async (dispatch) => {
-  if (!token) {
-    flashToast({ status: 400, message: 'please login to save highlight' });
-    window.location.replace('/login');
+  if (!localStorage.getItem('token')) {
+    this.props.history.push({
+      pathname: '/login',
+      state: { from: this.props.location },
+    });
     return;
   }
   const json = await fetchPostHighlight(slug, start, end);
