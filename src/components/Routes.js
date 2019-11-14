@@ -17,7 +17,9 @@ import LandingPage from './landingPage';
 import Search from './search/search';
 import UpdateArticles from './update';
 import bookmarks from './bookmark/bookmark';
-
+import Allfollowers from './followUnfollow/AllfollowersComponent';
+import Following from './followUnfollow/following';
+import FollowUserComponent from './followUnfollow/followComponent';
 import ResetRequest from './passwordreset';
 import Feedback from './passwordreset/feedbackContainer';
 import ArticleComments from './commentArticle';
@@ -41,6 +43,7 @@ const Routes = () => (
         return <Profile {...props} />;
       }}
     />
+    <Route exact path="/following" component={FollowUserComponent} />
     <Route exact path="/" component={LandingPage} />
     <Route exact path="/welcome" component={Welcome} />
     <Route exact path="/search" component={Search} />
@@ -53,6 +56,8 @@ const Routes = () => (
         return <CreateArticles {...props} />;
       }}
     />
+    <Route exact path="/users/me/following" component={Following} />
+    <Route exact path="/users/me/myfollowers" component={Allfollowers} />
     <Route exact path="/logout" component={Logout} />
     <Route exact path="/articles/tag" component={Tags} />
     <Route exact path="/bookmarks" component={bookmarks} />
@@ -83,4 +88,3 @@ const Routes = () => (
 );
 
 export default Routes;
-

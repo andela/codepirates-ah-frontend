@@ -1,0 +1,9 @@
+.box {
+  margin: 4px auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.titles {
+  margin-left: 45%;
+}
