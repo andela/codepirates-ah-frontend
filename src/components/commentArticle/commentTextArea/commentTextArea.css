@@ -1,0 +1,51 @@
+.listOfComments--textArea {
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+}
+
+.listOfComments--textArea .commentTextAreaIcon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.listOfComments--textArea .commentTextAreaIcon img {
+  border-radius: 100%;
+  margin-right: 5px;
+}
+
+.listOfComments--textArea .commentTextAreaIcon p {
+  font-weight: bold;
+}
+
+.listOfComments--textArea textarea {
+  height: 3em;
+}
+
+.listOfComments--textArea button {
+  float: right;
+  background: transparent;
+  border: 1px solid #2f80ed;
+  color: #2f80ed;
+  border-radius: 5px;
+  outline: none;
+}
+
+.listOfComments--textArea button:hover {
+  color: white;
+  background: #2f80ed;
+}
+
+@media screen and (max-width: 450px) {
+  .listOfComments--textArea textarea {
+    width: 100%;
+    height: 3em;
+    border-radius: 10px;
+    outline: none;
+    padding-left: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+}
+/*# sourceMappingURL=commentTextArea.css.map */

@@ -1,0 +1,50 @@
+.clapIcon {
+  content: url("../../../../public/assets/images/claps-regular.png");
+  border-radius: 100%;
+  border: 1px solid lightgrey;
+  padding: 0.5rem;
+  -webkit-box-shadow: 4px 4px 10px -4px grey;
+  box-shadow: 4px 4px 10px -4px grey;
+}
+
+.inactive {
+  -webkit-box-shadow: 4px 4px 10px -4px #d69393;
+  box-shadow: 4px 4px 10px -4px #d69393;
+}
+
+.clapIcon:active {
+  content: url("../../../../public/assets/images/claps-solid.png");
+  border: 1px solid lightgrey;
+  -webkit-box-shadow: 1px 1px 10px -1px lightgrey;
+  box-shadow: 1px 1px 10px -2px lightgrey;
+}
+
+.clapAction {
+  background-color: grey;
+  margin-top: 0.7rem !important;
+}
+
+.clapCancel {
+  margin-top: 0.9rem !important;
+  font-size: 0.7rem;
+  color: grey;
+}
+
+.clapCancel:hover {
+  cursor: pointer;
+}
+
+.clapSection {
+  margin-right: 2.2rem;
+}
+
+.clapSection div {
+  float: left;
+  margin: 0rem 0.16rem;
+  margin-top: -0.7rem;
+}
+
+.hide {
+  display: none;
+}
+/*# sourceMappingURL=clap.css.map */

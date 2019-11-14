@@ -1,0 +1,29 @@
+.listOfComments--userIconAndUsername {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 5px;
+}
+
+.listOfComments--userIconAndUsername img {
+  -ms-flex-preferred-size: 4%;
+      flex-basis: 4%;
+  border-radius: 100%;
+  margin-right: 5px;
+}
+
+.listOfComments--userIconAndUsername .listOfComments--userIconAndUsername__userNameAndCreateAt {
+  -ms-flex-preferred-size: 96%;
+      flex-basis: 96%;
+}
+
+.listOfComments--userIconAndUsername .listOfComments--userIconAndUsername__userNameAndCreateAt .createdAt {
+  margin-top: -12px;
+  color: gray;
+}
+
+.listOfComments--userIconAndUsername .listOfComments--userIconAndUsername__userNameAndCreateAt .username {
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
+}
+/*# sourceMappingURL=userIconComponent.css.map */

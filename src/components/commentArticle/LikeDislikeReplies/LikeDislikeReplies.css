@@ -1,0 +1,59 @@
+.listOfComments--likeDislikeAndButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 5px;
+  -ms-flex-line-pack: end;
+      align-content: end;
+  color: gray;
+}
+
+.listOfComments--likeDislikeAndButton .listOfComments--likeDislikeAndButton__insideDiv {
+  margin-right: 20px;
+}
+
+.listOfComments--likeDislikeAndButton .listOfComments--likeDislikeAndButton__insideDiv button {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.listOfComments--likeDislikeAndButton .listOfComments--likeDislikeAndButton__insideDiv button:hover {
+  color: #2f80ed;
+}
+
+.listOfComments--likeDislikeAndButton .listOfComments--likeDislikeAndButton__insideDiv .fa-thumbs-up {
+  cursor: pointer;
+}
+
+.listOfComments--likeDislikeAndButton .listOfComments--likeDislikeAndButton__insideDiv .fa-thumbs-up:hover {
+  color: #2f80ed;
+}
+
+.listOfComments--likeDislikeAndButton .listOfComments--likeDislikeAndButton__insideDiv .fa-thumbs-down {
+  cursor: pointer;
+}
+
+.listOfComments--likeDislikeAndButton .listOfComments--likeDislikeAndButton__insideDiv .fa-thumbs-down:hover {
+  color: #2f80ed;
+}
+
+.listOfComments--likeDislikeAndButton .listOfComments--likeDislikeAndButton__insideDiv p {
+  cursor: pointer;
+}
+
+.listOfComments--likeDislikeAndButton .listOfComments--likeDislikeAndButton__insideDiv p:hover {
+  color: #2f80ed;
+}
+
+.listOfComments--likeDislikeAndButton .fa-thumbs-down {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.listOfComments--likeDislikeAndButton .replies {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=LikeDislikeReplies.css.map */

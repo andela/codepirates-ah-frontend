@@ -1,0 +1,12 @@
+.dislikeButton {
+  margin-right: 0.1rem;
+}
+
+.dislikeButton:hover {
+  cursor: pointer;
+}
+
+.dislikeButton:active {
+  font-size: 0.98rem;
+}
+/*# sourceMappingURL=dislike.css.map */

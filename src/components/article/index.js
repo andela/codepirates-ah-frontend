@@ -31,6 +31,7 @@ export class ViewArticle extends Component {
           image: '',
           username: '',
         },
+        taglist: [],
       },
     },
     allArticles: [],
@@ -63,9 +64,10 @@ export class ViewArticle extends Component {
     }
     if (nextProps.articles.data !== data) {
       const currentArticles = paginate(nextProps.articles.data, 0, pageSize);
+
       this.setState({
         allArticles: nextProps.articles.data,
-        numberOfArticles: nextProps.articles.allArticle,
+        numberOfArticles: nextProps.articles.data.length,
         paginatedArticles: currentArticles,
       });
     }
@@ -123,6 +125,7 @@ export class ViewArticle extends Component {
                 total={numberOfArticles}
                 pageSize={2}
                 articles={paginatedArticles}
+                taglist={data.taglist}
               />
               <RecentArticles
                 onChange={this.onChange}
@@ -150,7 +153,6 @@ ViewArticle.propTypes = {
   getAllArticles: PropTypes.func,
   articles: PropTypes.object,
   data: PropTypes.array,
-  allArticle: PropTypes.string,
   match: PropTypes.object,
 };
 ViewArticle.defaultProps = {
@@ -159,7 +161,6 @@ ViewArticle.defaultProps = {
   getAllArticles: '',
   articles: '',
   data: [],
-  allArticle: '',
   match: '',
 };
 const mapStateToProps = ({ viewArticle: getArticle, articles }) => ({

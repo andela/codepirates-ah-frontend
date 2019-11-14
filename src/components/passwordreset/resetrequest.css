@@ -1,0 +1,160 @@
+.styles {
+  text-align: center;
+}
+
+.styles .body {
+  text-align: center;
+  position: relative;
+  width: 100%;
+}
+
+.styles .body p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.5rem;
+  position: relative;
+  width: 45vw;
+  margin: 8vh auto 8vh auto;
+  text-align: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.styles .body h2 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 3.8vw;
+  position: relative;
+  margin-top: 9.3vh;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.styles .body .hr {
+  position: relative;
+  width: 45vw;
+  height: 0px;
+  margin-left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin-top: 6vh;
+  border: 1px solid #c4c4c4;
+}
+
+.styles .body .tick {
+  position: relative;
+  height: 22.7vh;
+  margin-top: 9vh;
+}
+
+.styles .body form {
+  position: relative;
+  margin: 6vh auto;
+  width: 26vh;
+  text-align: left;
+  z-index: 1;
+}
+
+.styles .body form label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 2vh;
+  position: relative;
+  width: 100%;
+}
+
+.styles .body form input {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  position: relative;
+  width: 100%;
+  height: 5.5vh;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  text-indent: 2%;
+}
+
+.styles .body form .field {
+  margin: auto;
+}
+
+.styles .body form .field div p {
+  display: none !important;
+}
+
+.styles .body form .error {
+  text-align: center;
+  color: red;
+  height: 4vh;
+  padding: 1.2vh auto;
+  font-size: 1.4vh;
+}
+
+.styles .body form .submit-btn {
+  position: relative;
+  margin: auto auto 12vh;
+  width: 100%;
+  height: 6vh;
+  border: 1px solid #2f80ed;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 35px;
+  font-size: 2vh;
+  color: #2f80ed;
+}
+
+.styles .body :focus {
+  outline: none;
+}
+
+@media screen and (max-width: 700px) {
+  .styles .body h2 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    margin: 3vh auto;
+  }
+  .styles .body .tick {
+    margin-top: 7vh;
+    height: 18vh;
+  }
+  .styles .body p {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1rem;
+    width: 60vw;
+  }
+  .styles .body .hr {
+    width: 60vw;
+  }
+  .styles .body form input {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1rem;
+  }
+}
+
+.navbar {
+  background: white !important;
+}
+
+.divider {
+  position: relative;
+  width: 100vw;
+  margin-left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+/*# sourceMappingURL=resetrequest.css.map */

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import ReactHtmlParser from 'react-html-parser';
 import Pages from 'lodash';
 import './viewArticle.scss';
+import NavbarCollapse from 'react-bootstrap/NavbarCollapse';
 import Clap from '../common/clap/clap';
 import Dislike from '../common/dislike/dislike';
 import userImage from '../../../public/assets/images/images/userIcon.png';
@@ -56,13 +57,7 @@ export const LeftSideBar = ({
 );
 
 export const ArticleContent = ({
-  title,
-  description,
-  body,
-  slug,
-  author,
-  username,
-  id,
+  title, description, body, slug, author, username, id, taglist,
 }) => (
   <div className="middle-up" style={{ paddingTop: '0px' }}>
     <div className="article-part">
@@ -73,6 +68,17 @@ export const ArticleContent = ({
         <h4>{description}</h4>
       </div>
       <div className="article-paragraph">{ReactHtmlParser(body)}</div>
+      <br />
+      <div className="tags">
+        {' '}
+        <p>
+          {' '}
+          { taglist && taglist.map((tag) => (
+            <button type="button" key={tag} className="btn btn-secondary" style={{ marginRight: '5px', marginTop: '3px' }}>{tag}</button>
+          ))}
+
+        </p>
+      </div>
     </div>
     <div className="middle-line" />
     <div className="article-events">
@@ -106,7 +112,7 @@ export const RecentArticles = ({
       {articles.map((article) => (
         <ArticleCard
           key={article.slug}
-          coverImage={coverImage}
+          coverImage={article.images[0]}
           description={article.description}
           title={article.title}
           views={article.views}
@@ -114,6 +120,7 @@ export const RecentArticles = ({
           createdTime={article.timeCreated}
           username={article.username}
           slug={article.slug}
+          userImage={article.userImage}
         />
       ))}
     </div>

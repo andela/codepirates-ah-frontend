@@ -1,0 +1,42 @@
+.landingArticleCardText {
+  margin: 0 auto;
+  height: 12em;
+}
+
+.landingArticleCardText .landingArticleCardText--title {
+  padding-bottom: 10px;
+}
+
+.landingArticleCardText .landingArticleCardText--description {
+  color: rgba(0, 0, 0, 0.774);
+}
+
+.landingArticleCardText .landingArticleCardText--viewsAndClaps {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 2em;
+}
+
+.landingArticleCardText .landingArticleCardText--viewsAndClaps .landingArticleCardText__views {
+  -ms-flex-preferred-size: 70%;
+      flex-basis: 70%;
+}
+
+.landingArticleCardText .landingArticleCardText--viewsAndClaps .landingArticleCardText__claps {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+  margin-bottom: 20px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.landingArticleCardText .landingArticleCardText--viewsAndClaps .landingArticleCardText__claps i {
+  margin-left: 10px;
+  font-size: 20px;
+}
+/*# sourceMappingURL=articleCardTextComponent.css.map */

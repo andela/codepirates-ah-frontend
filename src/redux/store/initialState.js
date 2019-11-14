@@ -62,4 +62,6 @@ export default {
     editmode: true,
   },
   notifications: {},
+  emailOptInOut: {},
+  appOptInOut: {},
 };
