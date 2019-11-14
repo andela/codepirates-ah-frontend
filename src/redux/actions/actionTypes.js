@@ -2,7 +2,7 @@ export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 export const VIEW_ARTICLE_SUCCESS = 'VIEW_ARTICLE_SUCCESS';
 export const VIEW_ARTICLE_ERROR = 'VIEW_ARTICLE_ERROR';
-export const BACKEND_URL = 'http://localhost:3000';
+export const BACKEND_URL = 'https://codepirates-ah-backend-staging.herokuapp.com';
 export const VERIFICATION_SUCCESS = 'VERIFICATION_SUCCESS';
 export const VERIFICATION_FAILURE = 'VERIFICATION_FAILURE';
 
